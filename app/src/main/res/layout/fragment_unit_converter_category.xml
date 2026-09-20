@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/categoryTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Length"
+        android:textColor="@color/textPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Left side -->
+    <LinearLayout
+        android:id="@+id/leftSide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:orientation="vertical"
+        android:background="@drawable/bg_tool_tile"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/categoryTitleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rightSide"
+        app:layout_constraintHorizontal_chainStyle="spread">
+
+        <TextView
+            android:id="@+id/leftUnitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meters (m) ▾"
+            android:textColor="@color/accent"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="4dp" />
+
+        <EditText
+            android:id="@+id/leftValueInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="0"
+            android:textColorHint="@color/textSecondary"
+            android:textColor="@color/textPrimary"
+            android:textSize="24sp"
+            android:inputType="numberDecimal|numberSigned"
+            android:maxLines="1" />
+
+    </LinearLayout>
+
+    <!-- Right side -->
+    <LinearLayout
+        android:id="@+id/rightSide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical"
+        android:background="@drawable/bg_tool_tile"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/categoryTitleText"
+        app:layout_constraintStart_toEndOf="@id/leftSide"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/rightUnitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feet (ft) ▾"
+            android:textColor="@color/accent"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="4dp" />
+
+        <EditText
+            android:id="@+id/rightValueInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="0"
+            android:textColorHint="@color/textSecondary"
+            android:textColor="@color/textPrimary"
+            android:textSize="24sp"
+            android:inputType="numberDecimal|numberSigned"
+            android:maxLines="1" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/swapHintText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Type a number on either side — the other side converts live. Tap a unit name to change it."
+        android:textColor="@color/textSecondary"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/leftSide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
