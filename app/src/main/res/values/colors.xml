@@ -1,0 +1,24 @@
+<resources>
+    <color name="background">#0D1117</color>
+    <color name="surface">#1A2129</color>
+    <color name="surfaceElevated">#232C36</color>
+    <color name="surfaceOutline">#2E3842</color>
+    <color name="accent">#4C8DFF</color>
+    <color name="accentDark">#2F6FE0</color>
+    <color name="accentSoft">#22335A</color>
+    <color name="needle">#FF5252</color>
+    <color name="textPrimary">#F5F7FA</color>
+    <color name="textSecondary">#8C98A6</color>
+    <color name="warning">#FFC940</color>
+    <color name="ic_launcher_background">#000000</color>
+
+    <!-- Calculator key colors: all keys are black, distinguished by their
+         border color + text color rather than fill, so every key still
+         reads clearly as its own tappable box against the black background. -->
+    <color name="calcKeyFill">#000000</color>
+    <color name="calcKeyPressed">#1C1C1C</color>
+    <color name="calcKeyNumberBorder">#454E59</color>
+    <color name="calcKeyFunctionBorder">#33383F</color>
+    <color name="calcKeyOperatorBorder">#4C8DFF</color>
+    <color name="calcKeyEqualsPressed">#1C1C1C</color>
+</resources>

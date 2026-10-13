@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Glossy sphere used for the header dot and unit-category badges. Appearance only. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/badgeBase">
+        <shape android:shape="oval">
+            <solid android:color="#4C8DFF" />
+            <stroke android:width="1dp" android:color="#66FFFFFF" />
+        </shape>
+    </item>
+    <item android:top="2dp" android:left="3dp" android:right="3dp" android:bottom="5dp">
+        <shape android:shape="oval">
+            <gradient android:angle="270" android:startColor="#00FFFFFF" android:endColor="#55FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

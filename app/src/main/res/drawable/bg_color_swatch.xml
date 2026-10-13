@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Round colour chip; its fill is set at runtime via backgroundTintList-free
+     GradientDrawable colouring (id: swatchFill). -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/swatchFill">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" />
+            <stroke android:width="2dp" android:color="#8C98A6" />
+        </shape>
+    </item>
+</layer-list>

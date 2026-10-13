@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/surface"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="22dp"
+        android:paddingBottom="18dp">
+
+        <TextView
+            android:id="@+id/expressionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:minLines="1"
+            android:maxLines="2"
+            android:text=""
+            android:textColor="@color/textSecondary"
+            android:textSize="18sp"
+            android:fontFamily="monospace" />
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="end"
+            android:text="0"
+            android:textColor="@color/textPrimary"
+            android:textSize="44sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <Button android:id="@+id/degToggleButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="DEG" android:textSize="12sp" />
+            <Button android:id="@+id/openParenButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="(" android:textSize="16sp" />
+            <Button android:id="@+id/closeParenButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text=")" android:textSize="16sp" />
+            <Button android:id="@+id/backspaceButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="⌫" android:textSize="16sp" />
+            <Button android:id="@+id/clearButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="AC" android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <Button android:id="@+id/sinButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="sin" android:textSize="13sp" />
+            <Button android:id="@+id/cosButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="cos" android:textSize="13sp" />
+            <Button android:id="@+id/tanButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="tan" android:textSize="13sp" />
+            <Button android:id="@+id/squareButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="x²" android:textSize="15sp" />
+            <Button android:id="@+id/sqrtButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="√" android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <Button android:id="@+id/asinButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="asin" android:textSize="12sp" />
+            <Button android:id="@+id/acosButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="acos" android:textSize="12sp" />
+            <Button android:id="@+id/atanButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="atan" android:textSize="12sp" />
+            <Button android:id="@+id/powerButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="xʸ" android:textSize="15sp" />
+            <Button android:id="@+id/inverseButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="1/x" android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <Button android:id="@+id/logButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="log" android:textSize="13sp" />
+            <Button android:id="@+id/lnButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="ln" android:textSize="13sp" />
+            <Button android:id="@+id/factorialButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="!" android:textSize="17sp" />
+            <Button android:id="@+id/piButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="π" android:textSize="17sp" />
+            <Button android:id="@+id/eButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_function" android:textColor="#FFFFFF" android:text="e" android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <Button android:id="@+id/digit7Button" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="7" android:textSize="20sp" />
+            <Button android:id="@+id/digit8Button" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="8" android:textSize="20sp" />
+            <Button android:id="@+id/digit9Button" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="9" android:textSize="20sp" />
+            <Button android:id="@+id/divideButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_operator" android:textColor="#FFFFFF" android:text="÷" android:textSize="20sp" />
+            <Button android:id="@+id/percentButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_operator" android:textColor="#FFFFFF" android:text="%" android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <Button android:id="@+id/digit4Button" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="4" android:textSize="20sp" />
+            <Button android:id="@+id/digit5Button" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="5" android:textSize="20sp" />
+            <Button android:id="@+id/digit6Button" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="6" android:textSize="20sp" />
+            <Button android:id="@+id/multiplyButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_operator" android:textColor="#FFFFFF" android:text="×" android:textSize="20sp" />
+            <Button android:id="@+id/negateButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_operator" android:textColor="#FFFFFF" android:text="±" android:textSize="17sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <Button android:id="@+id/digit1Button" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="1" android:textSize="20sp" />
+            <Button android:id="@+id/digit2Button" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="2" android:textSize="20sp" />
+            <Button android:id="@+id/digit3Button" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="3" android:textSize="20sp" />
+            <Button android:id="@+id/subtractButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_operator" android:textColor="#FFFFFF" android:text="−" android:textSize="20sp" />
+            <Button android:id="@+id/equalsButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_equals" android:textColor="#FFFFFF" android:text="=" android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:orientation="horizontal">
+            <Button android:id="@+id/digit0Button" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="0" android:textSize="20sp" />
+            <Button android:id="@+id/decimalButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_number" android:textColor="#FFFFFF" android:text="." android:textSize="20sp" />
+            <Button android:id="@+id/addButton" style="@style/CalcKey" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="2" android:layout_margin="4dp" android:background="@drawable/bg_calc_key_operator" android:textColor="#FFFFFF" android:text="+" android:textSize="20sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

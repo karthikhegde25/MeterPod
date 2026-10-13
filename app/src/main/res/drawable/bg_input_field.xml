@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Text input box: clearly outlined at rest, glowing accent border + brighter
+     fill while focused. Appearance only. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#334C8DFF" />
+                    <corners android:radius="14dp" />
+                </shape>
+            </item>
+            <item android:top="3dp" android:bottom="3dp" android:left="3dp" android:right="3dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#1F2A3A" />
+                    <corners android:radius="12dp" />
+                    <stroke android:width="2dp" android:color="@color/accent" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <item android:top="3dp" android:bottom="3dp" android:left="3dp" android:right="3dp">
+                <shape android:shape="rectangle">
+                    <solid android:color="#151B22" />
+                    <corners android:radius="12dp" />
+                    <stroke android:width="1.5dp" android:color="#4A5766" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>
