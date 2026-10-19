@@ -202,3 +202,5 @@ The QR Generator tool's content types and code formats are adapted from
 [Image Toolbox](https://github.com/T8RIN/ImageToolbox)'s QR code feature.
 Thanks to the Image Toolbox project and its contributors.
 
+## License
+The app follows GNU General Public License v3.0. Refer to LICENSE in repo.
