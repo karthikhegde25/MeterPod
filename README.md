@@ -14,41 +14,44 @@
 # MeterPod (Android, Kotlin)
 
 One App with 30 tools
-
-## Tabs
+1. Angle
+2. Digital Level
+3. Compass
+4. Metal Detector
+5. Speed
+6. Sound Level
+7. Time
+8. Recorder
+9. Protractor
+10. Ruler
+11. Pedometer
+12. Odometer
+13. Light Detector
+14. Magnetic Field
+15. Accelerometer
+16. Magnifier
+17. Unit Converter
+18. Coin Toss
+19. Calculator
+20. Word & Character Counter
+21. Morse Code
+22. UUID Generator
+23. Screen Info
+24. Sensor Tester
+25. Network & Wi-Fi Info
+26. QR Generator
+27. Games
+28. File Creator
+29. File Converter
+30. File Viewer
 
 ### Angle
 Rest any corner or edge of the phone on the ground and read the acute
 angle live, plus the slope (rise/run ratio) that angle corresponds to.
 
-The app reads the phone's Z-axis (screen-normal) component of gravity,
-low-pass filters it to remove jitter, and computes:
-
-```
-angleFromVerticalZ = acos(gz / |g|)
-planeAngle = min(angleFromVerticalZ, 180 - angleFromVerticalZ)
-slope = tan(planeAngle)          // e.g. 45° -> 1.00 (100%)
-```
-
-`planeAngle` is the acute angle (0°–90°) between the phone's flat plane
-and the ground plane. It works for any corner/edge and any compass
-heading, since it only depends on tilt, not rotation about the vertical
-axis. Slope is shown both as a decimal ratio and a percentage, and reads
-"vertical (∞)" once the angle gets within half a degree of 90°, since the
-ratio is unbounded there.
-
-- `AngleScreen.kt` — sensor reading, filtering, angle + slope calc.
-- `ui/AngleDialView.kt` — custom-drawn protractor/needle visual.
-
 ### Digital Level
 Lay the phone flat and it reports X tilt (roll), Y tilt (pitch), and a
 combined value, plus a bubble-level visual that turns green when level.
-Stand the phone on an edge against a wall and the same readouts tell you
-whether that surface is plumb (vertical) — status text switches between
-`LEVEL · HORIZONTAL`, `PLUMB · VERTICAL`, and `TILTED` automatically.
-
-- `LevelScreen.kt` — sensor reading, roll/pitch calc, status logic.
-- `ui/BubbleLevelView.kt` — custom-drawn bubble level visual.
 
 ### Compass
 Shows the current magnetic heading in degrees plus its cardinal
@@ -66,18 +69,6 @@ live, with status text stepping through `NO METAL DETECTED` →
 `METAL NEARBY` → `STRONG SIGNAL`, plus a short vibration pulse on a
 strong signal.
 
-This is inherently approximate: phone magnetometers are small, noisy, and
-every phone/location has a different ambient baseline — that's why it's
-calibrate-then-compare rather than a fixed threshold. It's good for
-"is there something metallic near this specific spot, and roughly which
-way" (studs in a wall, a dropped screw), not precision depth/size
-detection or an exact bearing.
-
-- `MetalDetectorScreen.kt` — field vector tracking, calibration, status
-  thresholds, bearing calc, vibration feedback.
-- `ui/MetalDetectorView.kt` — custom-drawn intensity bar.
-- `ui/MetalDirectionView.kt` — custom-drawn direction arrow.
-
 ### Speed
 GPS-based speedometer for use in a moving vehicle (car, bike, train,
 etc.). Android's Location API reports speed directly (`Location.speed`,
@@ -85,21 +76,6 @@ in m/s) whenever the GPS provider has a confident fix, which this
 converts to km/h and mph on a speedometer-style gauge. Also tracks a
 session max speed (with a reset button), similar to a real speedometer's
 peak-hold.
-
-- Requests `ACCESS_FINE_LOCATION` at runtime via
-  `registerForActivityResult`/`ActivityResultContracts.RequestPermission`.
-- Prompts to enable device Location/GPS if it's turned off
-  (`Settings.ACTION_LOCATION_SOURCE_SETTINGS`).
-- Falls back to computing speed from distance/time between consecutive
-  fixes if a given fix doesn't directly report speed (rare for
-  `GPS_PROVIDER`, more common on network-based fixes).
-- Shows current GPS accuracy so you know how much to trust the reading;
-  best accuracy (and thus best speed readings) needs open sky, so it's
-  noticeably less accurate indoors, in tunnels, or in dense cities.
-
-- `SpeedScreen.kt` — location updates, permission handling, speed calc,
-  session max tracking.
-- `ui/SpeedGaugeView.kt` — custom-drawn semi-circle speedometer gauge.
 
 ### Sound Level
 Ambient sound level meter with three live readouts derived from the same
@@ -148,7 +124,14 @@ with optional quality and max-size (`ImageConverter.kt`, Android decoders/encode
 ## Games
 
 A grid of eight games (Tools → Games). Back inside a game asks for confirmation only when a game is in progress; Back on the grid leaves the tool.
-
+1. 2048
+2. Tic-Tac-Toe
+3. Minesweeper
+4. Snake
+5. Number puzzle
+6. Maze Munch
+7. Flappy Bird
+8. Space Invaders
 ## Morse Code and UUID Generator
 - **Morse Code**: text to Morse and Morse to text; play it as sound, vibration or flashlight (camera torch); three speeds.
 - **UUID Generator**: v1, v3, v4, v5, v6, v7, Nil and Max; up to 50,000 at once; uppercase/hyphen options; export all as TXT, PDF or Markdown.
@@ -216,13 +199,6 @@ project was committed as a zip or already extracted, and locates
 wrapper (open the project in Android Studio and let it sync, or run
 `gradle wrapper` locally with Gradle installed), you can simplify the
 workflow to the more common `./gradlew assembleRelease` form.
-
-## QR Generator
-Builds QR codes for 9 content types (plain text, URL, Wi‑Fi, phone, SMS,
-email, geo location, contact/vCard, calendar event), with custom styling:
-foreground color, dot shape (square/rounded/circle), error-correction
-level, and an optional center logo. Generated codes can be saved to the
-gallery or shared directly from the app.
 
 ## Credits
 The QR Generator tool's content types and code formats are adapted from
