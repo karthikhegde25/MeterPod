@@ -90,9 +90,6 @@ parsers bundled in `assets/fileviewer/index.html`, hosted in a WebView by
 no INTERNET permission). Other formats get a type label plus Hex/Strings tabs.
 Files can also be sent in via **Open with MeterPod** or the Share sheet.
 
-PDF and Mermaid previews are intentionally not included (the app is
-offline-only); those files still get the Hex/Strings tabs.
-
 ## File Creator
 Creates ~45 file types on the device and saves them through the system "Save as"
 dialog (no storage permission): text/code formats (TXT, MD, JSON, CSV, XML, HTML, CSS,
