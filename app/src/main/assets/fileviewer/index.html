@@ -1,0 +1,1240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Multi File Viewer</title>
+<link rel="icon" type="image/webp" href="data:image/webp;base64,UklGRqoFAABXRUJQVlA4IJ4FAACwGwCdASpAAEAAPk0ei0QioaEXDbaoKATEtgBnNhNCRH3cG+GMmDygO0B+Vf8B6lfSw8wH8b/uP6ye8z6E/QA/S3rAPQA8t79nfgl/dL9t/aqrEfHr5t9rePzEL6i/wn5X+ZXumf8NvfHF/5j/u/6vyAfTPzMf9pxrXhHsAfyz+q/7L2Sf5T/qeVP58/53uCfyb+nf8DsQ+jG6F5cGvT6f74FysdraMW443un/Of0JuLzjQ6hR36609uKdH7vAV9PX8YLJtWUKK5+U/Qph+QouWy553TTNInUWJSE1afeBJgtLv1sAAAD+/vUBxJPsMaJa17K7Tsj5VDC7zvyTrw5auDMqrh6cq5Ewc0set5wek1IN9xsaSgpjGDylRNkWm7ypT/3n/HIRcpIyHZSQCwq8+BHn5OIxqBG3hzU4WjqlOlaCTxet98ka+vf9KtDWQgyTe9ppjZnHCd3Izu4/Fj+v2cGDLbACReuHZB/Uwp6Y/j+5hdLYZ6Z/oIbiatBE2UVAjQaZuudB/nSRdIEQFqvW2m3gRkuajdTzVH7FrMnlPuMN+w4g5zFB9TlaTlDeAh733BWH1HKh+IBxQlNAW+UPEG+edsqsOMQWrvVxyKk48HaBLxGm/lYyBURe6fHIDww2P35DNJ92Lug+HcDabLQP2QOykEXRnrkAac0Ee2yHn5MU2/4wHuk8FtfTbZdyh6F3w6/R5rBobuAPqm07t43jMpBJLNpT8t60nso/3eQpuPma4wYRLmAPd4+bH6CO0lJtVf+26moQR6c5fjsv7++pXgXCcAgL98xIuIOTammuQEQlH44Evd7YD+ecdtDF9FhfVyS6t/ZVI5AMBoUhdjjKiSrO8IuVsSt74W37SdLs3gPTDMPU2ClDwsomRj10YPIxxWvjGVmSVaFCCAxDTOsP1F54LUa71Q3F9FYhOEFyjPxhft39z2oNcW+u6TXEUiJUlEoT+YJQgRasiPjLeb3oOdgv1kcPwqSmLGuDPo3LpD+d1Y5+6ucvQWNk6m5dKCWdj3TXfxgVAGoH14xAV+0KfSwg/J/uwbqeCsk68xy6ot3YjqBAmnAFuPiNPh7srIf1NRJptHGOQ5zc/J4rZckCCh03128Hj7c58K5QpXl6WXhTOSSyfR3BqTp39+ORyZY+gEvQWomB4SmGerT/k8Sa7QsKbhxhSSRJuu92gwg2c4zete8Hj6lzx52lrj+SLS6q0Q2eqOu3vnSOk77C81n9XTpyQNYcJt27PsFu9LsAyKUwP5fpOwGwd7sLkcsiwY+/PgIMhIFn2DqSr1CINcYUecMPpDNHO1H6O0VPU6ZzYd6SuYarqd6+qngKSLWJrckzuKQpkcLZtT2bv8Lcx1cTZ+LyMuFe7wn6KiuerIJbutg/969kj5FUf/HYmhVYxYgE134g/01/uZyWCimXPFz7LZLXBr5Malz9OoXUEfFwbrTYFsEvVBP9dR4pg8c+nxq9Zth8QoBeWfk4dyz2XhqxYhQ3maSPfVheTm2t0naLx0UGQfgb2rKUmLYetCfLXXwxcv36/8ZElw1+Ur4vgaiVEkfTmsbEKS41mBxUj0XatrKw5TMXzAy2sG3QJoQrF13BmBHHfBqWR3jgPklhFW5wACa0qw9/92pkT/6ruwz+Vf5nE7XGHmweUhZpKpOicf1ty/e5b+VcoHK/on7e+q6jCiTFf8mTjzTYkAKHA7lxc1xSJf8e7xHdTiSoxu5RwcM7ZmpIFVt0paZKUl+A8O7Q+a/o8xnibNpNaxDvMh/twCvX39kaN5gKUrK/4r5xz0dwZufMmysyUpEambZWH0l4WrtqbCmi7CzvgsqJlEpOlc70rrYXuErrrei0HB/9HdwD++kvfuP4/yPkoS4iZAJPi19lqURIuUY/F955/C22g6PuRlMmkwcLCNvkAAAA">
+<style>
+:root{--bg:#f4f6f9;--panel:#fff;--ink:#1b2430;--mute:#66707e;--line:#d9dee6;--acc:#2f5bd8;--accink:#fff;--err:#c23a3a;--ok:#2a7d4f;--code:#eef1f6}
+@media (prefers-color-scheme:dark){:root{--bg:#12161c;--panel:#1a2029;--ink:#e6eaf0;--mute:#8d97a5;--line:#2c3542;--acc:#7c9cff;--accink:#10141b;--err:#ff8585;--ok:#6fd49b;--code:#222a35}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+.mono,pre,textarea{font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+header{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);background:var(--panel);flex-wrap:wrap}
+h1{font-size:17px;margin:0;font-weight:650}
+button,.btn{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:7px 12px;font:inherit;font-size:14px;cursor:pointer}
+button:hover,.btn:hover{border-color:var(--acc)}
+button.pri,.btn.pri{background:var(--acc);color:var(--accink);border-color:var(--acc);font-weight:600}
+button:focus-visible,.btn:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+main{max-width:1100px;margin:0 auto;padding:16px}
+#drop{border:2px dashed var(--line);border-radius:10px;padding:40px 16px;text-align:center;color:var(--mute);background:var(--panel)}
+#drop.over{border-color:var(--acc);color:var(--ink)}
+#drop b{color:var(--ink);display:block;font-size:17px;margin-bottom:0}
+#chips{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0}
+.chip{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip.on{background:var(--acc);color:var(--accink);border-color:var(--acc)}
+#viewer{margin-top:14px;display:none}
+.head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline;margin-bottom:8px}
+.head .n{font-weight:650;word-break:break-all}.head .m{color:var(--mute);font-size:13px}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tab{border:0;border-bottom:2px solid transparent;border-radius:0;background:none;padding:9px 14px}
+.tab.on{border-bottom-color:var(--acc);font-weight:650}
+.pane{background:var(--panel);border:1px solid var(--line);border-top:0;border-radius:0 0 8px 8px;padding:12px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.bar .st{color:var(--mute);font-size:13px}.err{color:var(--err)}.ok{color:var(--ok)}
+textarea{width:100%;min-height:55vh;resize:vertical;background:var(--code);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:10px;tab-size:2}
+pre{margin:0;background:var(--code);border-radius:6px;padding:10px;overflow:auto;max-height:70vh;white-space:pre}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}th{background:var(--code)}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:0}dt{color:var(--mute)}dd{margin:0;word-break:break-all}
+img.pv,video,iframe{max-width:100%;border-radius:6px}iframe{width:100%;height:70vh;border:1px solid var(--line)}
+.md h1,.md h2,.md h3{margin:.9em 0 .4em}.md code{background:var(--code);padding:1px 5px;border-radius:4px}.md pre code{padding:0}.md blockquote{margin:0;padding-left:12px;border-left:3px solid var(--line);color:var(--mute)}
+.note{color:var(--mute);margin:0 0 10px;font-size:13px}
+input[type=number]{width:110px;background:var(--code);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px}
+.banner{display:none;align-items:flex-start;gap:10px;background:var(--code);border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:14px}
+.banner button{margin-left:auto;padding:2px 9px}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+canvas.pg{display:block;max-width:100%;height:auto;margin:0 auto 10px;border:1px solid var(--line);background:#fff}
+.dd{position:relative}.dd summary{list-style:none;cursor:pointer;display:inline-block}.dd summary::-webkit-details-marker{display:none}
+.ddm{position:absolute;z-index:5;left:0;top:calc(100% + 4px);min-width:200px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:4px;display:flex;flex-direction:column;gap:2px;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.ddm button{border:0;text-align:left;background:none}.ddm button:hover{background:var(--code)}
+textarea.edp{min-height:2.4em;margin-bottom:8px;resize:none;overflow:hidden}
+.xg td{padding:0}.xg th{position:sticky;top:0}.xg input{width:120px;border:0;padding:6px;background:transparent;color:var(--ink);font:inherit;font-size:13px}.xg input:disabled{color:var(--mute)}
+.code{counter-reset:l;tab-size:4}
+.code .l{display:block;counter-increment:l;padding-left:3.6em;position:relative;min-height:1.55em;white-space:pre}
+.code .l::before{content:counter(l);position:absolute;left:0;width:3em;text-align:right;color:var(--mute)}
+.tc{color:var(--mute);font-style:italic}.ts{color:#1a7f4b}.tn{color:#b45309}.tk{color:var(--acc);font-weight:600}.tg{color:var(--acc)}
+.da{background:rgba(42,125,79,.2)}.dd{background:rgba(194,58,58,.2)}
+@media (prefers-color-scheme:dark){.ts{color:#6fd49b}.tn{color:#f0b35a}}
+header{justify-content:center;padding:0;border:0}
+#drop{-webkit-user-select:none;user-select:none;cursor:pointer;-webkit-tap-highlight-color:transparent}#drop *{pointer-events:none}
+#drop:hover,#drop:focus-visible{border-color:var(--acc);outline:none}
+.cw{display:inline-flex;max-width:100%}.cw .chip{border-radius:6px 0 0 6px;border-right:0}.cw .x{border-radius:0 6px 6px 0;padding:7px 10px;line-height:1}.cw.on .x{border-color:var(--acc)}
+#intro{margin-top:22px}#intro h1{font-size:22px;margin:0 0 4px;text-align:center}#intro .sub{text-align:center;color:var(--mute);margin:0 0 16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.card h3{margin:0 0 4px;font-size:15px}.card p{margin:0;color:var(--mute);font-size:13.5px}
+
+/* --- code / text / hex boxes: every line stays on one line; the box scrolls, with always-visible scrollbars --- */
+#viewer,.pane{min-width:0;max-width:100%}
+pre,textarea,.wrap{max-width:100%;overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+pre{max-height:none;white-space:pre;overflow-wrap:normal;word-break:normal;border:1px solid var(--line)}
+textarea{white-space:pre;overflow-wrap:normal;word-wrap:normal}
+.code .l{white-space:pre}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:rgba(127,127,127,.18);border-radius:8px}
+::-webkit-scrollbar-thumb{background:#7f9bd6;border-radius:8px;border:2px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-corner{background:transparent}
+.md{overflow-wrap:anywhere;min-width:0;max-width:100%}.md pre{display:block;max-width:100%;overflow:auto}.md img,.md table{max-width:100%}
+
+/* scrolling + full-screen-height boxes (append) */
+html,body{height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}
+pre,textarea,.wrap{overscroll-behavior:auto;touch-action:pan-x pan-y}
+#viewer pre{height:var(--boxh,420px);min-height:320px;max-height:none;overflow:auto}
+.md pre,.pane dl pre,.pane details pre{height:auto;min-height:0;max-height:60vh}
+#viewer textarea:not(.edp){height:var(--boxh,420px);min-height:320px;resize:none;overflow:auto}
+main{padding:10px}
+</style>
+<script>(function(){function fit(){var h=window.innerHeight||document.documentElement.clientHeight||screen.height||640;document.documentElement.style.setProperty('--boxh',Math.max(320,h-190)+'px')}fit();addEventListener('resize',fit);addEventListener('orientationchange',fit);setInterval(fit,700)})()</script>
+</head>
+<body>
+<header>
+  <input id="pick" type="file" multiple hidden>
+</header>
+<main>
+  <div id="dm" class="banner" role="note"><span>Tip: for the best layout on a phone, open this page in desktop site mode (browser menu, then "Desktop site") and reload.</span><button id="dmx" aria-label="Dismiss">✕</button></div>
+  <div id="drop" role="button" tabindex="0" aria-label="Click here to drop files"><b>Click here to drop files</b></div>
+  <div id="chips"></div>
+  <section id="intro" hidden></section>
+  <section id="viewer">
+    <div class="head"><div class="n" id="fname"></div><div class="m" id="fmeta"></div></div>
+    <div class="acts" id="acts"></div>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="pane" id="pane"></div>
+  </section>
+</main>
+<script>
+"use strict";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const files=[];let cur=null;
+const MAG=[[[0x89,0x50,0x4e,0x47],'PNG image','image'],[[0xff,0xd8,0xff],'JPEG image','image'],[[0x47,0x49,0x46,0x38],'GIF image','image'],
+[[0x25,0x50,0x44,0x46],'PDF document','pdf'],[[0x50,0x4b,3,4],'ZIP container (APK, JAR, DOCX, XLSX…)','bin'],[[0x1f,0x8b],'GZIP archive','bin'],
+[[0xfe,0xed,0xfe,0xed],'Java KeyStore (JKS)','jks'],[[0xce,0xce,0xce,0xce],'Java KeyStore (JCEKS)','bin'],[[0x7f,0x45,0x4c,0x46],'ELF binary','bin'],
+[[0xca,0xfe,0xba,0xbe],'Java class / Mach-O universal','bin'],[[0x37,0x7a,0xbc,0xaf],'7-Zip archive','bin'],[[0x52,0x61,0x72,0x21],'RAR archive','bin'],
+[[0x53,0x51,0x4c,0x69],'SQLite database','bin'],[[0x64,0x65,0x78,0x0a],'Android DEX','bin'],[[0x49,0x44,0x33],'MP3 audio','audio'],
+[[0x4f,0x67,0x67,0x53],'Ogg media','audio'],[[0x00,0x61,0x73,0x6d],'WebAssembly module','bin']];
+const EXT={png:['image','image/png'],jpg:['image','image/jpeg'],jpeg:['image','image/jpeg'],gif:['image','image/gif'],webp:['image','image/webp'],bmp:['image','image/bmp'],ico:['image','image/x-icon'],svg:['image','image/svg+xml'],
+mp3:['audio','audio/mpeg'],wav:['audio','audio/wav'],ogg:['audio','audio/ogg'],m4a:['audio','audio/mp4'],flac:['audio','audio/flac'],mp4:['video','video/mp4'],webm:['video','video/webm'],mov:['video','video/quicktime'],pdf:['pdf','application/pdf'],
+json:['json'],xml:['xml'],plist:['xml'],xsd:['xml'],md:['md'],markdown:['md'],csv:['csv'],tsv:['csv'],jks:['jks'],p12:['p12'],pfx:['p12']};
+const hex2=n=>n.toString(16).padStart(2,'0');
+const fmtSize=n=>n<1024?n+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(2)+' MB';
+
+function analyze(f){
+  const b=f.bytes,ext=(f.name.split('.').pop()||'').toLowerCase();let label='',kind='';
+  for(const [m,l,k] of MAG){if(m.every((x,i)=>b[i]===x)){label=l;kind=k;break}}
+  if(!kind&&b.length>12){const s=String.fromCharCode(...b.subarray(0,12));
+    if(s.startsWith('RIFF')&&s.slice(8,12)==='WEBP'){label='WebP image';kind='image'}
+    else if(s.startsWith('RIFF')&&s.slice(8,12)==='WAVE'){label='WAV audio';kind='audio'}
+    else if(s.slice(4,8)==='ftyp'){label='MP4/MOV video';kind='video'}}
+  const e=EXT[ext];
+  if(!kind&&e&&['image','audio','video','pdf'].includes(e[0])){kind=e[0];label=label||ext.toUpperCase()+' file'}
+  f.mime=(e&&e[1])||f.type||'application/octet-stream';
+  if(!kind&&isPfx(b)){kind='p12';label='PKCS#12 keystore (PFX)'}
+  // text detection
+  let text=null;
+  if(!['jks','p12','bin','image','audio','video','pdf'].includes(kind)||ext==='svg'){
+    const head=b.subarray(0,8192);const bom=b[0]===0xFF&&b[1]===0xFE?'utf-16le':b[0]===0xFE&&b[1]===0xFF?'utf-16be':'';let nul=head.includes(0)&&!bom;
+    if(!nul||ext==='svg'){try{text=new TextDecoder(bom||'utf-8',{fatal:true}).decode(b)}catch(_){
+      try{text=new TextDecoder('utf-8').decode(b);if((text.match(/\uFFFD/g)||[]).length>b.length*0.02)text=null}catch(_2){text=null}}}
+  }
+  f.isText=text!==null;f.text=text;f.orig=text;
+  if(f.isText&&ext==='svg'){kind='image';label='SVG image'}
+  if(!kind){
+    if(f.isText){kind=(e&&['json','xml','md','csv'].includes(e[0]))?e[0]:'text';
+      label=(kind==='text'&&LBL[fkey(f.name)])||{json:'JSON',xml:'XML',md:'Markdown',csv:'Delimited table',text:'Plain text'}[kind]}
+    else{kind=ext==='p12'||ext==='pfx'?'bin':'bin';label=e&&e[0]==='p12'?'PKCS#12 keystore (binary)':'Binary data'}
+  }
+  if(kind==='jks'&&ext&&false){}
+  f.kind=kind;f.label=label;f.hexOff=0;f.dirty=false;f.editing=false;
+  f.special=['image','audio','video','pdf','json','xml','md','csv','jks','p12','text'].includes(kind);
+  f.tab=f.special?'view':f.isText?'text':'hex';
+  if(['image','audio','video','pdf'].includes(kind))f.url=URL.createObjectURL(new Blob([b],{type:f.mime}));
+}
+
+async function addFiles(list){
+  for(const file of list){
+    const f={name:file.name,size:file.size,mod:file.lastModified,type:file.type,bytes:new Uint8Array(await file.arrayBuffer())};
+    analyze(f);await extra(f);files.push(f);cur=f;
+  }
+  draw();
+}
+$('#pick').onchange=e=>{addFiles([...e.target.files]);e.target.value=''};
+const drop=$('#drop');
+['dragover','dragenter'].forEach(t=>addEventListener(t,e=>{e.preventDefault();drop.classList.add('over')}));
+['dragleave','drop'].forEach(t=>addEventListener(t,e=>{e.preventDefault();drop.classList.remove('over')}));
+addEventListener('drop',e=>{if(e.dataTransfer&&e.dataTransfer.files.length)addFiles([...e.dataTransfer.files])});
+drop.onclick=()=>$('#pick').click();
+drop.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('#pick').click()}};
+
+function removeFile(f){const msg=(f.dirty?'"'+f.name+'" has unsaved edits. ':'')+'Remove "'+f.name+'" from the viewer?\n\nThis only closes it here. Your file on the device is not deleted.';
+  if(!confirm(msg))return;const i=files.indexOf(f);files.splice(i,1);if(f.url)URL.revokeObjectURL(f.url);if(cur===f)cur=files[Math.min(i,files.length-1)]||null;draw()}
+function draw(){
+  const chips=$('#chips');chips.innerHTML='';$('#intro').style.display=files.length?'none':'';
+  files.forEach(f=>{const w=document.createElement('span');w.className='cw'+(f===cur?' on':'');
+    const b=document.createElement('button');b.className='chip'+(f===cur?' on':'');b.textContent=(f.dirty?'• ':'')+f.name;b.onclick=()=>{cur=f;draw()};
+    const x=document.createElement('button');x.className='x';x.textContent='✕';x.setAttribute('aria-label','Remove '+f.name);x.onclick=()=>removeFile(f);
+    w.appendChild(b);w.appendChild(x);chips.appendChild(w)});
+  const v=$('#viewer');if(!cur){v.style.display='none';return}
+  v.style.display='block';
+  $('#fname').textContent=cur.name;$('#fmeta').textContent=cur.label+' · '+fmtSize(cur.size);drawActs();
+  const tabs=[];if(cur.special)tabs.push(['view','View']);if(cur.isText)tabs.push(['text','Text']);tabs.push(['hex','Hex'],['str','Strings'],['info','Info']);
+  const t=$('#tabs');t.innerHTML='';
+  tabs.forEach(([id,name])=>{const b=document.createElement('button');b.className='tab'+(cur.tab===id?' on':'');b.setAttribute('role','tab');b.textContent=name;b.onclick=()=>{cur.tab=id;draw()};t.appendChild(b)});
+  const pane=$('#pane');pane.innerHTML='';
+  ({view:vView,text:vText,hex:vHex,str:vStr,info:vInfo})[cur.tab](pane);
+  if(cur.note&&cur.tab==='view')pane.insertAdjacentHTML('afterbegin','<p class="note err">'+esc(cur.note)+'</p>');
+}
+
+async function dl(f){const blob=f.isText&&f.dirty?new Blob([f.text],{type:'text/plain'}):f.ed&&f.dirty?new Blob([await buildEdited(f)],{type:f.type||f.mime}):new Blob([f.bytes],{type:f.mime});
+  saveBlob(blob,f.name)}
+function saveBlob(blob,name){if(window.AndroidBridge&&AndroidBridge.save){const r=new FileReader();r.onload=()=>AndroidBridge.save(name,blob.type||'application/octet-stream',String(r.result).split(',')[1]||'');r.readAsDataURL(blob);return}
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+function bar(pane,btns,status){const d=document.createElement('div');d.className='bar';
+  btns.forEach(([l,fn,pri])=>{const b=document.createElement('button');b.textContent=l;if(pri)b.className='pri';b.onclick=fn;d.appendChild(b)});
+  const s=document.createElement('span');s.className='st';d.appendChild(s);pane.appendChild(d);return s}
+
+/* ---------- Text ---------- */
+function fmtXml(s){const d=new DOMParser().parseFromString(s,'application/xml');const e=d.querySelector('parsererror');
+  if(e)throw new Error(e.textContent.split('\n')[0]);
+  const x=new XMLSerializer().serializeToString(d).replace(/>\s+</g,'><');let ind=0;
+  return x.split(/(?<=>)(?=<)/).map(l=>{if(/^<\//.test(l))ind--;const o='  '.repeat(Math.max(ind,0))+l;
+    if(/^<[^!?\/](?:[^>]*[^\/])?>$/.test(l)&&!/<\/[^>]+>$/.test(l))ind++;return o}).join('\n')}
+function vText(pane){
+  const f=cur,ro=!f.editing,btns=[];
+  if(ro)btns.push(['Edit',()=>{f.editing=true;draw()},1]);
+  else{
+    if(f.kind==='json'){btns.push(['Format',()=>run(()=>JSON.stringify(JSON.parse(ta.value),null,2))],['Minify',()=>run(()=>JSON.stringify(JSON.parse(ta.value)))])}
+    if(f.kind==='xml')btns.push(['Format',()=>run(()=>fmtXml(ta.value))]);
+  }
+  btns.push(['Copy',()=>{navigator.clipboard.writeText(ta.value).then(()=>msg('Copied',1),()=>msg('Copy blocked by the browser',0))}]);
+  if(!ro)btns.push(['Save',()=>dl(f),1]);
+  const st=bar(pane,btns,'');const ta=document.createElement('textarea');ta.spellcheck=false;ta.wrap='off';ta.value=f.text;ta.readOnly=ro;pane.appendChild(ta);
+  function msg(t,ok){st.textContent=t;st.className='st '+(ok?'ok':'err')}
+  if(ro)msg('Read-only. Press Edit to change this file.',1);
+  function run(fn){try{ta.value=fn();upd();msg('Done',1)}catch(e){msg(e.message,0)}}
+  function upd(){f.text=ta.value;f.dirty=true;f.size=new Blob([f.text]).size;drawActs()}
+  ta.oninput=()=>{upd();st.textContent='Edited. Save downloads the changed file.';st.className='st'};
+}
+function revert(f){if(!f.dirty||!confirm('Discard all edits and restore the original file?'))return;
+  if(f.ed){f.ed.dom=null;f.doc=f.doc0;f.dirty=false;f.size=f.bytes.length;(f.editing?prepEdit(f):Promise.resolve()).then(draw);return}
+  f.text=f.orig;f.dirty=false;f.size=f.bytes.length;draw()}
+function drawActs(){const a=$('#acts');a.innerHTML='';const f=cur;
+  const add=(l,fn,pri)=>{const b=document.createElement('button');b.textContent=l;if(pri)b.className='pri';b.onclick=fn;a.appendChild(b)};
+  if(f.isText||f.ed)add(f.editing?'Stop editing':'Edit',()=>toggleEdit(f),!f.editing);
+  if(f.dirty)add('Revert to original',()=>revert(f));
+  const wr=f.isText||f.doc,d=document.createElement('details');d.className='dd';d.innerHTML='<summary class="btn pri">Download ▾</summary><div class="ddm"></div>';
+  [[wr?'Text (.txt)':'Report (.txt)',()=>saveAs(f,'txt')],[wr?'Markdown (.md)':'Report (.md)',()=>saveAs(f,'md')],[f.dirty?'Edited file':'Original file',()=>dl(f)]].forEach(([l,fn])=>{
+    const b=document.createElement('button');b.textContent=l;b.onclick=()=>{d.open=false;fn()};d.querySelector('.ddm').appendChild(b)});
+  a.appendChild(d)}
+function saveAs(f,ext){const x=exportOf(f),base=f.name.replace(/\.[^.]+$/,'')||f.name;
+  saveBlob(new Blob([ext==='md'?x.md:x.txt],{type:'text/plain;charset=utf-8'}),base+'.'+ext)}
+function infoText(f){const b=f.bytes;return [`Name: ${f.name}`,`Type: ${f.label}`,`MIME: ${f.mime}`,`Size: ${f.size} bytes`,`Magic bytes: ${[...b.subarray(0,16)].map(hex2).join(' ')}`,`Entropy: ${entropy(b).toFixed(2)} / 8`,f.sha256?'SHA-256: '+f.sha256:''].filter(Boolean).join('\n')}
+function csvRows(f,lim){const l=f.text.split('\n')[0];const d=/\.tsv$/i.test(f.name)?'\t':l.split(';').length>l.split(',').length?';':',';return parseCsv(f.text,d,lim)}
+function exportOf(f){
+  if(f.doc)return {txt:f.doc.txt,md:f.doc.md};
+  if(f.isText){const t=f.text;let md;
+    if(f.kind==='md')md=t;
+    else if(f.kind==='csv'){const r=csvRows(f,Infinity).filter(x=>x.length);const c=s=>String(s).replace(/\|/g,'\\|').replace(/\r?\n/g,' ');
+      md='# '+f.name+'\n\n'+(r.length?'| '+r[0].map(c).join(' | ')+' |\n|'+r[0].map(()=>' --- |').join('')+'\n'+r.slice(1).map(x=>'| '+x.map(c).join(' | ')+' |').join('\n'):'')+'\n'}
+    else{const fe=t.includes('```')?'~~~~':'```';const lang={json:'json',xml:'xml'}[f.kind]||(f.name.split('.').pop()||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+      md='# '+f.name+'\n\n'+fe+lang+'\n'+t+'\n'+fe+'\n'}
+    return {txt:t,md}}
+  let body=f.report||'';if(!body&&!['jks','p12','pdf'].includes(f.kind))body='Strings:\n'+stringsOf(f.bytes,500).join('\n');
+  const txt=infoText(f)+(body?'\n\n'+body:'');
+  return {txt,md:'# Report: '+f.name+'\n\n```\n'+txt+'\n```\n'}}
+
+/* ---------- View ---------- */
+function mdRender(src){
+  const blocks=[];src=src.replace(/```[^\n]*\n([\s\S]*?)```/g,(_,c)=>{blocks.push(c);return '\u0000'+(blocks.length-1)+'\u0000'});
+  const inl=s=>esc(s).replace(/!\[([^\]]*)\]\((data:image\/(?:png|jpeg|gif);base64,[A-Za-z0-9+\/=]+)\)/g,'<img class="pv" alt="$1" src="$2">').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/(^|[^*])\*([^*]+)\*/g,'$1<i>$2</i>')
+    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+  const out=[];let list=null,tbl=null;const close=()=>{if(list){out.push('</'+list+'>');list=null}};
+  const flush=()=>{if(!tbl)return;const rows=tbl.filter(l=>!/^\s*\|(\s*:?-+:?\s*\|)+\s*$/.test(l)).map(l=>l.trim().replace(/^\||\|$/g,'').split(/(?<!\\)\|/).map(c=>inl(c.trim().replace(/\\\|/g,'|'))));
+    out.push('<div class="wrap"><table>'+rows.map((r,i)=>'<tr>'+r.map(c=>(i?'<td>':'<th>')+c+(i?'</td>':'</th>')).join('')+'</tr>').join('')+'</table></div>');tbl=null};
+  for(const line of src.split('\n')){let m;if(/^\s*\|.*\|\s*$/.test(line)){close();(tbl=tbl||[]).push(line);continue}flush();
+    if(m=line.match(/^\u0000(\d+)\u0000$/)){close();out.push('<pre><code>'+esc(blocks[m[1]])+'</code></pre>')}
+    else if(m=line.match(/^(#{1,6})\s+(.*)/)){close();out.push(`<h${m[1].length}>${inl(m[2])}</h${m[1].length}>`)}
+    else if(m=line.match(/^\s*[-*+]\s+(.*)/)){if(list!=='ul'){close();out.push('<ul>');list='ul'}out.push('<li>'+inl(m[1])+'</li>')}
+    else if(m=line.match(/^\s*\d+\.\s+(.*)/)){if(list!=='ol'){close();out.push('<ol>');list='ol'}out.push('<li>'+inl(m[1])+'</li>')}
+    else if(m=line.match(/^>\s?(.*)/)){close();out.push('<blockquote>'+inl(m[1])+'</blockquote>')}
+    else if(/^\s*(---|\*\*\*)\s*$/.test(line)){close();out.push('<hr>')}
+    else if(!line.trim())close();else{close();out.push('<p>'+inl(line)+'</p>')}}
+  close();flush();return out.join('\n')}
+function parseCsv(s,delim,lim=1001){const rows=[];let r=[],c='',q=false;
+  for(let i=0;i<s.length;i++){const ch=s[i];
+    if(q){if(ch==='"'){if(s[i+1]==='"'){c+='"';i++}else q=false}else c+=ch}
+    else if(ch==='"')q=true;else if(ch===delim){r.push(c);c=''}
+    else if(ch==='\n'||ch==='\r'){if(ch==='\r'&&s[i+1]==='\n')i++;r.push(c);rows.push(r);r=[];c='';if(rows.length>=lim)break}
+    else c+=ch}
+  if(c||r.length){r.push(c);rows.push(r)}return rows}
+function vView(pane){
+  const f=cur,k=f.kind;
+  if(f.ed&&f.editing)return edView(pane);
+  if(k==='image'){pane.innerHTML=`<img class="pv" src="${f.url}" alt="">`;pane.firstChild.onerror=()=>{pane.innerHTML='<p class="note err">This browser cannot display this image format. Try Chrome or Safari, or check the Hex and Info tabs.</p>'}}
+  else if(k==='audio'){pane.innerHTML=`<audio controls src="${f.url}" style="width:100%"></audio>`;waveform(f,pane)}
+  else if(k==='video')pane.innerHTML=`<video controls src="${f.url}"></video><p class="note">If it will not play, this browser may lack the codec.</p>`;
+  else if(k==='pdf')pdfView(pane);
+  else if(k==='json'){try{const j=JSON.parse(f.text);const t=Array.isArray(j)?`array, ${j.length} items`:j&&typeof j==='object'?`object, ${Object.keys(j).length} keys`:typeof j;
+    pane.innerHTML=`<p class="note ok">Valid JSON (${t})</p><pre>${esc(JSON.stringify(j,null,2))}</pre>`}catch(e){pane.innerHTML=`<p class="note err">Invalid JSON: ${esc(e.message)}</p><pre>${esc(f.text.slice(0,20000))}</pre>`}}
+  else if(k==='xml'){try{pane.innerHTML=`<p class="note ok">Well-formed XML</p><pre>${esc(fmtXml(f.text))}</pre>`}catch(e){pane.innerHTML=`<p class="note err">Invalid XML: ${esc(e.message)}</p><pre>${esc(f.text.slice(0,20000))}</pre>`}}
+  else if(k==='md')pane.innerHTML=`<div class="md">${mdRender(f.text)}</div>`;
+  else if(k==='csv'){const rows=csvRows(f,1001);pane.innerHTML='<p class="note">Showing up to 1000 rows.</p><div class="wrap"><table>'+rows.map((r,i)=>'<tr>'+r.map(c=>(i?'<td>':'<th>')+esc(c)+(i?'</td>':'</th>')).join('')+'</tr>').join('')+'</table></div>'}
+  else if(k==='jks'){pane.innerHTML='<p class="note">Reading keystore structure…</p>';jksView(pane)}
+  else if(k==='p12')p12View(pane);
+  else if(k==='doc')pane.innerHTML='<div class="md">'+mdRender(f.doc.md)+'</div>';
+  else if(k==='zip')zipView(pane);
+  else if(k==='text')codeView(pane);
+  else if(k==='rich')richView(pane);
+}
+
+/* ---------- PDF (pdf.js loaded from cdnjs on first use) ---------- */
+let pdfjsP=null;
+function loadPdfJs(){return pdfjsP||(pdfjsP=new Promise((ok,no)=>{
+  const base='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';const sc=document.createElement('script');sc.src=base+'pdf.min.js';
+  sc.onload=async()=>{try{const w=await (await fetch(base+'pdf.worker.min.js')).text();
+    pdfjsLib.GlobalWorkerOptions.workerSrc=URL.createObjectURL(new Blob([w],{type:'text/javascript'}));ok(pdfjsLib)}catch(e){pdfjsP=null;no(e)}};
+  sc.onerror=()=>{pdfjsP=null;no(new Error('offline'))};document.head.appendChild(sc)}))}
+async function pdfView(pane){
+  const f=cur;pane.innerHTML='<p class="note" id="pst">Loading PDF renderer…</p><div id="pgs"></div>';
+  try{const lib=await loadPdfJs();const doc=await lib.getDocument({data:f.bytes.slice()}).promise;
+    const box=$('#pgs'),st=$('#pst'),max=Math.min(doc.numPages,60),txt=[];
+    for(let i=1;i<=max;i++){if(!box||!document.body.contains(box))return;
+      st.textContent=`Rendering page ${i} of ${doc.numPages}…`;const pg=await doc.getPage(i);
+      const w=(pane.clientWidth-26)||600,v0=pg.getViewport({scale:1}),vp=pg.getViewport({scale:Math.min(Math.max(w/v0.width,.5),3)*(window.devicePixelRatio||1)});
+      const cv=document.createElement('canvas');cv.className='pg';cv.width=vp.width;cv.height=vp.height;box.appendChild(cv);
+      await pg.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise;
+      try{const tc=await pg.getTextContent();txt.push('--- Page '+i+' ---\n'+tc.items.map(x=>x.str).join(' '));f.report=txt.join('\n\n')}catch(_){}}
+    st.textContent=doc.numPages>max?`Showing the first ${max} of ${doc.numPages} pages.`:`${doc.numPages} page(s). Report .txt/.md exports the extracted text.`;
+  }catch(e){
+    pane.innerHTML=`<p class="note err">Built-in PDF renderer couldn't load (${esc(e.message)}). It needs internet once to fetch pdf.js. Trying the browser's own viewer:</p><iframe src="${f.url}" title="PDF preview"></iframe><p class="note"><a href="${f.url}" target="_blank" rel="noopener">Open in a new tab</a></p>`}
+}
+
+/* ---------- JKS ---------- */
+async function sha(bytes,alg){const h=await crypto.subtle.digest(alg,bytes);return [...new Uint8Array(h)].map(hex2).join(':')}
+function cn(der){const out=[];for(let i=0;i<der.length-6;i++){if(der[i]===0x55&&der[i+1]===4&&der[i+2]===3){const L=der[i+4];if(der[i+3]>=0x0c&&der[i+3]<=0x1e&&L<0x80&&i+5+L<=der.length){out.push(new TextDecoder().decode(der.subarray(i+5,i+5+L)))}}}return out}
+async function jksView(pane){
+  const f=cur,b=f.bytes,v=new DataView(b.buffer,b.byteOffset,b.byteLength);let p=0;
+  const u32=()=>{const x=v.getUint32(p);p+=4;return x};
+  const utf=()=>{const n=v.getUint16(p);p+=2;const s=new TextDecoder().decode(b.subarray(p,p+n));p+=n;return s};
+  const entries=[];let note='',ver=0,n=0;
+  try{u32();ver=u32();n=u32();
+    for(let i=0;i<n;i++){const tag=u32(),alias=utf();const ts=Number(v.getBigUint64(p));p+=8;const e={alias,date:new Date(ts),certs:[]};
+      if(tag===1){e.type='Private key + chain';const kl=u32();p+=kl;const cc=u32();
+        for(let c=0;c<cc;c++){if(ver===2)utf();const l=u32();e.certs.push(b.slice(p,p+l));p+=l}}
+      else if(tag===2){e.type='Trusted certificate';if(ver===2)utf();const l=u32();e.certs.push(b.slice(p,p+l));p+=l}
+      else throw new Error('unknown entry tag '+tag);
+      entries.push(e)}
+  }catch(e){note='Stopped early: '+e.message}
+  let rows='';const rep=[`JKS version ${ver}, ${n} entries`];
+  for(const e of entries){const c=e.certs[0];let fp='';try{fp=c?await sha(c,'SHA-256'):''}catch(_){fp=''}
+    const names=(c?cn(c):[]).slice(0,2).join(' / ')||'-',d=isNaN(e.date)?'-':e.date.toISOString().slice(0,10);
+    rows+=`<tr><td>${esc(e.alias)}</td><td>${e.type}</td><td>${d}</td><td>${e.certs.length}</td><td>${esc(names)}</td><td class="mono">${esc(fp)}</td></tr>`;
+    rep.push([e.alias,e.type,d,'chain '+e.certs.length,names,fp].join(' | '))}
+  if(note)rep.push(note);f.report=rep.join('\n');
+  pane.innerHTML=`<p class="note">JKS version ${ver}, ${n} entries. Private keys stay encrypted; nothing leaves your device.</p>${note?`<p class="note err">${esc(note)}</p>`:''}
+  <div class="wrap"><table><tr><th>Alias</th><th>Type</th><th>Created</th><th>Chain</th><th>CN (issuer / subject)</th><th>Cert SHA-256</th></tr>${rows}</table></div>`;
+}
+
+/* ---------- DER / PKCS#12 ---------- */
+const PBES2='1.2.840.113549.1.5.13';
+const OIDN={'1.2.840.113549.1.12.1.3':'3DES-CBC (legacy)','1.2.840.113549.1.12.1.6':'RC2-40-CBC (legacy)',[PBES2]:'PBES2 (PBKDF2 + AES)','1.2.840.113549.1.12.10.1.1':'Private key (plain)','1.2.840.113549.1.12.10.1.2':'Private key (encrypted)','1.2.840.113549.1.12.10.1.3':'Certificate','1.2.840.113549.1.12.10.1.5':'Secret key','1.3.14.3.2.26':'SHA-1','2.16.840.1.101.3.4.2.1':'SHA-256','2.16.840.1.101.3.4.2.3':'SHA-512'};
+function der(b,p){const tag=b[p];let l=b[p+1],o=2;if(l===0x80)throw new Error('BER indefinite length');
+  if(l&0x80){const n=l&0x7f;l=0;for(let i=0;i<n;i++)l=l*256+b[p+2+i];o=2+n}
+  if(!(p+o+l<=b.length))throw new Error('bad length');return {tag,s:p+o,e:p+o+l,p}}
+function kids(b,n){const o=[];let p=n.s;while(p<n.e){const k=der(b,p);o.push(k);p=k.e}return o}
+function oid(b,n){const r=b.subarray(n.s,n.e),a=[Math.floor(r[0]/40),r[0]%40];let v=0;for(let i=1;i<r.length;i++){v=v*128+(r[i]&127);if(!(r[i]&128)){a.push(v);v=0}}return a.join('.')}
+function isPfx(b){try{if(b[0]!==0x30)return false;const k=kids(b,der(b,0));return k.length>=2&&k[0].tag===2&&k[1].tag===0x30&&oid(b,kids(b,k[1])[0])==='1.2.840.113549.1.7.1'}catch(_){return false}}
+function bagsOf(b,seq,out){
+  for(const bag of kids(b,seq)){const k=kids(b,bag),id=oid(b,k[0]),e={name:OIDN[id]||id,alias:'',cert:null,keyLen:0,alg:''},val=kids(b,k[1])[0];
+    if(id.endsWith('.10.1.3')){const c=kids(b,val);const o=kids(b,c[1])[0];e.cert=b.slice(o.s,o.e)}
+    else if(id.endsWith('.10.1.2')){const c=kids(b,val);e.alg=oid(b,kids(b,c[0])[0]);e.keyLen=c[1].e-c[1].s}
+    if(k[2])for(const a of kids(b,k[2])){const ak=kids(b,a);if(oid(b,ak[0])==='1.2.840.113549.1.9.20'){const x=kids(b,ak[1])[0];e.alias=new TextDecoder('utf-16be').decode(b.subarray(x.s,x.e))}}
+    out.push(e)}}
+function p12Parse(b){const k=kids(b,der(b,0)),int=n=>{let v=0;for(let i=n.s;i<n.e;i++)v=v*256+b[i];return v};
+  const r={ver:int(k[0]),safes:[],mac:null},oc=kids(b,kids(b,k[1])[1])[0];
+  for(const ci of kids(b,der(b,oc.s))){const c=kids(b,ci),t=oid(b,c[0]),body=kids(b,c[1])[0];
+    if(t==='1.2.840.113549.1.7.1'){const s={bags:[]};bagsOf(b,der(b,body.s),s.bags);r.safes.push(s)}
+    else if(t==='1.2.840.113549.1.7.6'){const ek=kids(b,kids(b,body)[1]);r.safes.push({algNode:ek[1],alg:oid(b,kids(b,ek[1])[0]),cipher:b.subarray(ek[2].s,ek[2].e)})}}
+  if(k[2]){const m=kids(b,k[2]);r.mac={alg:OIDN[oid(b,kids(b,kids(b,m[0])[0])[0])]||'?',iter:m[2]?int(m[2]):1}}
+  return r}
+async function pbes2(b,algNode,cipher,pw){
+  const [kdf,enc]=kids(b,kids(b,algNode)[1]),kp=kids(b,kids(b,kdf)[1]),salt=b.slice(kp[0].s,kp[0].e);let iter=0,prf='SHA-1';
+  for(let i=kp[1].s;i<kp[1].e;i++)iter=iter*256+b[i];
+  for(const x of kp.slice(2))if(x.tag===0x30)prf={'1.2.840.113549.2.7':'SHA-1','1.2.840.113549.2.9':'SHA-256','1.2.840.113549.2.10':'SHA-384','1.2.840.113549.2.11':'SHA-512'}[oid(b,kids(b,x)[0])]||prf;
+  const ek=kids(b,enc),len={'2.16.840.1.101.3.4.1.2':16,'2.16.840.1.101.3.4.1.22':24,'2.16.840.1.101.3.4.1.42':32}[oid(b,ek[0])];
+  if(!len)throw new Error('unsupported cipher');
+  const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:iter,hash:prf},base,{name:'AES-CBC',length:len*8},false,['decrypt']);
+  return new Uint8Array(await crypto.subtle.decrypt({name:'AES-CBC',iv:b.slice(ek[1].s,ek[1].e)},key,cipher))}
+async function p12View(pane){
+  const f=cur,b=f.bytes;let r;
+  try{r=p12Parse(b)}catch(e){pane.innerHTML=`<p class="note err">Could not read this PKCS#12 structure: ${esc(e.message)}. Check the Hex tab.</p>`;return}
+  pane.innerHTML=`<p class="note">PKCS#12 keystore (Android Studio and modern keytool save these even with a .jks name). Aliases and key sizes show without a password; enter it to unlock encrypted certificates. Nothing leaves your device.</p>
+  <div class="bar"><input id="pw" type="password" placeholder="Store password" autocomplete="off" style="padding:7px;border:1px solid var(--line);border-radius:6px;background:var(--code);color:var(--ink)"><button class="pri" id="unl">Unlock</button><span class="st" id="ust"></span></div><div id="p12out"></div>`;
+  async function show(){
+    const rows=[],rep=[`PKCS#12 keystore, version ${r.ver}`,r.mac?`MAC: ${r.mac.alg}, ${r.mac.iter} iterations`:'No MAC'];let legacy=false;
+    for(const s of r.safes){
+      if(!s.bags){if(s.alg!==PBES2)legacy=true;rows.push(['(locked container)','Encrypted','','',OIDN[s.alg]||s.alg]);rep.push('Locked container: '+(OIDN[s.alg]||s.alg));continue}
+      for(const e of s.bags){let fp='',names='';if(e.cert){names=cn(e.cert).slice(0,2).join(' / ');try{fp=await sha(e.cert,'SHA-256')}catch(_){}}
+        rows.push([e.alias||'(no alias)',e.name+(e.keyLen?` (${e.keyLen} bytes)`:''),names,fp,e.alg?(OIDN[e.alg]||e.alg):'']);rep.push(rows[rows.length-1].join(' | '))}}
+    f.report=rep.join('\n');
+    $('#p12out').innerHTML=(legacy?`<p class="note err">Some parts use legacy encryption (3DES/RC2) that browsers cannot decrypt. For full details run: keytool -list -v -keystore ${esc(f.name)}</p>`:'')+`<div class="wrap"><table><tr><th>Alias</th><th>Kind</th><th>CN (issuer / subject)</th><th>Cert SHA-256</th><th>Encryption</th></tr>${rows.map(x=>'<tr>'+x.map((c,i)=>`<td${i===3?' class="mono"':''}>${esc(c)}</td>`).join('')+'</tr>').join('')}</table></div>`}
+  $('#unl').onclick=async()=>{const pw=$('#pw').value;let ok=0,bad=0;
+    for(const s of r.safes){if(s.bags||s.alg!==PBES2)continue;
+      try{const plain=await pbes2(b,s.algNode,s.cipher,pw),bg=[];bagsOf(plain,der(plain,0),bg);s.bags=bg;ok++}catch(_){bad++}}
+    const u=$('#ust');u.textContent=ok?'Unlocked':bad?'Wrong password, or unsupported encryption':'Nothing to unlock with a password';u.className='st '+(ok?'ok':'err');await show()};
+  await show();
+}
+
+/* ---------- ZIP, Office, EPUB, MOBI ---------- */
+const dec=u=>new TextDecoder().decode(u);
+const xml=s=>{const d=new DOMParser().parseFromString(s,'application/xml');if(d.querySelector('parsererror'))throw new Error('bad XML');return d};
+const num=n=>+/(\d+)\.xml$/.exec(n)[1];
+const mdTable=rows=>'| '+rows[0].join(' | ')+' |\n|'+rows[0].map(()=>' --- |').join('')+'\n'+rows.slice(1).map(r=>'| '+r.join(' | ')+' |').join('\n');
+async function inflate(u){if(typeof DecompressionStream==='undefined')throw new Error('this browser lacks DecompressionStream, please update it');
+  const ds=new DecompressionStream('deflate-raw'),w=ds.writable.getWriter();w.write(u);w.close();return new Uint8Array(await new Response(ds.readable).arrayBuffer())}
+function zipList(b){const v=new DataView(b.buffer,b.byteOffset,b.byteLength);let e=b.length-22;while(e>=0&&v.getUint32(e,true)!==0x06054b50)e--;if(e<0)throw new Error('not a valid ZIP');
+  const n=v.getUint16(e+10,true);let p=v.getUint32(e+16,true);const out=[];
+  for(let i=0;i<n;i++){if(v.getUint32(p,true)!==0x02014b50)break;const nl=v.getUint16(p+28,true),xl=v.getUint16(p+30,true),cl=v.getUint16(p+32,true);
+    out.push({name:dec(b.subarray(p+46,p+46+nl)),m:v.getUint16(p+10,true),crc:v.getUint32(p+16,true),cs:v.getUint32(p+20,true),us:v.getUint32(p+24,true),off:v.getUint32(p+42,true)});p+=46+nl+xl+cl}
+  return out}
+async function zipGet(b,en){const v=new DataView(b.buffer,b.byteOffset,b.byteLength),s=en.off+30+v.getUint16(en.off+26,true)+v.getUint16(en.off+28,true),d=b.subarray(s,s+en.cs);
+  if(en.m===0)return d.slice();if(en.m===8)return inflate(d);throw new Error('unsupported ZIP compression')}
+function htmlToMd(h){const d=new DOMParser().parseFromString(h.replace(/<(br|\/p|\/div|\/h[1-6])\b[^>]*>/gi,'$&\n'),'text/html'),o=[];
+  d.body.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li').forEach(e=>{const t=e.textContent.replace(/\s+/g,' ').trim();if(!t)return;const m=/^H(\d)$/.exec(e.tagName);o.push(m?'#'.repeat(+m[1])+' '+t:e.tagName==='LI'?'- '+t:t)});
+  return o.length>2?o.join('\n\n'):d.body.textContent.replace(/[ \t]+/g,' ').replace(/\n\s*\n+/g,'\n\n').trim()}
+function docxMd(x){const W='http://schemas.openxmlformats.org/wordprocessingml/2006/main',body=xml(x).getElementsByTagNameNS(W,'body')[0],o=[];
+  const txt=p=>{let t='';for(const r of p.getElementsByTagNameNS(W,'r')){let s='';for(const c of r.childNodes){if(c.localName==='t')s+=c.textContent;else if(c.localName==='tab')s+='\t';else if(c.localName==='br')s+='\n'}
+    if(s.trim()&&r.getElementsByTagNameNS(W,'b').length)s='**'+s.trim()+'** ';t+=s}return t.trim()};
+  for(const c of body.children){
+    if(c.localName==='p'){const t=txt(c);if(!t)continue;const st=c.getElementsByTagNameNS(W,'pStyle')[0],sv=st?st.getAttributeNS(W,'val'):'',m=/^heading\s*(\d)/i.exec(sv),pl=t.replace(/\*\*/g,'');
+      o.push(m?'#'.repeat(+m[1])+' '+pl:sv==='Title'?'# '+pl:c.getElementsByTagNameNS(W,'numPr').length?'- '+t:t)}
+    else if(c.localName==='tbl'){const rows=[...c.children].filter(r=>r.localName==='tr').map(r=>[...r.children].filter(k=>k.localName==='tc').map(k=>[...k.getElementsByTagNameNS(W,'p')].map(txt).join(' ').replace(/\|/g,'\\|')));if(rows.length)o.push(mdTable(rows))}}
+  return o.join('\n\n')}
+async function pptxMd(b,list){const A='http://schemas.openxmlformats.org/drawingml/2006/main',o=[];let i=0;
+  for(const en of list.filter(x=>/^ppt\/slides\/slide\d+\.xml$/.test(x.name)).sort((a,c)=>num(a.name)-num(c.name))){
+    const ps=[...xml(dec(await zipGet(b,en))).getElementsByTagNameNS(A,'p')].map(p=>[...p.getElementsByTagNameNS(A,'t')].map(t=>t.textContent).join('')).filter(Boolean);
+    o.push(`## Slide ${++i}\n\n`+(ps.length?ps.map(p=>'- '+p).join('\n'):'*(no text)*'))}
+  return o.join('\n\n')}
+async function xlsxMd(b,list){const get=async n=>{const en=list.find(x=>x.name===n);return en?dec(await zipGet(b,en)):null};
+  const ss=await get('xl/sharedStrings.xml'),S=ss?[...xml(ss).getElementsByTagName('si')].map(si=>[...si.getElementsByTagName('t')].map(t=>t.textContent).join('')):[];
+  const names=[...xml(await get('xl/workbook.xml')).getElementsByTagName('sheet')].map(s=>s.getAttribute('name')),o=[];
+  const sh=list.filter(x=>/^xl\/worksheets\/sheet\d+\.xml$/.test(x.name)).sort((a,c)=>num(a.name)-num(c.name));
+  for(let i=0;i<sh.length;i++){const rows=[];
+    for(const r of [...xml(dec(await zipGet(b,sh[i]))).getElementsByTagName('row')].slice(0,300)){const row=[];
+      for(const c of r.getElementsByTagName('c')){const col=[...(c.getAttribute('r')||'').replace(/\d+/g,'')].reduce((a,ch)=>a*26+ch.charCodeAt(0)-64,0)-1;if(col<0||col>60)continue;
+        const t=c.getAttribute('t'),vn=c.getElementsByTagName('v')[0];let val=t==='inlineStr'?[...c.getElementsByTagName('t')].map(x=>x.textContent).join(''):vn?vn.textContent:'';if(t==='s')val=S[+val]||'';
+        row[col]=String(val).replace(/\|/g,'\\|').replace(/\n/g,' ')}
+      rows.push(row)}
+    const w=Math.max(1,...rows.map(r=>r.length)),full=rows.map(r=>Array.from({length:w},(_,k)=>r[k]??''));
+    o.push(`## ${names[i]||'Sheet '+(i+1)}\n\n`+(full.length?mdTable(full):'*(empty)*'))}
+  return o.join('\n\n')}
+async function epubMd(b,list){const get=async n=>{const en=list.find(x=>x.name===n);return en?dec(await zipGet(b,en)):null};
+  const opf=xml(await get('META-INF/container.xml')).getElementsByTagName('rootfile')[0].getAttribute('full-path'),od=xml(await get(opf)),dir=opf.replace(/[^/]*$/,''),man={};
+  for(const it of od.getElementsByTagName('item'))man[it.getAttribute('id')]=it.getAttribute('href');
+  const title=(od.getElementsByTagName('dc:title')[0]||{}).textContent||'',o=title?['# '+title]:[];let chars=0;
+  for(const ir of [...od.getElementsByTagName('itemref')].slice(0,200)){const h=man[ir.getAttribute('idref')];if(!h)continue;
+    const path=(dir+decodeURIComponent(h.split('#')[0])).split('/').reduce((a,q)=>{if(q==='..')a.pop();else if(q&&q!=='.')a.push(q);return a},[]).join('/');
+    const t=await get(path);if(!t)continue;const m=htmlToMd(t);if(m){o.push(m);chars+=m.length}if(chars>2e6)break}
+  return o.join('\n\n---\n\n')}
+async function odfMd(b,list){const d=xml(dec(await zipGet(b,list.find(x=>x.name==='content.xml')))),o=[];
+  for(const e of d.getElementsByTagName('*')){const t=e.nodeName==='text:h'||e.nodeName==='text:p'?e.textContent.trim():'';if(!t)continue;
+    o.push(e.nodeName==='text:h'?'#'.repeat(Math.min(+e.getAttribute('text:outline-level')||1,6))+' '+t:t)}
+  return o.join('\n\n')}
+function trailLen(r,fl){let num=0,f=fl>>1;while(f){if(f&1){let ps=r.length-num,bp=0,res=0;for(;;){const x=r[ps-1];res|=(x&127)<<bp;bp+=7;ps--;if((x&128)||bp>=28||ps===0)break}num+=res}f>>=1}
+  if(fl&1)num+=(r[r.length-num-1]&3)+1;return num}
+function palm(r){const o=[];let i=0;while(i<r.length){const c=r[i++];
+  if(c===0||(c>=9&&c<=127))o.push(c);else if(c<=8){for(let k=0;k<c&&i<r.length;k++)o.push(r[i++])}
+  else if(c>=192)o.push(32,c^128);else{const d=(c<<8)|r[i++],dist=(d>>3)&0x7ff,len=(d&7)+3;for(let k=0;k<len;k++)o.push(o[o.length-dist])}}
+  return Uint8Array.from(o)}
+function parseMobi(b){const v=new DataView(b.buffer,b.byteOffset,b.byteLength),n=v.getUint16(76),off=i=>i<n?v.getUint32(78+i*8):b.length,r0=off(0),comp=v.getUint16(r0),cnt=v.getUint16(r0+8);
+  if(v.getUint16(r0+12))throw new Error('this e-book is DRM-protected');
+  if(comp!==1&&comp!==2)throw new Error('this MOBI uses HUFF/CDIC compression, which is not supported');
+  const hl=v.getUint32(r0+20),enc=v.getUint32(r0+28),fl=hl>=228?v.getUint16(r0+242):0,parts=[];
+  for(let i=1;i<=cnt&&i<n;i++){let r=b.subarray(off(i),off(i+1));r=r.subarray(0,r.length-trailLen(r,fl));parts.push(comp===2?palm(r):r)}
+  const all=new Uint8Array(parts.reduce((a,x)=>a+x.length,0));let p=0;for(const x of parts){all.set(x,p);p+=x.length}
+  return htmlToMd(new TextDecoder(enc===65001?'utf-8':'windows-1252').decode(all))}
+function setDoc(f,label,md){f.kind='doc';f.label=label;f.doc={md,txt:md.replace(/\*\*/g,'').replace(/^#+\s+/gm,'')};f.special=true;f.tab='view'}
+async function openZip(f,ext){const b=f.bytes,list=zipList(b),has=n=>list.some(x=>x.name===n);let md=null,lab='';
+  try{
+    if(has('word/document.xml')){lab='Word document';md=docxMd(dec(await zipGet(b,list.find(x=>x.name==='word/document.xml'))))}
+    else if(list.some(x=>/^ppt\/slides\/slide\d+\.xml$/.test(x.name))){lab='PowerPoint presentation';md=await pptxMd(b,list)}
+    else if(has('xl/workbook.xml')){lab='Excel workbook';md=await xlsxMd(b,list)}
+    else if(has('META-INF/container.xml')&&(ext==='epub'||list.some(x=>/\.opf$/.test(x.name)))){lab='EPUB e-book';md=await epubMd(b,list)}
+    else if(has('content.xml')&&has('mimetype')){lab='OpenDocument file';md=await odfMd(b,list)}
+  }catch(e){md='**Could not read this file:** '+e.message;lab=lab||f.label}
+  if(md!==null){if((lab==='Word document'||lab==='Excel workbook')&&!md.startsWith('**Could not'))f.ed={type:lab[0]==='W'?'docx':'xlsx',list};setDoc(f,lab,md||'*(no text found)*');f.doc0=f.doc;return}
+  f.kind='zip';f.zip=list;f.special=true;f.tab='view';if(ext==='apk')f.label='Android APK (ZIP)';else if(ext==='jar')f.label='Java JAR (ZIP)';
+  f.report=list.map(x=>`${x.name}  ${x.us} bytes`).join('\n')}
+async function extra(f){const b=f.bytes,ext=(f.name.split('.').pop()||'').toLowerCase();
+  try{if(b[0]===0x50&&b[1]===0x4b&&b[2]===3&&b[3]===4)await openZip(f,ext);
+    else if(b.length>100&&dec(b.subarray(60,68))==='BOOKMOBI')setDoc(f,'Kindle / MOBI e-book',parseMobi(b))
+    else await moreFormats(f,ext)
+  }catch(e){setDoc(f,f.label,'**Could not read this file:** '+e.message)}}
+function zipView(pane){const f=cur;
+  pane.innerHTML=`<p class="note">${f.zip.length} entries. Open reads an entry inside this viewer.</p><div class="wrap"><table><tr><th>Name</th><th>Size</th><th></th></tr>`+f.zip.slice(0,1000).map((x,i)=>`<tr><td>${esc(x.name)}</td><td>${x.us}</td><td>${x.name.endsWith('/')?'':`<button data-i="${i}">Open</button>`}</td></tr>`).join('')+'</table></div>';
+  pane.querySelectorAll('button[data-i]').forEach(bt=>bt.onclick=async()=>{try{const en=f.zip[+bt.dataset.i],u=await (en.get?en.get():zipGet(f.bytes,en)),nf={name:en.name.split('/').pop(),size:u.length,mod:f.mod,type:'',bytes:u};
+    analyze(nf);await extra(nf);files.push(nf);cur=nf;draw()}catch(e){bt.textContent=e.message}});zipExtras(f,pane)}
+
+/* ---------- Editing DOCX / XLSX (text and cell values) ---------- */
+const XSP='http://www.w3.org/XML/1998/namespace',WNS='http://schemas.openxmlformats.org/wordprocessingml/2006/main';
+const crcT=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+const crc32=u=>{let c=-1;for(let i=0;i<u.length;i++)c=crcT[(c^u[i])&255]^(c>>>8);return (c^-1)>>>0};
+async function deflate(u){const cs=new CompressionStream('deflate-raw'),w=cs.writable.getWriter();w.write(u);w.close();return new Uint8Array(await new Response(cs.readable).arrayBuffer())}
+async function zipBuild(b,list,repl){const parts=[],cen=[],te=new TextEncoder(),v=new DataView(b.buffer,b.byteOffset,b.byteLength);let off=0;
+  for(const en of list){const nm=te.encode(en.name);let data,m,crc,us;
+    if(repl[en.name]){const raw=repl[en.name];data=await deflate(raw);m=8;crc=crc32(raw);us=raw.length}
+    else{const s=en.off+30+v.getUint16(en.off+26,true)+v.getUint16(en.off+28,true);data=b.subarray(s,s+en.cs);m=en.m;crc=en.crc;us=en.us}
+    const h=new DataView(new ArrayBuffer(30));h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint16(8,m,true);h.setUint16(12,0x21,true);h.setUint32(14,crc,true);h.setUint32(18,data.length,true);h.setUint32(22,us,true);h.setUint16(26,nm.length,true);
+    const c=new DataView(new ArrayBuffer(46));c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x0800,true);c.setUint16(10,m,true);c.setUint16(14,0x21,true);c.setUint32(16,crc,true);c.setUint32(20,data.length,true);c.setUint32(24,us,true);c.setUint16(28,nm.length,true);c.setUint32(42,off,true);
+    parts.push(new Uint8Array(h.buffer),nm,data);cen.push(new Uint8Array(c.buffer),nm);off+=30+nm.length+data.length}
+  const e=new DataView(new ArrayBuffer(22));e.setUint32(0,0x06054b50,true);e.setUint16(8,list.length,true);e.setUint16(10,list.length,true);e.setUint32(12,cen.reduce((a,x)=>a+x.length,0),true);e.setUint32(16,off,true);
+  return new Blob([...parts,...cen,new Uint8Array(e.buffer)])}
+async function buildEdited(f){const ed=f.ed,repl={};
+  for(const n in ed.dom)repl[n]=new TextEncoder().encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n'+new XMLSerializer().serializeToString(ed.dom[n]));
+  return new Uint8Array(await (await zipBuild(f.bytes,ed.list,repl)).arrayBuffer())}
+async function prepEdit(f){const b=f.bytes,ed=f.ed,L=ed.list;if(ed.dom)return;const get=async n=>dec(await zipGet(b,L.find(x=>x.name===n)));
+  if(ed.type==='docx'){ed.dom={'word/document.xml':xml(await get('word/document.xml'))};return}
+  const dom={},ss=L.find(x=>x.name==='xl/sharedStrings.xml');
+  ed.S=ss?[...xml(await get('xl/sharedStrings.xml')).getElementsByTagName('si')].map(si=>[...si.getElementsByTagName('t')].map(t=>t.textContent).join('')):[];
+  for(const en of L.filter(x=>/^xl\/worksheets\/sheet\d+\.xml$/.test(x.name)).sort((a,c)=>num(a.name)-num(c.name)))dom[en.name]=xml(await get(en.name));
+  ed.names=[...xml(await get('xl/workbook.xml')).getElementsByTagName('sheet')].map(x=>x.getAttribute('name'));ed.dom=dom}
+async function toggleEdit(f){
+  if(f.ed){
+    if(!f.editing){try{await prepEdit(f)}catch(e){alert('Cannot edit this file: '+e.message);return}f.editing=true;f.tab='view'}
+    else{f.editing=false;if(f.dirty){try{const t={name:f.name,label:f.label,bytes:await buildEdited(f)};await openZip(t,(f.name.split('.').pop()||'').toLowerCase());if(t.doc)f.doc=t.doc}catch(_){}}}
+  }else{f.editing=!f.editing;if(f.editing)f.tab='text'}
+  draw()}
+const colName=i=>{let s='';for(i++;i>0;i=Math.floor((i-1)/26))s=String.fromCharCode(65+(i-1)%26)+s;return s};
+const colIdx=r=>[...r.replace(/\d+/g,'')].reduce((a,ch)=>a*26+ch.charCodeAt(0)-64,0)-1;
+function cellVal(c,S){const t=c.getAttribute('t'),v=c.getElementsByTagName('v')[0];return t==='inlineStr'?[...c.getElementsByTagName('t')].map(x=>x.textContent).join(''):t==='s'?(S[+(v&&v.textContent)]||''):v?v.textContent:''}
+function setCell(doc,ref,text){const sd=doc.getElementsByTagName('sheetData')[0],rn=+ref.replace(/\D+/g,''),ci=colIdx(ref),NS=doc.documentElement.namespaceURI;
+  let row=[...sd.children].find(r=>+r.getAttribute('r')===rn);
+  if(!row){row=doc.createElementNS(NS,'row');row.setAttribute('r',rn);sd.insertBefore(row,[...sd.children].find(r=>+r.getAttribute('r')>rn)||null)}
+  row.removeAttribute('spans');
+  let c=[...row.children].find(x=>x.getAttribute('r')===ref);
+  if(!c){c=doc.createElementNS(NS,'c');c.setAttribute('r',ref);row.insertBefore(c,[...row.children].find(x=>colIdx(x.getAttribute('r'))>ci)||null)}
+  while(c.firstChild)c.removeChild(c.firstChild);c.removeAttribute('t');if(text==='')return;
+  if(/^-?\d+(\.\d+)?([eE][+-]?\d+)?$/.test(text.trim())){const v=doc.createElementNS(NS,'v');v.textContent=text.trim();c.appendChild(v)}
+  else{c.setAttribute('t','inlineStr');const is=doc.createElementNS(NS,'is'),t=doc.createElementNS(NS,'t');t.textContent=text;if(/^\s|\s$/.test(text))t.setAttributeNS(XSP,'xml:space','preserve');is.appendChild(t);c.appendChild(is)}}
+function edView(pane){const f=cur,ed=f.ed;
+  if(!ed.dom){pane.textContent='Loading…';prepEdit(f).then(()=>edView(pane));return}
+  pane.innerHTML='';const st=bar(pane,[['Save',()=>dl(f),1]],'');
+  st.textContent=ed.type==='docx'?'Text edits only. Formatting, images and layout stay as they are.':'Cell values only. Formula cells are locked. Typing in a blank cell adds a value.';
+  if(ed.type==='docx'){
+    const ps=[...ed.dom['word/document.xml'].getElementsByTagNameNS(WNS,'p')].filter(p=>p.getElementsByTagNameNS(WNS,'t').length).slice(0,1500);
+    for(const p of ps){const ts=[...p.getElementsByTagNameNS(WNS,'t')],ta=document.createElement('textarea');ta.className='edp';ta.rows=1;ta.spellcheck=false;ta.value=ts.map(t=>t.textContent).join('');
+      ta.oninput=()=>{ts.forEach((t,i)=>{t.textContent=i?'':ta.value.replace(/\n/g,' ')});ts[0].setAttributeNS(XSP,'xml:space','preserve');ta.style.height='auto';ta.style.height=ta.scrollHeight+'px';f.dirty=true;drawActs()};pane.appendChild(ta)}
+    pane.querySelectorAll('textarea.edp').forEach(t=>{t.style.height='auto';t.style.height=t.scrollHeight+'px'});
+  }else{
+    const names=Object.keys(ed.dom);ed.si=Math.min(ed.si||0,names.length-1);
+    const sel=document.createElement('select');sel.setAttribute('aria-label','Sheet');sel.style.cssText='padding:6px;margin-bottom:8px;background:var(--code);color:var(--ink);border:1px solid var(--line);border-radius:6px';
+    names.forEach((n,i)=>{const o=document.createElement('option');o.value=i;o.textContent=ed.names[i]||'Sheet '+(i+1);sel.appendChild(o)});sel.value=ed.si;pane.appendChild(sel);
+    const box=document.createElement('div');box.className='wrap';pane.appendChild(box);
+    const grid=()=>{const doc=ed.dom[names[ed.si]],cells={};let mr=0,mc=0;
+      for(const c of doc.getElementsByTagName('c')){const ref=c.getAttribute('r');if(!ref)continue;cells[ref]=c;mr=Math.max(mr,+ref.replace(/\D+/g,''));mc=Math.max(mc,colIdx(ref)+1)}
+      const R=Math.min(mr+3,200),C=Math.min(mc+2,30);let h='<table class="xg"><tr><th></th>';for(let k=0;k<C;k++)h+='<th>'+colName(k)+'</th>';h+='</tr>';
+      for(let r=1;r<=R;r++){h+='<tr><th>'+r+'</th>';for(let k=0;k<C;k++){const ref=colName(k)+r,c=cells[ref],fm=c&&c.getElementsByTagName('f').length;
+        h+=`<td><input data-ref="${ref}" value="${c?esc(cellVal(c,ed.S)):''}"${fm?' disabled title="Formula cell"':''}></td>`}h+='</tr>'}
+      box.innerHTML=h+'</table>'+(mr>200?'<p class="note">Only the first 200 rows are editable here.</p>':'');
+      box.oninput=e=>{const i=e.target;if(i.dataset&&i.dataset.ref){setCell(doc,i.dataset.ref,i.value);f.dirty=true;drawActs()}}};
+    sel.onchange=()=>{ed.si=+sel.value;grid()};grid()}
+}
+
+/* ================= FORMAT SUPPORT (view-only) ================= */
+const dv=b=>new DataView(b.buffer,b.byteOffset,b.byteLength);
+const cellx=s=>String(s==null?'':s).replace(/\|/g,'\\|').replace(/\r?\n/g,' ');
+const MT=(head,rows)=>rows.length?'| '+head.join(' | ')+' |\n|'+head.map(()=>' --- |').join('')+'\n'+rows.map(r=>'| '+r.map(cellx).join(' | ')+' |').join('\n'):'*(none)*';
+const KV=o=>MT(['Field','Value'],Object.entries(o).filter(([,v])=>v!==undefined&&v!==''&&v!==null));
+const ascii=(b,p,n)=>{let s='';for(let i=p;i<p+n&&i<b.length;i++)s+=String.fromCharCode(b[i]);return s};
+const M=(b,s,o=0)=>b.length>=o+s.length&&ascii(b,o,s.length)===s;
+const h8=n=>'0x'+n.toString(16);
+const cstr=(b,p)=>{let e=p;while(e<b.length&&b[e])e++;return dec(b.subarray(p,e))};
+const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const loadScript=src=>new Promise((ok,no)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=()=>no(new Error('offline'));document.head.appendChild(s)});
+async function dstream(u,fmt){if(typeof DecompressionStream==='undefined')throw new Error('this browser lacks DecompressionStream');const ds=new DecompressionStream(fmt),w=ds.writable.getWriter();w.write(u);w.close();return new Uint8Array(await new Response(ds.readable).arrayBuffer())}
+const AN=[];
+
+/* ---- labels, highlighting families, code view ---- */
+const GRP='C/C++ source=c cc cp cpp cxx i ii inl|C/C++ header=h hpp hh hxx|C#=cs|F#=fs fsx|Visual Basic=vb vbs vbe bas bi vba frm cls ctl|Java=java|Kotlin=kt kts|Scala=scala sc|Groovy=groovy gvy gsh|Gradle script=gradle|Clojure=clj cljs cljc edn|Objective-C=m mm|Swift=swift|Python=py pyw pyx pxi pxd|Ruby=rb rake gemspec|PHP=php phtml php5 php7 php8|Go=go|Rust=rs|Dart=dart|JavaScript=js mjs cjs jsx|TypeScript=ts mts cts tsx|Vue / Svelte / Astro=vue svelte astro|CSS / Sass / Less=css scss sass less styl|Shader source=glsl vert frag geom tesc tese comp hlsl fx fxh cg metal cu cuh gdshader shader cginc compute ush usf|SQL=sql|Prisma schema=prisma|GraphQL=graphql gql|Protocol buffers / IDL=proto thrift fbs capnp|Smart contract=sol vy move cairo|WebAssembly text=wat|Perl=pl pm t|R=r rmd|Julia=jl|Lua=lua luau|PowerShell=ps1 psm1 psd1 ps1xml|Batch script=bat cmd|Shell script=sh bash zsh fish ksh csh tcsh|Elixir=ex exs|Erlang=erl hrl|Elm=elm|Haskell=hs lhs|OCaml / ReasonML=ml mli re res|PureScript=purs|D / Nim / Crystal=d di nim nimble cr|Lean=lean|Verilog / VHDL=v vhd vhdl sv svh vh|Assembly=asm s inc|LLVM IR=ll|COBOL=cob cbl cpy|Fortran=f for f90 f95 f03 f08|Pascal=pas pp dpr lpr|Ada=ads adb ada|Prolog=pro prolog|Lisp / Scheme=lisp lsp cl el scm ss rkt|AutoHotkey / AutoIt=ahk au3|QML=qml qbs qmlproject qmltypes|MATLAB / Mathematica=matlab nb wl wls|Terraform / HCL=tf tfvars hcl|Nix=nix|Dockerfile=dockerfile containerfile|Makefile=makefile gnumakefile mk|CMake=cmake|Bazel=bzl bazelrc|YAML=yaml yml|TOML=toml|INI / config=ini cfg conf config properties env|HTML=html htm xhtml shtml shtm|XML=xml xsd xsl xslt dtd wsdl wadl xib storyboard resx csproj fsproj vbproj props targets nuspec wxs wxi wxl wixproj entitlements|Template=ejs pug jade hbs handlebars mustache njk twig liquid erb haml slim j2 jinja|LaTeX / BibTeX=tex latex bib bst sty dtx ins|Org / reST / AsciiDoc=org rst adoc asciidoc wiki texi texinfo pod|Log file=log trace|Git / editor config=gitignore gitattributes gitmodules gitconfig editorconfig npmrc npmignore yarnrc dockerignore prettierrc eslintrc eslintignore stylelintrc babelrc browserslistrc nvmrc|Lock file=lock|Unity YAML asset=unity prefab meta mat anim controller asset|Godot resource=tscn tres godot import uid gdextension gdnlib gdns gd|GameMaker=yy yyp gml|Test / feature file=feature robot tap junit lcov gcov|Playlist=m3u m3u8 pls cue asx|Text=txt nfo readme changelog license copying notice todo|JSON with comments=json5 jsonc hjson|Registry file=reg|Mermaid / Graphviz=mmd mermaid dot gv|Excalidraw drawing=excalidraw|G-code=gcode|Intel HEX=hex|Notebook / data=ipynb har jsonl ndjson|Diff / patch=diff patch|Calendar / contacts / mail=ics vcf eml mbox|Subtitles=srt vtt ass ssa sub|Translations=po pot|Property list=plist mobileconfig stringsdict|Rich text=rtf';
+const FAMS={sl:'c cc cp cpp cxx i ii inl h hpp hh hxx cs fs fsx java kt kts scala sc groovy gvy gsh gradle m mm swift go rs dart js mjs cjs jsx ts mts cts tsx css scss less styl glsl vert frag geom tesc tese comp hlsl fx fxh cg metal cu cuh gdshader shader cginc compute ush usf proto thrift fbs sol move cairo json5 jsonc hjson php prisma yy yyp gml d di v',hash:'py pyw pyx pxi pxd rb rake gemspec sh bash zsh fish ksh csh tcsh yaml yml toml conf cfg properties env pl pm t r rmd jl tf tfvars hcl nix dockerfile containerfile makefile gnumakefile mk cmake ps1 psm1 psd1 ex exs cr nim nimble gd graphql gql capnp unity prefab meta mat anim controller asset gitignore gitattributes gitmodules gitconfig editorconfig npmrc npmignore yarnrc dockerignore prettierrc eslintrc eslintignore stylelintrc babelrc nvmrc bzl bazelrc po pot vy j2 jinja known_hosts authorized_keys',dash:'lua luau sql hs lhs elm ads adb ada vhd vhdl purs lean',semi:'lisp lsp cl el scm ss rkt clj cljs cljc edn ini asm s inc ahk au3 tscn tres godot import gdextension',pct:'tex latex bib bst sty dtx ins erl hrl',rem:'bat cmd',tag:'html htm xhtml shtml shtm xml xsd xsl xslt dtd wsdl wadl plist xib storyboard resx csproj fsproj vbproj props targets nuspec wxs wxi wxl wixproj entitlements svg vue svelte astro mtl'};
+const FN={'makefile':'makefile','gnumakefile':'makefile','cmakelists.txt':'cmake','dockerfile':'dockerfile','vagrantfile':'rb','gemfile':'rb','podfile':'rb','rakefile':'rb','pipfile':'toml','jenkinsfile':'gradle','build':'bzl','build.bazel':'bzl','workspace':'bzl','workspace.bazel':'bzl','module.bazel':'bzl','requirements.txt':'env','meson.build':'py','cartfile':'env','package.swift':'swift'};
+const LBL={},FAM={};
+GRP.split('|').forEach(g=>{const i=g.indexOf('='),l=g.slice(0,i);g.slice(i+1).split(' ').forEach(x=>{LBL[x]=l})});
+for(const k in FAMS)FAMS[k].split(' ').forEach(x=>{FAM[x]=k});
+const fkey=name=>{const n=name.toLowerCase();return FN[n]||n.split('.').pop()};
+Object.assign(EXT,{opus:['audio','audio/ogg'],oga:['audio','audio/ogg'],aac:['audio','audio/aac'],aif:['audio','audio/aiff'],aiff:['audio','audio/aiff'],wave:['audio','audio/wav'],amr:['audio','audio/amr'],weba:['audio','audio/webm'],mka:['audio','audio/x-matroska'],
+ m4v:['video','video/mp4'],ogv:['video','video/ogg'],'3gp':['video','video/3gpp'],mkv:['video','video/webm'],avi:['video','video/x-msvideo'],mpg:['video','video/mpeg'],mpeg:['video','video/mpeg'],
+ avif:['image','image/avif'],heic:['image','image/heic'],heif:['image','image/heif'],tif:['image','image/tiff'],tiff:['image','image/tiff'],jfif:['image','image/jpeg'],cur:['image','image/x-icon'],apng:['image','image/apng'],avsc:['json'],mcmeta:['json'],webmanifest:['json'],map:['json']});
+const KWRE=/\b(?:abstract|as|async|await|break|case|catch|class|const|continue|def|default|defer|del|do|elif|else|enum|except|export|extends|extern|final|finally|fn|for|from|func|function|go|if|impl|implements|import|in|interface|is|lambda|let|match|module|mut|namespace|new|nil|null|None|not|of|or|override|package|pass|private|protected|pub|public|raise|readonly|return|self|static|struct|super|switch|template|this|throw|trait|true|false|True|False|try|type|typeof|union|unsafe|use|using|val|var|virtual|void|volatile|where|while|with|yield|and|begin|end|then|local|select|insert|update|delete|create|table|join)\b/;
+const CMT={sl:/\/\/[^\n]*|\/\*[\s\S]*?\*\//,hash:/#[^\n]*/,dash:/--[^\n]*/,semi:/;[^\n]*/,pct:/%[^\n]*/,tag:/<!--[\s\S]*?-->/,rem:/(?<=^|\n)[ \t]*(?:[Rr][Ee][Mm]\b|::)[^\n]*/};
+const STR=/"(?:\\.|[^"\\\n])*"|'(?:\\.|[^'\\\n])*'|`(?:\\.|[^`\\])*`/,NUM=/\b\d[\w.]*\b/;
+function hlLines(t,fam){const lines=[''],cls=['','tc','ts','tn','tk','tg'];
+  const push=(c,s)=>{s.split('\n').forEach((p,i)=>{if(i)lines.push('');if(p)lines[lines.length-1]+=c?`<span class="${c}">${esc(p)}</span>`:esc(p)})};
+  if(fam==='diff'){for(const l of t.split('\n')){const c=/^(\+\+\+|---|diff |index )/.test(l)?'tk':l[0]==='+'?'da':l[0]==='-'?'dd':l.startsWith('@@')?'tg':'';lines.push(c?`<span class="${c}">${esc(l)}</span>`:esc(l))}lines.shift()}
+  else if(fam==='none'){for(const l of t.split('\n'))lines.push(esc(l));lines.shift()}
+  else{const re=new RegExp('('+(CMT[fam]||/(?!)/).source+')|('+STR.source+')|('+NUM.source+')|('+KWRE.source+')|('+(fam==='tag'?/<\/?[\w:.-]+/:/(?!)/).source+')','g');let i=0,m;
+    while((m=re.exec(t))){if(m.index>i)push('',t.slice(i,m.index));const k=m[1]!==undefined?1:m[2]!==undefined?2:m[3]!==undefined?3:m[4]!==undefined?4:5;push(cls[k],m[0]);i=re.lastIndex;if(!m[0])re.lastIndex++}
+    push('',t.slice(i))}
+  return lines.map(l=>`<span class="l">${l}</span>`).join('')}
+function famOf(f){return FAM[fkey(f.name)]||(f.text&&/^#!.*(sh|bash|python|ruby|perl|node)/.test(f.text)?'hash':'none')}
+function codeHtml(f){let t=f.text;if(t.length>3e6)t=t.slice(0,2e6);const L=t.split('\n'),cut=L.length>20000;if(cut)t=L.slice(0,20000).join('\n');
+  const fam=t.length>400000?'none':f.fam||famOf(f);
+  return `<p class="note">${esc(f.label)}, ${L.length} lines${cut?' (first 20000 shown)':''}${t.length>400000?', highlighting skipped for large file':''}</p><pre class="code">${hlLines(t,fam)}</pre>`}
+function codeView(pane){pane.innerHTML=codeHtml(cur)}
+function richView(pane){const f=cur;pane.innerHTML=f.vmd?'<div class="md">'+mdRender(f.vmd)+'</div>':'';if(f.draw)f.draw(pane,f)}
+function setContainer(f,label,ents){f.kind='zip';f.label=label;f.zip=ents;f.special=true;f.tab='view';f.report=ents.map(x=>`${x.name}  ${x.us} bytes`).join('\n')}
+async function moreFormats(f,ext){const b=f.bytes;
+  for(const [test,fn] of AN){let ok=false;try{ok=test(f,ext,b)}catch(_){}if(!ok)continue;
+    try{const r=await fn(f,b,ext);if(r){f.kind='rich';f.special=true;f.tab='view';if(r.l)f.label=r.l;f.vmd=r.md||'';f.draw=r.draw||null;if(!f.isText)f.report=(r.md||'').replace(/[*`]/g,'')}}
+    catch(e){f.note='Could not fully read this file as '+(f.label||'this format')+': '+e.message}
+    return}}
+
+/* ---- text-based viewers ---- */
+function nbMd(t){const j=JSON.parse(t),cells=j.cells||[].concat(...(j.worksheets||[]).map(w=>w.cells||[])),src=c=>Array.isArray(c)?c.join(''):(c||''),o=[];
+  const ks=j.metadata&&j.metadata.kernelspec?j.metadata.kernelspec.display_name:'';if(ks)o.push('*Kernel: '+ks+'*');
+  for(const c of cells){const s=src(c.source||c.input);
+    if(c.cell_type==='markdown')o.push(s);
+    else if(c.cell_type==='code'||c.cell_type==='raw'){o.push('```\n'+s+'\n```');
+      for(const x of c.outputs||[]){const d=x.data||x;
+        if(d['image/png']||d.png)o.push('![output](data:image/png;base64,'+src(d['image/png']||d.png).replace(/\s/g,'')+')');
+        else if(d['image/jpeg'])o.push('![output](data:image/jpeg;base64,'+src(d['image/jpeg']).replace(/\s/g,'')+')');
+        else if(x.output_type==='error')o.push('```\n'+(x.traceback||[x.ename+': '+x.evalue]).join('\n').replace(/\x1b\[[0-9;]*m/g,'')+'\n```');
+        else{const tx=src(d['text/plain']||x.text);if(tx)o.push('```\n'+tx.slice(0,5000)+'\n```')}}}}
+  return o.join('\n\n')}
+function harMd(t){const j=JSON.parse(t),e=j.log.entries;
+  return `${e.length} requests`+(j.log.creator?', recorded by '+j.log.creator.name:'')+'\n\n'+MT(['Method','URL','Status','Type','Size','Time (ms)'],e.slice(0,1000).map(x=>[x.request.method,x.request.url.slice(0,110),x.response.status,(x.response.content&&x.response.content.mimeType)||'',(x.response.content&&x.response.content.size)||x.response.bodySize,Math.round(x.time)]))}
+function jsonlMd(t){const rows=[];let bad=0;for(const l of t.split('\n')){if(!l.trim())continue;try{rows.push(JSON.parse(l))}catch(_){bad++}}
+  const keys=[...new Set(rows.slice(0,50).flatMap(r=>r&&typeof r==='object'&&!Array.isArray(r)?Object.keys(r):[]))].slice(0,8),cv=v=>typeof v==='object'&&v!==null?JSON.stringify(v).slice(0,80):v;
+  return `${rows.length} records${bad?`, ${bad} unreadable lines`:''}\n\n`+(keys.length?MT(keys,rows.slice(0,300).map(r=>keys.map(k=>cv(r&&r[k])))):MT(['Value'],rows.slice(0,300).map(r=>[JSON.stringify(r).slice(0,200)])))}
+const icsField=(blk,k)=>{const r=new RegExp('^'+k+'[^:\\n]*:(.*)$','m').exec(blk);return r?r[1].replace(/\\n/gi,' ').replace(/\\,/g,',').trim():''};
+function icsMd(t){const u=t.replace(/\r?\n[ \t]/g,'');return MT(['Summary','Start','End','Location','Description'],[...u.matchAll(/BEGIN:VEVENT([\s\S]*?)END:VEVENT/g)].map(m=>['SUMMARY','DTSTART','DTEND','LOCATION','DESCRIPTION'].map(k=>icsField(m[1],k).slice(0,120))))}
+function vcfMd(t){const u=t.replace(/\r?\n[ \t]/g,''),rows=[...u.matchAll(/BEGIN:VCARD([\s\S]*?)END:VCARD/g)].map(m=>{const g=k=>[...m[1].matchAll(new RegExp('^'+k+'[^:\\n]*:(.*)$','gm'))].map(x=>x[1].trim()).join('; ');return [g('FN')||g('N').replace(/;/g,' '),g('TEL'),g('EMAIL'),g('ORG').replace(/;/g,' ')]});
+  return `${rows.length} contacts\n\n`+MT(['Name','Phone','Email','Organization'],rows.slice(0,1000))}
+function emlParse(t){const m=/\r?\n\r?\n/.exec(t),h=(m?t.slice(0,m.index):t).replace(/\r?\n[ \t]+/g,' '),body=m?t.slice(m.index+m[0].length):'',H={};
+  for(const l of h.split(/\r?\n/)){const k=l.indexOf(':');if(k>0){const n=l.slice(0,k).toLowerCase();if(!(n in H))H[n]=l.slice(k+1).trim()}}return {H,body}}
+const bin2u8=s=>Uint8Array.from(s,c=>c.charCodeAt(0));
+const mime=s=>s.replace(/=\?([^?]+)\?([BbQq])\?([^?]*)\?=/g,(_,cs,e,x)=>{try{return e.toUpperCase()==='B'?dec(b64(x)):dec(bin2u8(x.replace(/_/g,' ').replace(/=([0-9A-F]{2})/gi,(m,h)=>String.fromCharCode(parseInt(h,16)))))}catch(_2){return x}});
+function emlBody(H,body){const ct=H['content-type']||'text/plain',cte=(H['content-transfer-encoding']||'').toLowerCase(),bm=/boundary="?([^";\s]+)"?/i.exec(ct);
+  if(/multipart/i.test(ct)&&bm){let best='',html='';
+    for(const part of body.split('--'+bm[1])){if(!part.trim()||part.trim()==='--')continue;const q=emlParse(part.replace(/^\r?\n/,'')),pt=q.H['content-type']||'text/plain';
+      if(/multipart|text\/plain/i.test(pt)||!q.H['content-type']){const r=emlBody(q.H,q.body);if(r&&!best)best=r}else if(/text\/html/i.test(pt)&&!html)html=emlBody(q.H,q.body).replace(/<[^>]+>/g,' ')}
+    return best||html}
+  if(/text\//i.test(ct)||!H['content-type']){if(cte==='base64')return dec(b64(body.replace(/\s/g,'')));if(cte==='quoted-printable')return dec(bin2u8(body.replace(/=\r?\n/g,'').replace(/=([0-9A-F]{2})/gi,(m,h)=>String.fromCharCode(parseInt(h,16)))));return body}
+  return ''}
+function emlMd(t){const {H,body}=emlParse(t),att=[...t.matchAll(/filename="?([^";\r\n]+)"?/gi)].map(m=>mime(m[1]));
+  return KV({From:mime(H.from||''),To:mime(H.to||''),Cc:mime(H.cc||''),Date:H.date,Subject:mime(H.subject||'')})+(att.length?'\n\n**Attachments:** '+att.join(', '):'')+'\n\n```\n'+emlBody(H,body).trim().slice(0,30000)+'\n```'}
+function mboxMd(t){const msgs=t.split(/^From .*$/m).slice(1);return `${msgs.length} messages\n\n`+MT(['From','Subject','Date'],msgs.slice(0,500).map(m=>{const {H}=emlParse(m.replace(/^\r?\n/,''));return [mime(H.from||''),mime(H.subject||''),H.date||'']}))}
+function subsMd(t,ext){const rows=[];
+  if(ext==='ass'||ext==='ssa'){for(const l of t.split(/\r?\n/)){const m=/^Dialogue:\s*[^,]*,([^,]*),([^,]*),(?:[^,]*,){6}(.*)$/.exec(l);if(m)rows.push([m[1],m[2],m[3].replace(/\{[^}]*\}/g,'').replace(/\\N/g,' ')])}}
+  else if(ext==='sub'){for(const l of t.split(/\r?\n/)){const m=/^\{(\d+)\}\{(\d+)\}(.*)$/.exec(l);if(m)rows.push([m[1]+' fr',m[2]+' fr',m[3].replace(/\|/g,' ')])}}
+  else{for(const blk of t.replace(/^\uFEFF/,'').split(/\r?\n\r?\n/)){const m=/(\d{1,2}:\d\d:\d\d[.,]\d{1,3}|\d\d:\d\d[.,]\d{3})\s*-->\s*(\S+)[^\n]*\n([\s\S]*)/.exec(blk);if(m)rows.push([m[1],m[2],m[3].replace(/<[^>]+>/g,'').replace(/\r?\n/g,' ')])}}
+  return `${rows.length} cues\n\n`+MT(['Start','End','Text'],rows.slice(0,1500))}
+function poMd(t){const rows=[],un=s=>[...s.matchAll(/"((?:\\.|[^"\\])*)"/g)].map(x=>x[1]).join('').replace(/\\n/g,' ').replace(/\\"/g,'"');
+  for(const m of t.split(/\n\n+/)){const id=/^msgid\s+((?:"[^\n]*"\s*)+)/m.exec(m),st=/^msgstr\s+((?:"[^\n]*"\s*)+)/m.exec(m);if(id&&st&&un(id[1]))rows.push([un(id[1]),un(st[1])])}
+  return `${rows.length} entries\n\n`+MT(['Source','Translation'],rows.slice(0,1500))}
+function plistVal(n){const c=[...n.children];switch(n.nodeName){case 'dict':{const o={};for(let i=0;i+1<c.length;i+=2)o[c[i].textContent]=plistVal(c[i+1]);return o}case 'array':return c.map(plistVal);case 'integer':case 'real':return +n.textContent;case 'true':return true;case 'false':return false;case 'data':return '<data '+Math.round(n.textContent.replace(/\s/g,'').length*3/4)+' bytes>';default:return n.textContent}}
+function plistXml(s){const d=new DOMParser().parseFromString(s,'application/xml');if(d.querySelector('parsererror'))throw new Error('bad plist XML');return plistVal(d.documentElement.firstElementChild)}
+function bplist(b){const v=dv(b),n=b.length,t=b.subarray(n-32),tv=dv(t),os=t[6],rs=t[7],top=Number(tv.getBigUint64(16)),off=Number(tv.getBigUint64(24));
+  const rd=(p,s)=>{let x=0;for(let i=0;i<s;i++)x=x*256+b[p+i];return x},offs=i=>rd(off+i*os,os);
+  const obj=i=>{const p=offs(i),m=b[p],hi=m>>4,lo=m&15,len=q=>{if(lo<15)return [lo,q];const sz=1<<(b[q]&15);return [rd(q+1,sz),q+1+sz]};
+    switch(hi){case 0:return lo===8?false:lo===9?true:null;case 1:return rd(p+1,1<<lo);case 2:return lo===2?v.getFloat32(p+1):v.getFloat64(p+1);case 3:return new Date((v.getFloat64(p+1)+978307200)*1000).toISOString();
+      case 4:{const [l]=len(p+1);return '<data '+l+' bytes>'}case 5:{const [l,q]=len(p+1);return dec(b.subarray(q,q+l))}case 6:{const [l,q]=len(p+1);return new TextDecoder('utf-16be').decode(b.subarray(q,q+l*2))}case 8:return {uid:rd(p+1,lo+1)};
+      case 10:case 12:{const [l,q]=len(p+1),a=[];for(let k=0;k<l;k++)a.push(obj(rd(q+k*rs,rs)));return a}
+      case 13:{const [l,q]=len(p+1),o={};for(let k=0;k<l;k++)o[obj(rd(q+k*rs,rs))]=obj(rd(q+(l+k)*rs,rs));return o}}return null};
+  return obj(top)}
+function plistMd(val){let s='';if(val&&val.TeamName&&val.ExpirationDate!==undefined||val&&val.ProvisionedDevices)s=KV({Name:val.Name,'App ID':val.AppIDName,Team:val.TeamName,Created:val.CreationDate,Expires:val.ExpirationDate,Devices:val.ProvisionedDevices?val.ProvisionedDevices.length:'','Get task allow':val.Entitlements&&val.Entitlements['get-task-allow']})+'\n\n';
+  return s+'```\n'+JSON.stringify(val,null,2).slice(0,200000)+'\n```'}
+function htmlDraw(pane,f){const fr=document.createElement('iframe');fr.setAttribute('sandbox','');fr.srcdoc=f.text;fr.title='HTML preview';fr.style.height='45vh';pane.appendChild(fr);const d=document.createElement('div');d.innerHTML=codeHtml(f);pane.appendChild(d)}
+function rtfText(s){let o='',depth=0,ig=-1,su=0,m;const re=/\\([a-z]+)(-?\d+)? ?|\\'([0-9a-f]{2})|\\([\\{}*])|([{}])|([^\\{}]+)/gi;
+  while((m=re.exec(s))){if(m[5]==='{'){depth++;continue}if(m[5]==='}'){if(ig===depth)ig=-1;depth--;continue}if(ig>=0)continue;
+    if(m[4]==='*'){ig=depth;continue}
+    if(m[1]){const w=m[1];if(['fonttbl','colortbl','stylesheet','info','pict','header','footer'].includes(w))ig=depth;else if(w==='par'||w==='line')o+='\n';else if(w==='tab')o+='\t';else if(w==='u'){const n=+m[2];o+=String.fromCharCode(n<0?n+65536:n);su=1}continue}
+    if(m[3])o+=String.fromCharCode(parseInt(m[3],16));else if(m[4])o+=m[4];else if(m[6]){let t=m[6];if(su){t=t.slice(1);su=0}o+=t.replace(/\r?\n/g,'')}}
+  return o.replace(/\n{3,}/g,'\n\n').trim()}
+const preDraw=txt=>pane=>{const p=document.createElement('pre');p.style.whiteSpace='pre-wrap';p.textContent=txt;pane.appendChild(p)};
+async function mermaidDraw(pane,f){const box=document.createElement('div');box.className='wrap';box.textContent='Loading diagram renderer…';pane.appendChild(box);
+  try{await loadScript('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js');mermaid.initialize({startOnLoad:false,securityLevel:'strict'});const r=await mermaid.render('mm'+Date.now(),f.text);box.innerHTML=r.svg}
+  catch(e){box.innerHTML='<p class="note err">Diagram preview needs internet and valid Mermaid syntax ('+esc(e.message||e)+').</p>'}
+  const d=document.createElement('div');d.innerHTML=codeHtml(f);pane.appendChild(d)}
+function excaliSvg(t){const j=JSON.parse(t),els=(j.elements||[]).filter(e=>!e.isDeleted);if(!els.length)return '';let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;const pts=e=>(e.points||[]).map(p=>[e.x+p[0],e.y+p[1]]);
+  for(const e of els){const P=e.points?pts(e):[[e.x,e.y],[e.x+(e.width||0),e.y+(e.height||0)]];for(const [x,y] of P){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y)}}
+  const s=[],pad=20;
+  for(const e of els){const sc=esc(e.strokeColor||'#000'),bg=e.backgroundColor&&e.backgroundColor!=='transparent'?esc(e.backgroundColor):'none',sw=+e.strokeWidth||1,st=`stroke="${sc}" fill="${bg}" stroke-width="${sw}"`;
+    if(e.type==='rectangle')s.push(`<rect x="${e.x}" y="${e.y}" width="${e.width}" height="${e.height}" rx="6" ${st}/>`);
+    else if(e.type==='ellipse')s.push(`<ellipse cx="${e.x+e.width/2}" cy="${e.y+e.height/2}" rx="${e.width/2}" ry="${e.height/2}" ${st}/>`);
+    else if(e.type==='diamond')s.push(`<polygon points="${e.x+e.width/2},${e.y} ${e.x+e.width},${e.y+e.height/2} ${e.x+e.width/2},${e.y+e.height} ${e.x},${e.y+e.height/2}" ${st}/>`);
+    else if(e.type==='line'||e.type==='arrow'||e.type==='freedraw')s.push(`<polyline points="${pts(e).map(p=>p.join(',')).join(' ')}" stroke="${sc}" fill="none" stroke-width="${sw}"/>`);
+    else if(e.type==='text')s.push(`<text x="${e.x}" y="${e.y+(+e.fontSize||20)}" font-size="${+e.fontSize||20}" fill="${sc}" font-family="sans-serif">${esc(e.text||'')}</text>`)}
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${x0-pad} ${y0-pad} ${x1-x0+2*pad} ${y1-y0+2*pad}" style="max-width:100%;background:#fff;border:1px solid var(--line);border-radius:6px">${s.join('')}</svg>`}
+function gcodeInfo(t){const segs=[],zs=new Set();let x=0,y=0,z=0,e=0,emax=0,lines=0,x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  for(const l of t.split('\n')){lines++;const m=/^G[01]\b(.*)/.exec(l);if(!m)continue;const p=k=>{const r=new RegExp('\\b'+k+'(-?[\\d.]+)').exec(m[1]);return r?+r[1]:null};
+    const nx=p('X'),ny=p('Y'),nz=p('Z'),ne=p('E'),px=x,py=y;if(nx!==null)x=nx;if(ny!==null)y=ny;if(nz!==null){z=nz;zs.add(z)}
+    if(ne!==null){const ext=ne>e&&(nx!==null||ny!==null);e=ne;emax=Math.max(emax,e);if(ext){segs.push([px,py,x,y,z]);x0=Math.min(x0,px,x);y0=Math.min(y0,py,y);x1=Math.max(x1,px,x);y1=Math.max(y1,py,y)}}}
+  return {segs,layers:zs.size,lines,emax,bounds:[x0,y0,x1,y1]}}
+function gcodeDraw(g){return pane=>{if(!g.segs.length)return;const c=document.createElement('canvas'),W=800,H=560;c.width=W;c.height=H;c.style.cssText='width:100%;background:var(--code);border-radius:6px';const cx=c.getContext('2d'),[x0,y0,x1,y1]=g.bounds,s=Math.min((W-30)/(x1-x0||1),(H-30)/(y1-y0||1)),zs=g.segs.map(q=>q[4]),zmax=Math.max(...zs)||1;
+  const step=Math.ceil(g.segs.length/80000);for(let i=0;i<g.segs.length;i+=step){const q=g.segs[i];cx.strokeStyle=`hsl(${210-q[4]/zmax*180},70%,50%)`;cx.beginPath();cx.moveTo(15+(q[0]-x0)*s,H-15-(q[1]-y0)*s);cx.lineTo(15+(q[2]-x0)*s,H-15-(q[3]-y0)*s);cx.stroke()}pane.appendChild(c)}}
+function ihexMd(t){let n=0,lo=Infinity,hi=0,base=0,rec=0,eof=false,start='';
+  for(const l of t.split(/\r?\n/)){if(l[0]!==':')continue;const len=parseInt(l.slice(1,3),16),addr=parseInt(l.slice(3,7),16),ty=parseInt(l.slice(7,9),16);rec++;
+    if(ty===0){const a=base+addr;lo=Math.min(lo,a);hi=Math.max(hi,a+len);n+=len}else if(ty===1)eof=true;else if(ty===2)base=parseInt(l.slice(9,13),16)*16;else if(ty===4)base=parseInt(l.slice(9,13),16)*65536;else if(ty===5)start='0x'+l.slice(9,17)}
+  return KV({Records:rec,'Data bytes':n,'Address range':n?h8(lo)+' to '+h8(hi-1):'','Entry point':start,'End record':eof?'present':'missing'})}
+function palCols(t){const cols=[];if(/^GIMP Palette/.test(t)){for(const l of t.split(/\r?\n/)){const m=/^\s*(\d+)\s+(\d+)\s+(\d+)\s*(.*)$/.exec(l);if(m)cols.push([+m[1],+m[2],+m[3],m[4]])}}
+  else if(/^JASC-PAL/.test(t)){for(const l of t.split(/\r?\n/).slice(3)){const m=/^(\d+)\s+(\d+)\s+(\d+)/.exec(l);if(m)cols.push([+m[1],+m[2],+m[3],''])}}return cols}
+function palDraw(cols){return pane=>{pane.insertAdjacentHTML('beforeend','<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px">'+cols.slice(0,1024).map(c=>{const hx='#'+c.slice(0,3).map(x=>hex2(Math.min(255,x))).join('');
+  return `<div style="border:1px solid var(--line);border-radius:6px;overflow:hidden"><div style="height:40px;background:${hx}"></div><div class="mono" style="padding:3px 6px;font-size:12px">${hx}<br>${esc(c[3]||'')}</div></div>`}).join('')+'</div>')}}
+
+/* ---- certificates and keys ---- */
+const NAMEOID={'2.5.4.3':'CN','2.5.4.6':'C','2.5.4.7':'L','2.5.4.8':'ST','2.5.4.10':'O','2.5.4.11':'OU','1.2.840.113549.1.9.1':'E','2.5.4.5':'serialNumber','2.5.4.9':'street','0.9.2342.19200300.100.1.25':'DC'};
+const ALGN={'1.2.840.113549.1.1.1':'RSA','1.2.840.10045.2.1':'EC','1.3.101.112':'Ed25519','1.3.101.110':'X25519','1.2.840.113549.1.1.11':'SHA256withRSA','1.2.840.113549.1.1.5':'SHA1withRSA','1.2.840.113549.1.1.12':'SHA384withRSA','1.2.840.113549.1.1.13':'SHA512withRSA','1.2.840.10045.4.3.2':'SHA256withECDSA','1.2.840.10045.4.3.3':'SHA384withECDSA','1.2.840.10045.3.1.7':'P-256','1.3.132.0.34':'P-384','1.3.132.0.35':'P-521'};
+const oidN=(b,n)=>{const o=oid(b,n);return ALGN[o]||o};
+const dname=(b,n)=>kids(b,n).flatMap(set=>kids(b,set).map(av=>{const k=kids(b,av);return (NAMEOID[oid(b,k[0])]||oid(b,k[0]))+'='+(k[1].tag===0x1e?new TextDecoder('utf-16be').decode(b.subarray(k[1].s,k[1].e)):dec(b.subarray(k[1].s,k[1].e)))})).join(', ');
+const tm=(b,n)=>{const s=dec(b.subarray(n.s,n.e)),u=n.tag===0x17,y=u?(+s.slice(0,2)<50?'20':'19')+s.slice(0,2):s.slice(0,4),r=u?s.slice(2):s.slice(4);return `${y}-${r.slice(0,2)}-${r.slice(2,4)} ${r.slice(4,6)}:${r.slice(6,8)}:${r.slice(8,10)} UTC`};
+function spkiInfo(b,spki){const pk=kids(b,spki[0]),alg=oid(b,pk[0]);let bits='';
+  if(alg==='1.2.840.113549.1.1.1'){const k=kids(b,der(b,spki[1].s+1));let m=k[0].s;while(b[m]===0&&m<k[0].e)m++;bits=(k[0].e-m)*8+' bits'}else if(pk[1]&&pk[1].tag===6)bits=ALGN[oid(b,pk[1])]||oid(b,pk[1]);
+  return (ALGN[alg]||alg)+(bits?' ('+bits+')':'')}
+async function x509(b){const c=kids(b,der(b,0)),t=kids(b,c[0]);let i=0;if(t[0].tag===0xa0)i=1;
+  const ver=i?b[kids(b,t[0])[0].s]+1:1,serial=[...b.subarray(t[i].s,t[i].e)].map(hex2).join(':'),val=kids(b,t[i+3]);let san='';
+  const last=t[t.length-1];if(last.tag===0xa3)for(const x of kids(b,kids(b,last)[0])){const ek=kids(b,x);if(oid(b,ek[0])==='2.5.29.17'){const oc=ek[ek.length-1];for(const g of kids(b,der(b,oc.s)))san+=(san?', ':'')+(g.tag===0x82?'DNS:':g.tag===0x87?'IP:':g.tag===0x81?'email:':'')+(g.tag===0x87?[...b.subarray(g.s,g.e)].join('.'):dec(b.subarray(g.s,g.e)))}}
+  return KV({Version:'v'+ver,Serial:serial,'Signature algorithm':oidN(b,kids(b,t[i+1])[0]),Issuer:dname(b,t[i+2]),'Not before':tm(b,val[0]),'Not after':tm(b,val[1]),Subject:dname(b,t[i+4]),'Public key':spkiInfo(b,kids(b,t[i+5])),'Subject alt names':san,'SHA-1':await sha(b,'SHA-1'),'SHA-256':await sha(b,'SHA-256')})}
+function p7certs(b){const top=kids(b,der(b,0)),sd=kids(b,kids(b,top[1])[0]),cs=sd.find(x=>x.tag===0xa0);return cs?kids(b,cs).map(c=>b.slice(c.p,c.e)):[]}
+async function derMd(b){const k=kids(b,der(b,0));
+  if(k[0]&&k[0].tag===6&&oid(b,k[0])==='1.2.840.113549.1.7.2'){const cs=p7certs(b),o=[`PKCS#7 container with ${cs.length} certificate(s)`];for(const c of cs.slice(0,10))o.push(await x509(c));return o.join('\n\n')}
+  if(k.length===3&&k[0].tag===0x30&&k[1].tag===0x30&&k[2].tag===3){const tbs=kids(b,k[0]);
+    if(tbs.length<=4&&tbs[0].tag===2)return '**Certificate signing request**\n\n'+KV({Subject:dname(b,tbs[1]),'Public key':spkiInfo(b,kids(b,tbs[2])),'Signature algorithm':oidN(b,kids(b,k[1])[0])});
+    return await x509(b)}
+  if(k.length===2&&k[0].tag===0x30&&k[1].tag===3)return '**Public key**\n\n'+KV({Algorithm:spkiInfo(b,k)});
+  if(k.length>=3&&k[0].tag===2&&k[1].tag===0x30&&k[2].tag===4)return 'PKCS#8 private key. Contents are not displayed.';
+  return 'DER structure with '+k.length+' top-level element(s); not a recognised certificate or key.'}
+async function pemMd(t){const o=[];
+  for(const m of t.matchAll(/-----BEGIN ([A-Z0-9 ]+)-----([\s\S]*?)-----END \1-----/g)){const ty=m[1],body=m[2].replace(/^[A-Za-z-]+:.*$/gm,'').replace(/\s/g,'');o.push('### '+ty);
+    if(/PRIVATE KEY/.test(ty)){o.push('Private key ('+Math.round(body.length*3/4)+' bytes). Contents are not displayed.');continue}
+    if(/^PGP/.test(ty)){o.push('OpenPGP armored block ('+Math.round(body.length*3/4)+' bytes).');continue}
+    try{o.push(await derMd(b64(body)))}catch(e){o.push('Could not decode: '+e.message)}}
+  return o.join('\n\n')||'No PEM blocks found.'}
+async function sshMd(t){const o=[];
+  for(const l of t.split(/\r?\n/)){const m=/^(\S+)\s+([A-Za-z0-9+\/=]+)\s*(.*)$/.exec(l);if(!m||!/^(ssh-|ecdsa-|sk-)/.test(m[1]))continue;
+    const h=new Uint8Array(await crypto.subtle.digest('SHA-256',b64(m[2])));o.push([m[1],m[3],'SHA256:'+btoa(String.fromCharCode(...h)).replace(/=+$/,'')])}
+  return MT(['Type','Comment','Fingerprint'],o)}
+
+/* ---- registry: text-based formats ---- */
+const TX=(f,e,s)=>f.isText&&s.split(' ').includes(e);
+AN.push(
+ [(f,e)=>TX(f,e,'ipynb'),async f=>({l:'Jupyter notebook',md:nbMd(f.text)})],
+ [(f,e)=>TX(f,e,'har'),async f=>({l:'HTTP archive (HAR)',md:harMd(f.text)})],
+ [(f,e)=>TX(f,e,'jsonl ndjson'),async f=>({l:'JSON Lines',md:jsonlMd(f.text)})],
+ [(f,e)=>TX(f,e,'diff patch'),async f=>{f.fam='diff';f.label='Diff / patch'}],
+ [(f,e)=>TX(f,e,'ics'),async f=>({l:'iCalendar',md:icsMd(f.text)})],
+ [(f,e)=>TX(f,e,'vcf'),async f=>({l:'vCard contacts',md:vcfMd(f.text)})],
+ [(f,e)=>TX(f,e,'eml'),async f=>({l:'Email message',md:emlMd(f.text)})],
+ [(f,e)=>TX(f,e,'mbox'),async f=>({l:'Mailbox',md:mboxMd(f.text)})],
+ [(f,e)=>TX(f,e,'srt vtt ass ssa sub'),async(f,b,e)=>({l:'Subtitles',md:subsMd(f.text,e)})],
+ [(f,e)=>TX(f,e,'po pot'),async f=>({l:'Gettext translations',md:poMd(f.text)})],
+ [(f,e)=>TX(f,e,'plist mobileconfig stringsdict entitlements')&&/<plist/.test(f.text),async f=>({l:'Property list',md:plistMd(plistXml(f.text))})],
+ [(f,e,b)=>M(b,'bplist00'),async(f,b)=>({l:'Binary property list',md:plistMd(bplist(b))})],
+ [(f,e,b)=>!f.isText&&'mobileprovision provisionprofile mobileconfig'.split(' ').includes(e),async(f,b)=>{const s=new TextDecoder('latin1').decode(b),i=s.indexOf('<?xml'),j=s.indexOf('</plist>');if(i<0||j<0)throw new Error('no embedded plist');return {l:'Provisioning profile / signed plist',md:plistMd(plistXml(s.slice(i,j+8)))}}],
+ [(f,e)=>TX(f,e,'html htm xhtml shtml shtm'),async f=>({l:'HTML page',md:'',draw:htmlDraw})],
+ [(f,e)=>TX(f,e,'rtf')&&/^\s*\{\\rtf/.test(f.text),async f=>({l:'Rich Text Format',md:'',draw:preDraw(rtfText(f.text))})],
+ [(f,e)=>TX(f,e,'mmd mermaid'),async f=>({l:'Mermaid diagram',md:'',draw:mermaidDraw})],
+ [(f,e)=>TX(f,e,'excalidraw'),async f=>{const svg=excaliSvg(f.text);return {l:'Excalidraw drawing',md:'',draw:pane=>{pane.insertAdjacentHTML('beforeend',svg||'<p class="note">Empty drawing.</p>')}}}],
+ [(f,e)=>TX(f,e,'gcode'),async f=>{const g=gcodeInfo(f.text);return {l:'G-code toolpath',md:KV({Lines:g.lines,Layers:g.layers,'Extruding moves':g.segs.length,'Filament (E max)':g.emax?g.emax.toFixed(1):'','Bounds X':g.segs.length?g.bounds[0].toFixed(1)+' to '+g.bounds[2].toFixed(1):'','Bounds Y':g.segs.length?g.bounds[1].toFixed(1)+' to '+g.bounds[3].toFixed(1):''}),draw:gcodeDraw(g)}}],
+ [(f,e)=>TX(f,e,'hex')&&f.text[0]===':',async f=>({l:'Intel HEX firmware',md:ihexMd(f.text)})],
+ [(f,e)=>TX(f,e,'gpl pal')&&palCols(f.text).length>0,async f=>{const c=palCols(f.text);return {l:'Colour palette',md:c.length+' colours',draw:palDraw(c)}}],
+ [(f,e,b)=>!f.isText&&e==='act'&&(b.length===768||b.length===772),async(f,b)=>{const c=[];for(let i=0;i<256&&i*3+2<b.length;i++)c.push([b[i*3],b[i*3+1],b[i*3+2],'']);return {l:'Photoshop colour table',md:'256 colours',draw:palDraw(c)}}],
+ [(f,e)=>f.isText&&/-----BEGIN [A-Z0-9 ]+-----/.test(f.text),async f=>({l:'PEM file',md:await pemMd(f.text)})],
+ [(f,e)=>f.isText&&/^(ssh-|ecdsa-|sk-)\S+ [A-Za-z0-9+\/=]+/.test(f.text),async f=>({l:'SSH public key',md:await sshMd(f.text)})],
+ [(f,e,b)=>!f.isText&&b[0]===0x30&&'cer crt der p7b p7c csr p10 p8 key pub'.split(' ').includes(e),async(f,b)=>({l:'DER encoded file',md:await derMd(b)})]
+);
+
+/* ================= PART B: containers, executables, data formats ================= */
+const ents=(arr)=>arr;
+function tarEnts(b){const o=[];let p=0,longName=null;
+  while(p+512<=b.length){const h=b.subarray(p,p+512);if(h.every(x=>x===0))break;
+    const nm=cstr(h,0),pre=ascii(h,257,5)==='ustar'?cstr(h.subarray(345,500),0):'',sz=parseInt(cstr(h.subarray(124,136),0).trim()||'0',8)||0,tf=String.fromCharCode(h[156]||48),off=p+512;let name=pre?pre+'/'+nm:nm;
+    if(tf==='L'){longName=dec(b.subarray(off,off+sz)).replace(/\0+$/,'');p=off+Math.ceil(sz/512)*512;continue}
+    if(longName){name=longName;longName=null}
+    if(tf==='0'||tf==='7')o.push({name,us:sz,get:async()=>b.slice(off,off+sz)});else if(tf==='5')o.push({name:name.endsWith('/')?name:name+'/',us:0});
+    p=off+Math.ceil(sz/512)*512}
+  return o}
+function arEnts(b){const o=[];let p=8,names='';
+  while(p+60<=b.length){let nm=ascii(b,p,16).trim();const sz=parseInt(ascii(b,p+48,10))||0,q=p+60;let off=q,len=sz;
+    if(nm==='//')names=dec(b.subarray(q,q+sz));
+    else if(nm!=='/'&&nm!=='/SYM64/'){
+      if(/^\/\d+$/.test(nm))nm=names.slice(+nm.slice(1)).split('\n')[0].replace(/\/$/,'');
+      else if(nm.startsWith('#1/')){const l=+nm.slice(3);nm=dec(b.subarray(q,q+l)).replace(/\0+$/,'');off=q+l;len=sz-l}
+      else nm=nm.replace(/\/$/,'');
+      o.push({name:nm,us:len,get:async()=>b.slice(off,off+len)})}
+    p=q+sz+(sz&1)}
+  return o}
+const dec32=(d,k)=>{const o=new Uint8Array(d.length);let w=k>>>0;for(let i=0;i<d.length;i++){o[i]=d[i]^((w>>>((i%4)*8))&255);if(i%4===3)w=(Math.imul(w,7)+3)>>>0}return o};
+function rgssList(b){const v=dv(b),ver=b[7],o=[];
+  if(ver===3){const key=(Math.imul(v.getUint32(8,true),9)+3)>>>0;let p=12;
+    for(;p+16<=b.length;){const off=(v.getUint32(p,true)^key)>>>0,sz=(v.getUint32(p+4,true)^key)>>>0,fk=(v.getUint32(p+8,true)^key)>>>0,nl=(v.getUint32(p+12,true)^key)>>>0;p+=16;if(!off)break;
+      const kb=[key&255,(key>>>8)&255,(key>>>16)&255,key>>>24];let nm='';for(let i=0;i<nl;i++)nm+=String.fromCharCode(b[p+i]^kb[i%4]);p+=nl;o.push({name:nm,us:sz,get:async()=>dec32(b.subarray(off,off+sz),fk)})}}
+  else{let key=0xdeadcafe,p=8;
+    while(p+4<=b.length){const nl=(v.getUint32(p,true)^key)>>>0;key=(Math.imul(key,7)+3)>>>0;p+=4;let nm='';for(let i=0;i<nl;i++){nm+=String.fromCharCode(b[p+i]^(key&255));key=(Math.imul(key,7)+3)>>>0}p+=nl;
+      const sz=(v.getUint32(p,true)^key)>>>0;key=(Math.imul(key,7)+3)>>>0;p+=4;const off=p,k=key;o.push({name:nm,us:sz,get:async()=>dec32(b.subarray(off,off+sz),k)});p+=sz}}
+  return o}
+const mk=(b,off,sz)=>async()=>b.slice(off,off+sz);
+async function unityPkg(f,list){const by={};
+  for(const e of list){const m=/^(?:\.\/)?([^/]+)\/(asset|pathname)$/.exec(e.name);if(m)(by[m[1]]=by[m[1]]||{})[m[2]]=e}
+  const out=[];for(const g in by){const x=by[g];if(!x.asset||!x.pathname)continue;out.push({name:dec(await x.pathname.get()).split('\n')[0].trim(),us:x.asset.us,get:x.asset.get})}
+  out.sort((a,c)=>a.name<c.name?-1:1);setContainer(f,'Unity package ('+out.length+' assets)',out)}
+/* NBT / Minecraft */
+function nbt(b){let p=0;const v=dv(b),str=()=>{const n=v.getUint16(p);p+=2;const s=dec(b.subarray(p,p+n));p+=n;return s};
+  const val=t=>{switch(t){case 1:return v.getInt8(p++);case 2:{const x=v.getInt16(p);p+=2;return x}case 3:{const x=v.getInt32(p);p+=4;return x}case 4:{const x=v.getBigInt64(p);p+=8;return x.toString()}case 5:{const x=v.getFloat32(p);p+=4;return x}case 6:{const x=v.getFloat64(p);p+=8;return x}
+    case 7:{const n=v.getInt32(p);p+=4+n;return '<byte[] '+n+'>'}case 8:return str();
+    case 9:{const it=b[p++],n=v.getInt32(p);p+=4;const a=[];for(let i=0;i<n;i++){a.push(val(it));if(a.length>5000){a.push('…');break}}return a}
+    case 10:{const o={};for(;;){const tt=b[p++];if(tt===0)break;const k=str();o[k]=val(tt)}return o}
+    case 11:{const n=v.getInt32(p);p+=4;const a=[];for(let i=0;i<Math.min(n,64);i++)a.push(v.getInt32(p+i*4));p+=n*4;return n>64?a.concat(['… '+n+' ints']):a}
+    case 12:{const n=v.getInt32(p);p+=4+n*8;return '<long[] '+n+'>'}}throw new Error('bad NBT tag '+t)};
+  if(b[p++]!==10)throw new Error('not NBT');const root=str();return {root,val:val(10)}}
+const nbtMd=(r,extra)=>(extra?extra+'\n\n':'')+'Root tag: `'+(r.root||'(unnamed)')+'`\n\n```\n'+JSON.stringify(r.val,null,1).slice(0,200000)+'\n```';
+async function mcaMd(b){const v=dv(b);let n=0,first=-1;for(let i=0;i<1024;i++){const e=v.getUint32(i*4)>>>8;if(e){n++;if(first<0)first=i}}
+  let s=KV({'Chunks present':n+' of 1024'});
+  if(first>=0){const off=(v.getUint32(first*4)>>>8)*4096,len=v.getUint32(off),ct=b[off+4],data=b.subarray(off+5,off+4+len);
+    const raw=ct===2?await dstream(data,'deflate'):ct===1?await dstream(data,'gzip'):ct===3?data:null;
+    if(raw)s+='\n\n**First chunk** (x '+first%32+', z '+Math.floor(first/32)+')\n\n'+nbtMd(nbt(raw));else s+='\n\nChunk uses compression type '+ct+' (not supported).'}
+  return s}
+async function gzHandle(f,b,e){const raw=await dstream(b,'gzip'),nm=f.name.replace(/\.(gz|tgz)$/i,e==='tgz'?'.tar':'');
+  if(M(raw,'ustar',257)||e==='tgz'||/\.tar\.gz$/i.test(f.name)){const l=tarEnts(raw);if(/\.unitypackage$/i.test(f.name)){await unityPkg(f,l);return}setContainer(f,'Compressed TAR archive',l);return}
+  if(raw[0]===10&&raw[1]===0){try{return {l:'Compressed NBT data',md:nbtMd(nbt(raw))}}catch(_){}}
+  return {l:'GZIP compressed file',md:'Decompressed size: '+raw.length+' bytes',draw:(pane,ff)=>{const bt=document.createElement('button');bt.className='pri';bt.textContent='Open decompressed file';
+    bt.onclick=async()=>{const nf={name:nm||'decompressed',size:raw.length,mod:ff.mod,type:'',bytes:raw};analyze(nf);await extra(nf);files.push(nf);cur=nf;draw()};pane.appendChild(bt)}}}
+/* Source engine / Quake / EA containers */
+const listFmt=(f,label,l)=>{setContainer(f,label,l)};
+function pakEnts(b){const v=dv(b),d=v.getUint32(4,true),n=v.getUint32(8,true)/64,o=[];for(let i=0;i<n;i++){const p=d+i*64,off=v.getUint32(p+56,true),sz=v.getUint32(p+60,true);o.push({name:cstr(b.subarray(p,p+56),0),us:sz,get:mk(b,off,sz)})}return o}
+function wadEnts(b){const v=dv(b),n=v.getUint32(4,true),d=v.getUint32(8,true),w=/WAD[23]/.test(ascii(b,0,4)),o=[];for(let i=0;i<n;i++){const p=d+i*(w?32:16),off=v.getUint32(p,true),sz=v.getUint32(p+(w?8:4),true);o.push({name:cstr(b.subarray(p+(w?16:8),p+(w?32:16)),0),us:sz,get:mk(b,off,sz)})}return o}
+function bigEnts(b){const v=dv(b),n=v.getUint32(8),o=[];let p=16;for(let i=0;i<n;i++){const off=v.getUint32(p),sz=v.getUint32(p+4),e=b.indexOf(0,p+8);o.push({name:dec(b.subarray(p+8,e)),us:sz,get:mk(b,off,sz)});p=e+1}return o}
+const LUMP=['entities','planes','texdata','vertexes','visibility','nodes','texinfo','faces','lighting','occlusion','leafs','faceids','edges','surfedges','models','worldlights','leaffaces','leafbrushes','brushes','brushsides','areas','areaportals'];
+function bspMd(b){const v=dv(b),ver=v.getInt32(4,true),rows=[];let ents='';
+  for(let i=0;i<64;i++){const o=8+i*16,off=v.getInt32(o,true),len=v.getInt32(o+4,true);if(len>0)rows.push([i,LUMP[i]||'',len,off]);if(i===0&&len>0)ents=dec(b.subarray(off,off+Math.min(len,40000)))}
+  return KV({'BSP version':ver,'Lumps used':rows.length})+'\n\n'+MT(['#','Lump','Bytes','Offset'],rows)+(ents?'\n\n**Entities** (first 40 KB)\n\n```\n'+ents+'\n```':'')}
+function uf2Md(b){const v=dv(b),n=b.length>>9;let lo=Infinity,hi=0,fam=0,bytes=0;for(let i=0;i<n;i++){const o=i*512;if(v.getUint32(o,true)!==0x0A324655)continue;const a=v.getUint32(o+12,true),sz=v.getUint32(o+16,true);lo=Math.min(lo,a);hi=Math.max(hi,a+sz);bytes+=sz;if(v.getUint32(o+8,true)&0x2000)fam=v.getUint32(o+28,true)}
+  return KV({Blocks:n,'Payload bytes':bytes,'Address range':bytes?h8(lo)+' to '+h8(hi-1):'','Family ID':fam?h8(fam):''})}
+/* Executables */
+function peMd(b){const v=dv(b),pe=v.getUint32(0x3c,true);if(ascii(b,pe,4)!=='PE\0\0')throw new Error('no PE header');
+  const mach=v.getUint16(pe+4,true),ns=Math.min(v.getUint16(pe+6,true),96),ts=v.getUint32(pe+8,true),osz=v.getUint16(pe+20,true),ch=v.getUint16(pe+22,true),o=pe+24,p32=v.getUint16(o,true)===0x10b;
+  const entry=v.getUint32(o+16,true),sub=v.getUint16(o+68,true),nrva=v.getUint32(o+(p32?92:108),true),dd=o+(p32?96:112),so=o+osz;
+  const MACH={0x14c:'x86',0x8664:'x64',0x1c0:'ARM',0xaa64:'ARM64',0x1c4:'ARM Thumb-2',0x200:'IA-64',0x5064:'RISC-V 64'},SUB={1:'Native',2:'Windows GUI',3:'Windows console',9:'Windows CE',10:'EFI application',11:'EFI boot driver',12:'EFI runtime driver'};
+  const secs=[];for(let i=0;i<ns;i++){const p=so+i*40;secs.push([cstr(b.subarray(p,p+8),0),h8(v.getUint32(p+12,true)),v.getUint32(p+8,true),v.getUint32(p+16,true),h8(v.getUint32(p+20,true))])}
+  const rva=r=>{for(let i=0;i<ns;i++){const p=so+i*40,va=v.getUint32(p+12,true),vs=Math.max(v.getUint32(p+8,true),v.getUint32(p+16,true));if(r>=va&&r<va+vs)return r-va+v.getUint32(p+20,true)}return -1};
+  const imp=[];if(nrva>1){const ir=v.getUint32(dd+8,true);if(ir){let p=rva(ir);for(;p>0&&p+20<=b.length&&imp.length<300;p+=20){const nm=v.getUint32(p+12,true);if(!nm)break;const q=rva(nm);if(q>0)imp.push(cstr(b,q))}}}
+  const clr=nrva>14&&v.getUint32(dd+14*8,true)>0;
+  return KV({Format:p32?'PE32':'PE32+',Machine:MACH[mach]||h8(mach),Type:ch&0x2000?'DLL':ch&2?'Executable':'Object',Subsystem:SUB[sub]||sub,'.NET (CLR) assembly':clr?'yes':'no','Entry point RVA':h8(entry),Compiled:ts?new Date(ts*1000).toISOString():'','Sections':ns})+'\n\n### Sections\n\n'+MT(['Name','RVA','Virtual size','Raw size','Raw offset'],secs)+'\n\n### Imported DLLs\n\n'+(imp.length?imp.map(x=>'- '+x).join('\n'):'*(none)*')}
+function elfMd(b){const c=b[4]===2,le=b[5]===1,v=dv(b),u16=p=>v.getUint16(p,le),u32=p=>v.getUint32(p,le),u64=p=>Number(v.getBigUint64(p,le)),ptr=p=>c?u64(p):u32(p);
+  const type=u16(16),mach=u16(18),entry=ptr(24),shoff=c?u64(40):u32(32),she=u16(c?58:46),shn=Math.min(u16(c?60:48),200),shs=u16(c?62:50);
+  const TY={1:'Relocatable object',2:'Executable',3:'Shared object / PIE',4:'Core dump'},MA={3:'x86',0x3e:'x86-64',0x28:'ARM',0xb7:'AArch64',8:'MIPS',0xf3:'RISC-V',0x14:'PowerPC',0x15:'PowerPC64',0x53:'AVR',0x5e:'Xtensa'};
+  const sec=i=>{const p=shoff+i*she;return {name:u32(p),type:u32(p+4),off:ptr(p+(c?24:16)),size:c?u64(p+32):u32(p+20),link:u32(p+(c?40:24)),addr:ptr(p+(c?16:12))}};
+  const rows=[];let strOff=0;if(shoff&&shn){strOff=sec(shs).off;for(let i=0;i<shn;i++){const s=sec(i);rows.push([cstr(b,strOff+s.name),s.type,h8(s.addr),s.size])}}
+  const need=[];let soname='';if(shoff)for(let i=0;i<shn;i++){const s=sec(i);if(s.type===6){const ds=sec(s.link).off,es=c?16:8;for(let p=s.off;p<s.off+s.size&&p+es<=b.length;p+=es){const t=c?u64(p):u32(p),val=c?u64(p+8):u32(p+4);if(t===0)break;if(t===1)need.push(cstr(b,ds+val));if(t===14)soname=cstr(b,ds+val)}}}
+  return KV({Class:c?'64-bit':'32-bit',Endian:le?'little':'big',Type:TY[type]||type,Machine:MA[mach]||h8(mach),'Entry point':h8(entry),'Section count':shn,Soname:soname})+'\n\n### Needed libraries\n\n'+(need.length?need.map(x=>'- '+x).join('\n'):'*(none)*')+'\n\n### Sections\n\n'+MT(['Name','Type','Address','Size'],rows)}
+function machoMd(b){const be=b[0]===0xca,v=dv(b);
+  if(be){const n=v.getUint32(4),rows=[];for(let i=0;i<n;i++){const p=8+i*20;rows.push([h8(v.getUint32(p)),h8(v.getUint32(p+8)),v.getUint32(p+12)])}return 'Universal (fat) binary\n\n'+MT(['CPU type','Offset','Size'],rows)}
+  const is64=b[0]===0xcf,CPU={7:'x86',0x1000007:'x86-64',12:'ARM',0x100000c:'ARM64'},FT={1:'Object',2:'Executable',6:'Dynamic library',8:'Bundle',10:'dSYM'},LC={0x1:'SEGMENT',0x19:'SEGMENT_64',0xc:'LOAD_DYLIB',0xd:'ID_DYLIB',0x1b:'UUID',0x2:'SYMTAB',0x80000018:'LOAD_WEAK_DYLIB',0x8000001f:'REEXPORT_DYLIB',0x1c:'RPATH',0x32:'BUILD_VERSION'};
+  const cpu=v.getUint32(4,true),ft=v.getUint32(12,true),nc=v.getUint32(16,true);let p=is64?32:28;const rows=[];
+  for(let i=0;i<nc&&i<300;i++){const cmd=v.getUint32(p,true),sz=v.getUint32(p+4,true);let d='';if(cmd===1||cmd===0x19)d=cstr(b,p+8);else if(cmd===0xc||cmd===0xd||cmd===0x80000018||cmd===0x8000001f||cmd===0x1c)d=cstr(b,p+v.getUint32(p+8,true));rows.push([LC[cmd]||h8(cmd),d]);p+=sz}
+  return KV({Bits:is64?'64':'32',CPU:CPU[cpu]||h8(cpu),Type:FT[ft]||ft,'Load commands':nc})+'\n\n'+MT(['Command','Detail'],rows)}
+function wasmMd(b){let p=8;const sec=[],imp=[],exp=[];const leb=()=>{let r=0,s=0,x;do{x=b[p++];r+=(x&127)*2**s;s+=7}while(x&128);return r},str=()=>{const n=leb(),s=dec(b.subarray(p,p+n));p+=n;return s};
+  const NM={0:'custom',1:'type',2:'import',3:'function',4:'table',5:'memory',6:'global',7:'export',8:'start',9:'element',10:'code',11:'data',12:'datacount'},K=['func','table','memory','global','tag'];
+  while(p<b.length){const id=b[p++],sz=leb(),end=p+sz;let note='';
+    try{if(id===2){const n=leb();for(let i=0;i<n;i++){const m=str(),nm=str(),k=b[p++];imp.push([m,nm,K[k]||k]);if(k===0)leb();else if(k===1){p++;const fl=leb();leb();if(fl&1)leb()}else if(k===2){const fl=leb();leb();if(fl&1)leb()}else if(k===3)p+=2}}
+      else if(id===7){const n=leb();for(let i=0;i<n;i++){const nm=str(),k=b[p++];leb();exp.push([nm,K[k]||k])}}else if(id===0)note=str()}catch(_){}
+    sec.push([NM[id]||id,sz,note]);p=end}
+  return '### Sections\n\n'+MT(['Section','Bytes','Name'],sec)+'\n\n### Imports ('+imp.length+')\n\n'+MT(['Module','Name','Kind'],imp.slice(0,500))+'\n\n### Exports ('+exp.length+')\n\n'+MT(['Name','Kind'],exp.slice(0,500))}
+function classMd(b){const v=dv(b);let p=10;const n=v.getUint16(8),cp=[null];
+  for(let i=1;i<n;i++){const t=b[p++];
+    if(t===1){const l=v.getUint16(p);cp[i]=['u',dec(b.subarray(p+2,p+2+l))];p+=2+l}
+    else if(t===7||t===8||t===16||t===19||t===20){cp[i]=['r',v.getUint16(p)];p+=2}
+    else if(t===9||t===10||t===11||t===12||t===17||t===18||t===3||t===4){cp[i]=['x'];p+=4}
+    else if(t===5||t===6){cp[i]=['x'];cp[++i]=null;p+=8}else if(t===15)p+=3;else throw new Error('bad constant tag '+t)}
+  const U=i=>cp[i]&&cp[i][0]==='u'?cp[i][1]:cp[i]&&cp[i][0]==='r'?U(cp[i][1]):'';
+  const acc=v.getUint16(p),thisC=U(v.getUint16(p+2)),sup=U(v.getUint16(p+4));p+=6;const ni=v.getUint16(p);p+=2;const ifs=[];for(let i=0;i<ni;i++)ifs.push(U(v.getUint16(p+i*2)));p+=ni*2;
+  const AF=[[1,'public'],[2,'private'],[4,'protected'],[8,'static'],[0x10,'final'],[0x400,'abstract']],fl=x=>AF.filter(a=>x&a[0]).map(a=>a[1]).join(' ');
+  const members=()=>{const k=v.getUint16(p);p+=2;const out=[];for(let i=0;i<k;i++){const fa=v.getUint16(p),nm=U(v.getUint16(p+2)),ds=U(v.getUint16(p+4)),ac=v.getUint16(p+6);p+=8;for(let j=0;j<ac;j++)p+=6+v.getUint32(p+2);out.push([fl(fa),nm,ds])}return out};
+  const fields=members(),methods=members();
+  return KV({Class:thisC.replace(/\//g,'.'),Extends:sup.replace(/\//g,'.'),Implements:ifs.map(x=>x.replace(/\//g,'.')).join(', '),Kind:acc&0x200?'interface':acc&0x4000?'enum':'class','Access':fl(acc),'Java version':(v.getUint16(6)-44)+' (class file '+v.getUint16(6)+'.'+v.getUint16(4)+')'})+'\n\n### Fields ('+fields.length+')\n\n'+MT(['Modifiers','Name','Descriptor'],fields)+'\n\n### Methods ('+methods.length+')\n\n'+MT(['Modifiers','Name','Descriptor'],methods)}
+function dexMd(b){const v=dv(b),strN=v.getUint32(56,true),strO=v.getUint32(60,true),typeO=v.getUint32(68,true),clsN=v.getUint32(96,true),clsO=v.getUint32(100,true);
+  const str=i=>{let p=v.getUint32(strO+i*4,true),x;do{x=b[p++]}while(x&128);let e=p;while(b[e])e++;return dec(b.subarray(p,e))},cls=[];
+  for(let i=0;i<clsN&&i<3000;i++)cls.push(str(v.getUint32(typeO+v.getUint32(clsO+i*32,true)*4,true)));
+  return KV({'DEX version':ascii(b,4,3),'File size':v.getUint32(32,true),Strings:strN,Types:v.getUint32(64,true),Prototypes:v.getUint32(72,true),Fields:v.getUint32(80,true),Methods:v.getUint32(88,true),Classes:clsN})+'\n\n### Classes\n\n'+cls.map(x=>'- '+x.replace(/^L|;$/g,'').replace(/\//g,'.')).join('\n')}
+const PYV=[[62211,'2.7'],[3351,'3.5'],[3379,'3.6'],[3394,'3.7'],[3413,'3.8'],[3425,'3.9'],[3439,'3.10'],[3495,'3.11'],[3531,'3.12'],[3571,'3.13']];
+function pycMd(b){const v=dv(b),mg=v.getUint16(0,true),ver=(PYV.filter(x=>x[0]<=mg).pop()||[0,'?'])[1],fl=v.getUint32(4,true);
+  return KV({'Python version (approx)':ver,'Magic number':mg,Flags:h8(fl),Timestamp:!(fl&1)&&b.length>12?new Date(v.getUint32(8,true)*1000).toISOString():'','Source size':!(fl&1)&&b.length>12?v.getUint32(12,true):''})+'\n\nCompiled bytecode cannot be shown as source here.'}
+/* Android binary XML */
+function axml(b){const v=dv(b);if(v.getUint16(0,true)!==3)throw new Error('not Android binary XML');let p=8;const strs=[],nsu={};let out='',ind=0;
+  const S=i=>i===0xffffffff||i>=strs.length?'':strs[i];
+  while(p+8<=b.length){const t=v.getUint16(p,true),hs=v.getUint16(p+2,true),sz=v.getUint32(p+4,true);
+    if(t===1){const n=v.getUint32(p+8,true),fl=v.getUint32(p+16,true),so=v.getUint32(p+20,true),u8=fl&256;
+      for(let i=0;i<n;i++){let q=p+so+v.getUint32(p+28+i*4,true);
+        if(u8){let l=b[q++];if(l&128)q++;let bl=b[q++];if(bl&128){bl=((bl&127)<<8)|b[q++]}strs.push(dec(b.subarray(q,q+bl)))}
+        else{let l=v.getUint16(q,true);q+=2;if(l&0x8000){l=((l&0x7fff)<<16)|v.getUint16(q,true);q+=2}strs.push(new TextDecoder('utf-16le').decode(b.subarray(q,q+l*2)))}}}
+    else if(t===0x100){nsu[S(v.getUint32(p+20,true))]=S(v.getUint32(p+16,true))}
+    else if(t===0x102){const ns=v.getUint32(p+16,true),nm=S(v.getUint32(p+20,true)),ac=v.getUint16(p+28,true),as=v.getUint16(p+24,true);let a=p+16+as,attrs=[];
+      for(let i=0;i<ac;i++){const q=a+i*20,an=v.getUint32(q,true),nn=S(v.getUint32(q+4,true)),raw=v.getUint32(q+8,true),dt=b[q+15],d=v.getUint32(q+16,true);
+        let val=dt===3?S(raw):dt===1?'@0x'+d.toString(16):dt===0x10?String(d|0):dt===0x11?'0x'+d.toString(16):dt===0x12?String(d!==0):dt===4?String(v.getFloat32(q+16,true)):'0x'+d.toString(16);
+        const pre=an!==0xffffffff?(nsu[S(an)]||''):'';attrs.push((pre?pre+':':'')+nn+'="'+val.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')+'"')}
+      const nsDecl=ind===0?Object.entries(nsu).map(([u,pf])=>'xmlns:'+pf+'="'+u+'"'):[];
+      out+='  '.repeat(ind)+'<'+nm+(nsDecl.length||attrs.length?' '+nsDecl.concat(attrs).join(' '):'')+'>\n';ind++}
+    else if(t===0x103){ind--;const nm=S(v.getUint32(p+20,true));out+='  '.repeat(ind)+'</'+nm+'>\n'}
+    p+=sz||hs}
+  return out}
+/* ZIP extras (APK manifest, signing cert, thumbnails, metadata, 3MF) */
+async function zipExtras(f,pane){const L=f.zip,gt=en=>en.get?en.get():zipGet(f.bytes,en),find=re=>L.find(x=>re.test(x.name)),box=document.createElement('div');pane.appendChild(box);const o=[];
+  try{
+    const am=find(/^AndroidManifest\.xml$/);if(am){const u=await gt(am),x=u[0]===3&&u[1]===0?axml(u):dec(u),g=re=>(re.exec(x)||[])[1]||'',perms=[...x.matchAll(/<uses-permission[^>]*android:name="([^"]+)"/g)].map(m=>m[1]);
+      o.push('### AndroidManifest.xml\n\n'+KV({Package:g(/package="([^"]+)"/),'Version name':g(/android:versionName="([^"]*)"/),'Version code':g(/android:versionCode="([^"]*)"/),'Min SDK':g(/android:minSdkVersion="([^"]*)"/),'Target SDK':g(/android:targetSdkVersion="([^"]*)"/),Permissions:perms.length})+'\n\n```\n'+x.slice(0,60000)+'\n```')}
+    const sg=find(/^META-INF\/[^/]+\.(RSA|DSA|EC)$/i);if(sg){const cs=p7certs(await gt(sg));for(const c of cs.slice(0,2))o.push('### Signing certificate\n\n'+await x509(c))}
+    const dx=L.filter(x=>/^classes\d*\.dex$/.test(x.name));if(dx.length){const rows=[];for(const d of dx){const u=await gt(d),v=dv(u);rows.push([d.name,v.getUint32(96,true),v.getUint32(88,true),v.getUint32(80,true)])}o.push('### DEX files\n\n'+MT(['File','Classes','Methods','Fields'],rows))}
+    for(const en of L.filter(x=>/^(META-INF\/MANIFEST\.MF|manifest\.json|fabric\.mod\.json|META-INF\/mods\.toml|mcmod\.info|plugin\.yml|pack\.mcmeta|[^/]+\.nuspec|[^/]+\.dist-info\/METADATA)$/.test(x.name)).slice(0,3))o.push('### '+en.name+'\n\n```\n'+dec(await gt(en)).slice(0,4000)+'\n```');
+  }catch(e){o.push('Could not read some details: '+e.message)}
+  if(o.length)box.innerHTML='<div class="md">'+mdRender(o.join('\n\n'))+'</div>';
+  try{const th=find(/(^|\/)(mergedimage\.png|thumbnail\.(?:png|jpe?g)|preview\.(?:png|jpe?g)|cover\.(?:png|jpe?g))$/i);
+    if(th){const u=await gt(th),im=document.createElement('img');im.className='pv';im.src=URL.createObjectURL(new Blob([u],{type:/png$/i.test(th.name)?'image/png':'image/jpeg'}));pane.appendChild(im)}
+    const m3=find(/(^|\/)3dmodel\.model$/i);if(m3){const d=new DOMParser().parseFromString(dec(await gt(m3)),'application/xml'),V=[],I=[];
+      for(const me of d.getElementsByTagName('mesh')){const base=V.length/3;for(const x of me.getElementsByTagName('vertex'))V.push(+x.getAttribute('x'),+x.getAttribute('y'),+x.getAttribute('z'));for(const t of me.getElementsByTagName('triangle'))I.push(base+ +t.getAttribute('v1'),base+ +t.getAttribute('v2'),base+ +t.getAttribute('v3'))}
+      meshView(Float32Array.from(V),Uint32Array.from(I))(pane)}}catch(_){}
+}
+/* SQLite */
+function sqlite(b){const v=dv(b),ps=v.getUint16(16)===1?65536:v.getUint16(16),U=ps-b[20],X=U-35,Mn=Math.floor((U-12)*32/255)-23;
+  const vint=(d,p)=>{let r=0;for(let i=0;i<8;i++){const x=d[p+i];r=r*128+(x&127);if(!(x&128))return [r,p+i+1]}return [r*256+d[p+8],p+9]};
+  const payload=(p,P)=>{const K=Mn+((P-Mn)%(U-4)),loc=P<=X?P:(K<=X?K:Mn);if(loc===P)return b.subarray(p,p+P);
+    const out=new Uint8Array(P);out.set(b.subarray(p,p+loc));let got=loc,ov=v.getUint32(p+loc);while(ov&&got<P){const base=(ov-1)*ps,n=Math.min(U-4,P-got);out.set(b.subarray(base+4,base+4+n),got);got+=n;ov=v.getUint32(base)}return out};
+  const record=d=>{const [hl,p0]=vint(d,0),types=[];let p=p0;while(p<hl){const [t,q]=vint(d,p);types.push(t);p=q}let q=hl;const dd=dv(d),out=[];
+    for(const t of types){let x;if(t===0)x=null;else if(t<=6){const n=[0,1,2,3,4,6,8][t];x=0;for(let i=0;i<n;i++)x=x*256+d[q+i];if(d[q]&128)x-=2**(8*n);q+=n}else if(t===7){x=dd.getFloat64(q);q+=8}else if(t===8)x=0;else if(t===9)x=1;else if(t>=12){const n=t%2?(t-13)/2:(t-12)/2;x=t%2?dec(d.subarray(q,q+n)):'<blob '+n+' bytes>';q+=n}out.push(x)}return out};
+  const walk=(pg,cb)=>{const base=(pg-1)*ps,h=pg===1?100:0,t=b[base+h],nc=v.getUint16(base+h+3),hs=t===5?12:8;
+    if(t===13){for(let i=0;i<nc;i++){const p=base+v.getUint16(base+h+hs+i*2),[P,p1]=vint(b,p),[rid,p2]=vint(b,p1);if(cb(rid,record(payload(p2,P))))return true}}
+    else if(t===5){for(let i=0;i<nc;i++){if(walk(v.getUint32(base+v.getUint16(base+h+hs+i*2)),cb))return true}return walk(v.getUint32(base+h+8),cb)}return false};
+  const count=pg=>{const base=(pg-1)*ps,h=pg===1?100:0,t=b[base+h],nc=v.getUint16(base+h+3);if(t===13)return nc;if(t!==5)return 0;let n=count(v.getUint32(base+h+8));for(let i=0;i<nc;i++)n+=count(v.getUint32(base+v.getUint16(base+h+12+i*2)));return n};
+  const schema=[];walk(1,(rid,r)=>{schema.push(r)});
+  const tables=schema.filter(r=>r[0]==='table'&&r[3]>0&&r[1]&&!/^sqlite_/.test(r[1]));
+  const cols=sql=>{const m=/\(([\s\S]*)\)/.exec(sql||'');if(!m)return [];const parts=[];let d=0,cur='';for(const ch of m[1]){if(ch==='(')d++;if(ch===')')d--;if(ch===','&&d===0){parts.push(cur);cur=''}else cur+=ch}parts.push(cur);
+    return parts.map(s=>s.trim()).filter(s=>s&&!/^(PRIMARY|UNIQUE|FOREIGN|CHECK|CONSTRAINT)\b/i.test(s)).map(s=>s.split(/\s+/)[0].replace(/^["`\[]|["`\]]$/g,''))};
+  const rows=(t,lim)=>{const out=[],isPk=/PRIMARY KEY/i.test(((/\(\s*([^,]*)/.exec(t[4]||'')||[])[1])||'');walk(t[3],(rid,r)=>{if(isPk&&r[0]===null)r[0]=rid;out.push(r);return out.length>=lim});return out};
+  return {schema,tables,cols,rows,count,ps,enc:v.getUint32(56),pages:b.length/ps}}
+function sqliteDraw(db){return pane=>{if(!db.tables.length)return;const sel=document.createElement('select');sel.setAttribute('aria-label','Table');sel.style.cssText='padding:6px;margin:8px 0;background:var(--code);color:var(--ink);border:1px solid var(--line);border-radius:6px';
+  db.tables.forEach((t,i)=>{const o=document.createElement('option');o.value=i;o.textContent=t[1];sel.appendChild(o)});const box=document.createElement('div');box.className='wrap';pane.appendChild(sel);pane.appendChild(box);
+  const show=()=>{const t=db.tables[+sel.value];try{const c=db.cols(t[4]),r=db.rows(t,100),n=db.count(t[3]),w=Math.max(c.length,...r.map(x=>x.length));
+    const head=Array.from({length:w},(_,i)=>c[i]||'col'+(i+1));box.innerHTML='<p class="note">'+n+' rows, showing the first '+r.length+'</p><table><tr>'+head.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr>'+r.map(x=>'<tr>'+head.map((_,i)=>'<td>'+esc(x[i]==null?'NULL':String(x[i]).slice(0,200))+'</td>').join('')+'</tr>').join('')+'</table>'}catch(e){box.innerHTML='<p class="note err">Could not read this table: '+esc(e.message)+'</p>'}};
+  sel.onchange=show;show()}}
+/* ML / data formats */
+function stMd(b){const n=Number(dv(b).getBigUint64(0,true)),h=JSON.parse(dec(b.subarray(8,8+n))),meta=h.__metadata__;delete h.__metadata__;let tot=0;
+  const rows=Object.entries(h).map(([k,t])=>{const c=t.shape.reduce((a,x)=>a*x,1);tot+=c;return [k,t.dtype,t.shape.join(' x ')||'scalar',c]});
+  return `${rows.length} tensors, ${tot.toLocaleString()} parameters\n\n`+(meta?KV(meta)+'\n\n':'')+MT(['Name','Dtype','Shape','Elements'],rows.slice(0,2000))}
+function npyMd(b){const v=dv(b),mj=b[6],hl=mj===1?v.getUint16(8,true):v.getUint32(8,true),hs=mj===1?10:12,h=dec(b.subarray(hs,hs+hl)),d=/'descr':\s*'([^']+)'/.exec(h)[1],
+  sh=/'shape':\s*\(([^)]*)\)/.exec(h)[1].split(',').map(x=>x.trim()).filter(Boolean).map(Number),fo=/'fortran_order':\s*True/.test(h),le=d[0]!=='>',k=d[1],sz=+d.slice(2)||1,st=hs+hl,n=sh.reduce((a,x)=>a*x,1),vals=[];
+  if('fiub'.includes(k))for(let i=0;i<Math.min(n,64);i++){const p=st+i*sz;let x;
+    if(k==='f')x=sz===4?v.getFloat32(p,le):sz===8?v.getFloat64(p,le):NaN;else if(k==='i')x=sz===1?v.getInt8(p):sz===2?v.getInt16(p,le):sz===4?v.getInt32(p,le):Number(v.getBigInt64(p,le));else x=sz===1?v.getUint8(p):sz===2?v.getUint16(p,le):sz===4?v.getUint32(p,le):Number(v.getBigUint64(p,le));
+    vals.push(Number.isInteger(x)?x:+x.toPrecision(7))}
+  return KV({'NumPy format':mj+'.'+b[7],Dtype:d,Shape:'('+sh.join(', ')+')',Elements:n,'Fortran order':fo?'yes':'no'})+(vals.length?'\n\n**First values**\n\n```\n'+vals.join(', ')+'\n```':'')}
+function tfrecMd(b){const v=dv(b);let p=0,n=0;const first=[];while(p+12<=b.length){const len=Number(v.getBigUint64(p,true));if(p+12+len+4>b.length)break;if(first.length<10)first.push(len);n++;p+=12+len+4}return KV({Records:n,'First record sizes':first.join(', '),'Trailing bytes':b.length-p})+'\n\nTFRecord payloads are serialized tf.Example protobufs.'}
+function avroMd(b){let p=4;const lng=()=>{let r=0,s=0,x;do{x=b[p++];r+=(x&127)*2**s;s+=7}while(x&128);return r%2?-(r+1)/2:r/2},meta={};
+  for(;;){let n=lng();if(!n)break;if(n<0){n=-n;lng()}for(let i=0;i<n;i++){const kl=lng(),k=dec(b.subarray(p,p+kl));p+=kl;const vl=lng();meta[k]=dec(b.subarray(p,p+vl));p+=vl}}
+  let sc=meta['avro.schema']||'';try{sc=JSON.stringify(JSON.parse(sc),null,2)}catch(_){}return KV({Codec:meta['avro.codec']||'null'})+'\n\n**Schema**\n\n```\n'+sc+'\n```'}
+function msgpack(b){let p=0;const v=dv(b),str=n=>{const s=dec(b.subarray(p,p+n));p+=n;return s},bin=n=>{p+=n;return '<bin '+n+'>'},arr=n=>{const a=[];for(let i=0;i<n;i++)a.push(rd());return a},map=n=>{const o={};for(let i=0;i<n;i++){const k=rd();o[typeof k==='object'?JSON.stringify(k):k]=rd()}return o};
+  const u=(n,f)=>{const x=f.call(v,p);p+=n;return x};
+  const rd=()=>{const t=b[p++];if(t<0x80)return t;if(t>=0xe0)return t-256;if(t>=0xa0&&t<=0xbf)return str(t&31);if(t>=0x90&&t<=0x9f)return arr(t&15);if(t>=0x80&&t<=0x8f)return map(t&15);
+    switch(t){case 0xc0:return null;case 0xc2:return false;case 0xc3:return true;case 0xc4:return bin(b[p++]);case 0xc5:return bin(u(2,v.getUint16));case 0xc6:return bin(u(4,v.getUint32));
+      case 0xca:return u(4,v.getFloat32);case 0xcb:return u(8,v.getFloat64);case 0xcc:return b[p++];case 0xcd:return u(2,v.getUint16);case 0xce:return u(4,v.getUint32);case 0xcf:return Number(u(8,v.getBigUint64));
+      case 0xd0:return u(1,v.getInt8);case 0xd1:return u(2,v.getInt16);case 0xd2:return u(4,v.getInt32);case 0xd3:return Number(u(8,v.getBigInt64));
+      case 0xd4:case 0xd5:case 0xd6:case 0xd7:case 0xd8:p+=1+(1<<(t-0xd4));return '<ext>';
+      case 0xd9:return str(b[p++]);case 0xda:return str(u(2,v.getUint16));case 0xdb:return str(u(4,v.getUint32));case 0xdc:return arr(u(2,v.getUint16));case 0xdd:return arr(u(4,v.getUint32));case 0xde:return map(u(2,v.getUint16));case 0xdf:return map(u(4,v.getUint32))}
+    throw new Error('unsupported MessagePack type 0x'+t.toString(16))};
+  const out=[];while(p<b.length&&out.length<50)out.push(rd());return out.length===1?out[0]:out}
+function cbor(b){let p=0;const v=dv(b),arg=ai=>{if(ai<24)return ai;if(ai===24)return b[p++];if(ai===25){const x=v.getUint16(p);p+=2;return x}if(ai===26){const x=v.getUint32(p);p+=4;return x}if(ai===27){const x=Number(v.getBigUint64(p));p+=8;return x}throw new Error('indefinite-length CBOR not supported')};
+  const rd=()=>{const ib=b[p++],mt=ib>>5,ai=ib&31;
+    if(mt===7){if(ai===20)return false;if(ai===21)return true;if(ai===22||ai===23)return null;
+      if(ai===25){const h=v.getUint16(p);p+=2;const e=(h>>10)&31,fr=h&1023;return (h>>15?-1:1)*(e===0?fr*2**-24:e===31?(fr?NaN:Infinity):(1+fr/1024)*2**(e-15))}
+      if(ai===26){const x=v.getFloat32(p);p+=4;return x}if(ai===27){const x=v.getFloat64(p);p+=8;return x}return null}
+    const n=arg(ai);
+    if(mt===0)return n;if(mt===1)return -1-n;if(mt===2){p+=n;return '<bytes '+n+'>'}if(mt===3){const s=dec(b.subarray(p,p+n));p+=n;return s}
+    if(mt===4){const a=[];for(let i=0;i<n;i++)a.push(rd());return a}
+    if(mt===5){const o={};for(let i=0;i<n;i++){const k=rd();o[typeof k==='object'?JSON.stringify(k):k]=rd()}return o}
+    return {tag:n,value:rd()}};
+  const out=[];while(p<b.length&&out.length<50)out.push(rd());return out.length===1?out[0]:out}
+function bson(b){let p=0;const v=dv(b),cs=()=>{let e=p;while(b[e])e++;const s=dec(b.subarray(p,e));p=e+1;return s},hexs=n=>{const s=[...b.subarray(p,p+n)].map(hex2).join('');p+=n;return s};
+  const doc=arr=>{const end=p+v.getInt32(p,true);p+=4;const o=arr?[]:{};
+    while(p<end-1){const t=b[p++],k=cs();let x;
+      switch(t){case 1:x=v.getFloat64(p,true);p+=8;break;case 2:case 13:case 14:{const n=v.getInt32(p,true);p+=4;x=dec(b.subarray(p,p+n-1));p+=n;break}case 3:x=doc(false);break;case 4:x=doc(true);break;
+        case 5:{const n=v.getInt32(p,true);x='<binary '+n+' bytes>';p+=5+n;break}case 7:x='ObjectId('+hexs(12)+')';break;case 8:x=b[p++]!==0;break;case 9:x=new Date(Number(v.getBigInt64(p,true))).toISOString();p+=8;break;case 10:x=null;break;
+        case 11:x='/'+cs()+'/'+cs();break;case 16:x=v.getInt32(p,true);p+=4;break;case 17:x='<timestamp>';p+=8;break;case 18:x=Number(v.getBigInt64(p,true));p+=8;break;case 19:x='<decimal128>';p+=16;break;case 127:case 255:x=t===127?'MaxKey':'MinKey';break;
+        default:throw new Error('unsupported BSON type '+t)}
+      if(arr)o.push(x);else o[k]=x}
+    p=end;return o};
+  const out=[];while(p+5<=b.length&&out.length<200)out.push(doc(false));return out.length===1?out[0]:out}
+function pbParse(b,s,e,depth){const out=[];let p=s;
+  while(p<e){let t=0,sh=0,x;do{if(p>=e)return null;x=b[p++];t+=(x&127)*2**sh;sh+=7}while(x&128);const fn=Math.floor(t/8),w=t%8;if(!fn||fn>536870911)return null;let val;
+    if(w===0){let r=0,s2=0;do{if(p>=e)return null;x=b[p++];r+=(x&127)*2**s2;s2+=7}while(x&128);val=r}
+    else if(w===1){if(p+8>e)return null;val='fixed64 0x'+[...b.subarray(p,p+8)].reverse().map(hex2).join('');p+=8}
+    else if(w===5){if(p+4>e)return null;val='fixed32 0x'+[...b.subarray(p,p+4)].reverse().map(hex2).join('');p+=4}
+    else if(w===2){let l=0,s3=0;do{if(p>=e)return null;x=b[p++];l+=(x&127)*2**s3;s3+=7}while(x&128);if(p+l>e)return null;const q=p;p+=l;let txt=null;try{txt=new TextDecoder('utf-8',{fatal:true}).decode(b.subarray(q,q+l))}catch(_){}
+      if(txt!==null&&/^[\x20-\x7e\t\r\n\u00a0-\uffff]*$/.test(txt)&&l>0)val=JSON.stringify(txt.slice(0,160));
+      else{const nest=l>1&&depth<5?pbParse(b,q,q+l,depth+1):null;val=nest&&nest.length?nest:'bytes['+l+'] '+[...b.subarray(q,q+Math.min(l,16))].map(hex2).join(' ')}}
+    else return null;out.push([fn,val])}
+  return out}
+function pbText(a,ind,lines){for(const [f,v] of a){if(lines.length>3000)return;if(Array.isArray(v)){lines.push(ind+f+' {');pbText(v,ind+'  ',lines);lines.push(ind+'}')}else lines.push(ind+f+': '+v)}}
+function pbMd(b){const r=pbParse(b,0,b.length,0);if(!r)throw new Error('not valid protobuf wire format');const l=[];pbText(r,'',l);return 'Field numbers are shown without schema names.\n\n```\n'+l.join('\n')+'\n```'}
+const jsonMd=o=>'```\n'+JSON.stringify(o,null,2).slice(0,200000)+'\n```';
+async function rpgmvpImg(b){const hdr=[0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a,0,0,0,0x0d,0x49,0x48,0x44,0x52],d=b.slice(16),key=[];for(let i=0;i<16;i++){key.push(hex2(b[16+i]^hdr[i]));d[i]=hdr[i]}return {d,key:key.join('')}}
+const KN=[['PAR1',0,'Apache Parquet','Columnar table; the schema lives in the footer and is not decoded here.'],['ORC',0,'Apache ORC','Columnar table format.'],['ARROW1',0,'Apache Arrow file',''],['FEA1',0,'Feather v1 table',''],['\x89HDF\r\n\x1a\n',0,'HDF5 file','Hierarchical data container (.h5, .hdf5, .keras weights). Browse with h5py or HDFView.'],['CDF',0,'NetCDF file',''],
+ ['\x03\xd9\xa2\x9a',0,'KeePass database (KDBX)','Encrypted password database.'],['FLR\0',0,'Java Flight Recorder file',''],['TFL3',4,'TensorFlow Lite model','FlatBuffer model; strings tab lists operator and tensor names.'],['\xc1\x83\x2a\x9e',0,'Unreal Engine package (.uasset / .umap)','Open with Unreal Editor or UAssetAPI.'],
+ ['<roblox!',0,'Roblox binary place/model',''],['gimp xcf',0,'GIMP XCF image',''],['VTF\0',0,'Valve Texture Format (VTF)',''],['IDST',0,'Source Engine model (MDL)',''],['\x34\x12\xaa\x55',0,'Valve package (VPK)',''],['TES4',0,'Bethesda plugin (ESP/ESM)',''],['BSA\0',0,'Bethesda archive (BSA)',''],['BTDX',0,'Bethesda archive (BA2)',''],
+ ['RPF7',0,'GTA V archive (RPF7)',''],['FSB5',0,'FMOD sound bank (FSB5)',''],['BKHD',0,'Wwise sound bank (BNK)',''],['WBND',0,'XACT wave bank (XWB)',''],['SDBK',0,'XACT sound bank (XSB)',''],['\x1bLua',0,'Compiled Lua bytecode',''],['QFI\xfb',0,'QCOW2 disk image',''],['conectix',0,'VHD disk image',''],['KDMV',0,'VMDK disk image',''],['<<< Oracle VM',0,'VirtualBox VDI image',''],
+ ['\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1',0,'Microsoft OLE compound file','Legacy Office (.doc, .xls, .ppt), .msi or .msg. Try the Strings tab with UTF-16 for readable text.'],['ITSF',0,'Compiled HTML Help (CHM)',''],['MSCF',0,'Windows Cabinet (CAB)',''],['Rar!',0,'RAR archive','Not decompressible in the browser.'],['7z\xbc\xaf\x27\x1c',0,'7-Zip archive','Not decompressible in the browser.'],
+ ['\xfd7zXZ\0',0,'XZ compressed data',''],['BZh',0,'BZip2 compressed data',''],['\x28\xb5\x2f\xfd',0,'Zstandard compressed data',''],['\x04\x22\x4d\x18',0,'LZ4 compressed data',''],['\xed\xab\xee\xdb',0,'RPM package',''],['hsqs',0,'SquashFS image',''],['CD001',0x8001,'ISO 9660 disc image',''],['MDMP',0,'Windows minidump',''],
+ ['Kaydara FBX Binary',0,'Autodesk FBX (binary)','Open in Blender or Autodesk FBX Review.'],['BLENDER',0,'Blender file','Open in Blender.'],['\xe0\xa5',4,'Aseprite sprite',''],['MATLAB 5.0 MAT-file',0,'MATLAB MAT-file',''],['\x93NUMPY',0,'NumPy array',''],['\x00\x00\x01\xba',0,'MPEG program stream',''],['\x1a\x45\xdf\xa3',0,'Matroska / WebM container','']];
+function knownInfo(b){for(const [s,o,l,n] of KN)if(M(b,s,o))return {l,md:KV({Format:l,Note:n,'Magic bytes':[...b.subarray(0,16)].map(hex2).join(' ')})};return null}
+const isExt=(e,s)=>s.split(' ').includes(e);
+AN.push(
+ [(f,e,b)=>b[0]===0x1f&&b[1]===0x8b,async(f,b,e)=>gzHandle(f,b,e)],
+ [(f,e,b)=>!f.isText&&(M(b,'ustar',257)||e==='tar')&&b.length>=512,async f=>{setContainer(f,'TAR archive',tarEnts(f.bytes))}],
+ [(f,e,b)=>M(b,'!<arch>\n'),async f=>{setContainer(f,/\.deb$/i.test(f.name)?'Debian package (ar archive)':'ar archive / static library',arEnts(f.bytes))}],
+ [(f,e,b)=>M(b,'PACK')&&!f.isText,async f=>{setContainer(f,'Quake PAK archive',pakEnts(f.bytes))}],
+ [(f,e,b)=>!f.isText&&(M(b,'IWAD')||M(b,'PWAD')||M(b,'WAD2')||M(b,'WAD3')),async f=>{setContainer(f,'WAD archive',wadEnts(f.bytes))}],
+ [(f,e,b)=>M(b,'BIGF')||M(b,'BIG4'),async f=>{setContainer(f,'EA BIG archive',bigEnts(f.bytes))}],
+ [(f,e,b)=>M(b,'RGSSAD\0'),async f=>{setContainer(f,'RPG Maker encrypted archive',rgssList(f.bytes))}],
+ [(f,e,b)=>M(b,'VBSP')&&b.length>1032,async(f,b)=>({l:'Source Engine map (BSP)',md:bspMd(b)})],
+ [(f,e,b)=>b.length>=512&&dv(b).getUint32(0,true)===0x0A324655,async(f,b)=>({l:'UF2 firmware',md:uf2Md(b)})],
+ [(f,e,b)=>b[0]===0x7f&&M(b,'ELF',1),async(f,b)=>({l:'ELF binary',md:elfMd(b)})],
+ [(f,e,b)=>M(b,'MZ')&&b.length>0x80&&dv(b).getUint32(0x3c,true)<b.length-4&&M(b,'PE\0\0',dv(b).getUint32(0x3c,true)),async(f,b)=>({l:'Windows PE executable',md:peMd(b)})],
+ [(f,e,b)=>{const m=dv(b).getUint32(0,true);return m===0xfeedface||m===0xfeedfacf||(b[0]===0xca&&b[1]===0xfe&&b[2]===0xba&&b[3]===0xbe&&dv(b).getUint32(4)<20&&e!=='class')},async(f,b)=>({l:'Mach-O binary',md:machoMd(b)})],
+ [(f,e,b)=>b[0]===0&&M(b,'asm',1)&&b[4]===1,async(f,b)=>({l:'WebAssembly module',md:wasmMd(b)})],
+ [(f,e,b)=>b[0]===0xca&&b[1]===0xfe&&b[2]===0xba&&b[3]===0xbe,async(f,b)=>({l:'Java class file',md:classMd(b)})],
+ [(f,e,b)=>M(b,'dex\n'),async(f,b)=>({l:'Android DEX',md:dexMd(b)})],
+ [(f,e,b)=>isExt(e,'pyc pyo')&&b.length>8&&b[2]===13&&b[3]===10,async(f,b)=>({l:'Python bytecode',md:pycMd(b)})],
+ [(f,e,b)=>M(b,'SQLite format 3\0'),async(f,b)=>{const db=sqlite(b),sc=db.schema.map(r=>[r[0],r[1],r[2]!==r[1]?r[2]:'',r[3]]);
+   return {l:'SQLite database',md:KV({'Page size':db.ps,Pages:db.pages,Tables:db.tables.length,'Schema objects':db.schema.length})+'\n\n### Schema\n\n'+MT(['Type','Name','Table','Root page'],sc)+'\n\n```\n'+db.schema.filter(r=>r[4]).map(r=>r[4]).join(';\n\n').slice(0,60000)+'\n```\n\n### Table data',draw:sqliteDraw(db)}}],
+ [(f,e,b)=>isExt(e,'safetensors')&&b.length>16&&b[8]===0x7b,async(f,b)=>({l:'Safetensors model',md:stMd(b)})],
+ [(f,e,b)=>b[0]===0x93&&M(b,'NUMPY',1),async(f,b)=>({l:'NumPy array',md:npyMd(b)})],
+ [(f,e,b)=>isExt(e,'tfrecord tfrecords')&&!f.isText,async(f,b)=>({l:'TFRecord',md:tfrecMd(b)})],
+ [(f,e,b)=>M(b,'Obj\x01'),async(f,b)=>({l:'Apache Avro container',md:avroMd(b)})],
+ [(f,e,b)=>isExt(e,'msgpack')&&!f.isText,async(f,b)=>({l:'MessagePack data',md:jsonMd(msgpack(b))})],
+ [(f,e,b)=>isExt(e,'cbor')&&!f.isText,async(f,b)=>({l:'CBOR data',md:jsonMd(cbor(b))})],
+ [(f,e,b)=>isExt(e,'bson')&&!f.isText,async(f,b)=>({l:'BSON data',md:jsonMd(bson(b))})],
+ [(f,e,b)=>isExt(e,'pb onnx')&&!f.isText,async(f,b,e)=>({l:e==='onnx'?'ONNX model (protobuf)':'Protocol Buffers data',md:pbMd(b)})],
+ [(f,e,b)=>isExt(e,'nbt litematic schem schematic structure')&&b[0]===10&&b[1]===0,async(f,b)=>({l:'NBT data',md:nbtMd(nbt(b))})],
+ [(f,e,b)=>isExt(e,'mca mcr')&&b.length>8192,async(f,b)=>({l:'Minecraft region file',md:await mcaMd(b)})],
+ [(f,e,b)=>isExt(e,'rpgmvp')&&b.length>32&&b[0]===0x52,async(f,b)=>{const r=await rpgmvpImg(b);return {l:'RPG Maker MV encrypted PNG',md:KV({'Encryption key (recovered)':r.key}),draw:pane=>{const im=document.createElement('img');im.className='pv';im.src=URL.createObjectURL(new Blob([r.d],{type:'image/png'}));pane.appendChild(im)}}}],
+ [(f,e,b)=>!f.isText&&b.length>8&&knownInfo(b)!==null,async(f,b)=>knownInfo(b)]
+);
+
+/* ================= PART C: audio, fonts, images, 3D ================= */
+async function waveform(f,pane){const c=document.createElement('canvas');c.width=900;c.height=120;c.style.cssText='width:100%;height:120px;background:var(--code);border-radius:6px;margin-top:8px';pane.appendChild(c);
+  const note=document.createElement('p');note.className='note';pane.appendChild(note);
+  if(f.bytes.length>60e6){note.textContent='Waveform skipped for very large files.';return}
+  try{const AC=window.AudioContext||window.webkitAudioContext,ctx=new AC(),buf=await ctx.decodeAudioData(f.bytes.slice().buffer);if(ctx.close)ctx.close();
+    const d=buf.getChannelData(0),g=c.getContext('2d'),step=Math.max(1,Math.ceil(d.length/c.width));g.fillStyle=getComputedStyle(document.body).color;
+    for(let x=0;x<c.width;x++){let mn=1,mx=-1;for(let i=0;i<step;i++){const s=d[x*step+i];if(s<mn)mn=s;if(s>mx)mx=s}if(mx>=mn)g.fillRect(x,(1+mn)*60,1,Math.max(1,(mx-mn)*60))}
+    note.textContent=`${buf.duration.toFixed(2)} s, ${buf.numberOfChannels} channel(s), ${buf.sampleRate} Hz`}
+  catch(e){note.textContent='Waveform unavailable: this browser cannot decode this audio.'}}
+function midiMd(b){const v=dv(b),fmt=v.getUint16(8),nt=v.getUint16(10),div=v.getUint16(12);let p=14,tempo=500000,maxTick=0,notes=0;const tracks=[];
+  for(let t=0;t<nt&&p+8<=b.length;t++){if(ascii(b,p,4)!=='MTrk')break;const len=v.getUint32(p+4);let q=p+8,run=0,tick=0,name='',nn=0;const end=Math.min(q+len,b.length);
+    while(q<end){let d=0,x;do{x=b[q++];d=d*128+(x&127)}while(x&128&&q<end);tick+=d;let st=b[q];
+      if(st===0xff){const ty=b[q+1];let l=0,y,r=q+2;do{y=b[r++];l=l*128+(y&127)}while(y&128);if(ty===3)name=dec(b.subarray(r,r+l));if(ty===0x51&&l===3&&t<=1)tempo=(b[r]<<16)|(b[r+1]<<8)|b[r+2];q=r+l}
+      else if(st===0xf0||st===0xf7){let l=0,y,r=q+1;do{y=b[r++];l=l*128+(y&127)}while(y&128);q=r+l}
+      else{if(st&0x80){run=st;q++}else st=run;const hi=st>>4;if(hi===9&&b[q+1]>0)nn++;q+=(hi===0xc||hi===0xd)?1:2}}
+    maxTick=Math.max(maxTick,tick);notes+=nn;tracks.push([t+1,name,nn]);p+=8+len}
+  const secs=div&0x8000?0:maxTick/div*tempo/1e6;
+  return KV({Format:fmt,Tracks:nt,'Ticks per quarter':div&0x8000?'SMPTE':div,'Tempo (BPM)':Math.round(6e7/tempo),Notes:notes,'Duration (approx)':secs?secs.toFixed(1)+' s':''})+'\n\n'+MT(['Track','Name','Notes'],tracks)}
+function modMd(b,e){let t='',kind,rows={};const v=dv(b);
+  if(M(b,'Extended Module: ')){kind='FastTracker 2 module (XM)';t=ascii(b,17,20);rows={Tracker:ascii(b,38,20).trim(),'Song length':v.getUint16(64,true),Channels:v.getUint16(68,true),Patterns:v.getUint16(70,true),Instruments:v.getUint16(72,true)}}
+  else if(M(b,'IMPM')){kind='Impulse Tracker module (IT)';t=ascii(b,4,26);rows={Orders:v.getUint16(32,true),Instruments:v.getUint16(34,true),Samples:v.getUint16(36,true),Patterns:v.getUint16(38,true)}}
+  else if(M(b,'SCRM',44)){kind='ScreamTracker 3 module (S3M)';t=ascii(b,0,28);rows={Orders:v.getUint16(32,true),Instruments:v.getUint16(34,true),Patterns:v.getUint16(36,true)}}
+  else{kind='ProTracker module (MOD)';t=ascii(b,0,20);const names=[];for(let i=0;i<31;i++){const n=ascii(b,20+i*30,22).replace(/\0.*$/s,'').trim();if(n)names.push(n)}rows={Signature:ascii(b,1080,4),'Sample names':names.join(' / ')}}
+  return {l:kind,md:KV(Object.assign({Title:t.replace(/\0.*$/s,'').trim()},rows))+'\n\nTracker modules cannot be played in this viewer.'}}
+function sf2Md(b){const v=dv(b);let p=12;const info={},pre=[];
+  while(p+12<=b.length){const t=ascii(b,p,4),l=v.getUint32(p+4,true),ty=ascii(b,p+8,4);
+    if(t==='LIST'&&ty==='INFO'){let q=p+12;while(q<p+8+l){const ct=ascii(b,q,4),cl=v.getUint32(q+4,true);if(ct==='INAM')info.Name=cstr(b,q+8);if(ct==='isng')info.Engine=cstr(b,q+8);if(ct==='ICOP')info.Copyright=cstr(b,q+8);q+=8+cl+(cl&1)}}
+    if(t==='LIST'&&ty==='pdta'){let q=p+12;while(q<p+8+l){const ct=ascii(b,q,4),cl=v.getUint32(q+4,true);if(ct==='phdr'){for(let r=q+8;r+38<=q+8+cl;r+=38)pre.push([cstr(b.subarray(r,r+20),0),v.getUint16(r+22,true),v.getUint16(r+20,true)])}q+=8+cl+(cl&1)}}
+    p+=8+l+(l&1)}
+  pre.pop();return KV(info)+'\n\n### Presets ('+pre.length+')\n\n'+MT(['Name','Bank','Preset'],pre.slice(0,500))}
+/* fonts */
+function sfntInfo(b){const v=dv(b);let o=0;if(M(b,'ttcf'))o=v.getUint32(12);const n=v.getUint16(o+4),T={};
+  for(let i=0;i<n;i++){const p=o+12+i*16;T[ascii(b,p,4)]=[v.getUint32(p+8),v.getUint32(p+12)]}
+  const out={};if(T.name){const nm=T.name[0],cnt=v.getUint16(nm+2),so=v.getUint16(nm+4);
+    for(let i=0;i<cnt;i++){const r=nm+6+i*12,pid=v.getUint16(r),id=v.getUint16(r+6),len=v.getUint16(r+8),off=v.getUint16(r+10);if(![0,1,2,4,5,6,13].includes(id)||out[id])continue;
+      const raw=b.subarray(nm+so+off,nm+so+off+len);out[id]=(pid===3||pid===0)?new TextDecoder('utf-16be').decode(raw):dec(raw)}}
+  return KV({Family:out[1],Style:out[2],'Full name':out[4],Version:out[5],'PostScript name':out[6],Copyright:out[0],License:out[13],Glyphs:T.maxp?v.getUint16(T.maxp[0]+4):'',Outlines:M(b,'OTTO')?'CFF (OpenType)':'TrueType',Tables:Object.keys(T).join(' ')})}
+function fontMd(b){if(M(b,'wOFF')||M(b,'wOF2')){const v=dv(b);return KV({Container:ascii(b,0,4)==='wOFF'?'WOFF':'WOFF2','Outlines':ascii(b,4,4)==='OTTO'?'CFF (OpenType)':'TrueType',Tables:v.getUint16(12),'Font version':v.getUint16(20)+'.'+v.getUint16(22),'Uncompressed size':v.getUint32(16)})}return sfntInfo(b)}
+function fontDraw(f){return async pane=>{const fam='mvf'+Date.now();
+  try{const ff=new FontFace(fam,f.bytes.slice());await ff.load();document.fonts.add(ff)}catch(e){pane.insertAdjacentHTML('beforeend','<p class="note err">The browser could not load this font: '+esc(e.message||e)+'</p>');return}
+  pane.insertAdjacentHTML('beforeend',`<div style="font-family:'${fam}',sans-serif"><p style="font-size:44px;margin:10px 0">Aa Bb Cc 0123456789</p><p style="font-size:28px;margin:6px 0">The quick brown fox jumps over the lazy dog</p><p style="font-size:18px;margin:6px 0">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>abcdefghijklmnopqrstuvwxyz<br>0123456789 !@#$%^&amp;*()_+-=[]{};:,.&lt;&gt;/?</p><p style="font-size:14px;margin:6px 0">Pack my box with five dozen liquor jugs. 1234567890</p></div>`)}}
+/* images */
+const rgbaCanvas=(w,h,d)=>{const c=document.createElement('canvas');c.width=w;c.height=h;c.className='pg';c.getContext('2d').putImageData(new ImageData(d,w,h),0,0);return c};
+const imgDraw=im=>pane=>{if(im&&im.d)pane.appendChild(rgbaCanvas(im.w,im.h,im.d))};
+function tgaDecode(b){const idl=b[0],cmt=b[1],ty=b[2],cms=b[7],cml=b[5]|(b[6]<<8),cmo=b[3]|(b[4]<<8),w=b[12]|(b[13]<<8),h=b[14]|(b[15]<<8),bpp=b[16],desc=b[17];
+  if(!w||!h||![1,2,3,9,10,11].includes(ty))throw new Error('unsupported TGA type');
+  let p=18+idl,pal=null;const pb=(cms+7)>>3;if(cmt){pal=b.subarray(p,p+cml*pb);p+=cml*pb}
+  const bp=(bpp+7)>>3,rle=ty>8,gray=ty===3||ty===11,mapped=ty===1||ty===9,out=new Uint8ClampedArray(w*h*4),total=w*h,flip=!(desc&0x20);
+  const col=(d,o,depth,g)=>{if(g)return depth===16?[d[o],d[o],d[o],d[o+1]]:[d[o],d[o],d[o],255];if(depth===15||depth===16){const v=d[o]|(d[o+1]<<8);return [(v>>10&31)*255/31,(v>>5&31)*255/31,(v&31)*255/31,255]}if(depth===24)return [d[o+2],d[o+1],d[o],255];return [d[o+2],d[o+1],d[o],d[o+3]]};
+  const pix=(d,o)=>{if(mapped){if(!pal)throw new Error('missing palette');let i=d[o];if(bp===2)i|=d[o+1]<<8;return col(pal,(i-cmo)*pb,cms,false)}return col(d,o,bpp,gray)};
+  const put=(i,c)=>{const y=Math.floor(i/w),x=i%w,yy=flip?h-1-y:y,q=(yy*w+x)*4;out[q]=c[0];out[q+1]=c[1];out[q+2]=c[2];out[q+3]=c[3]};
+  if(!rle){for(let i=0;i<total;i++)put(i,pix(b,p+i*bp))}
+  else{let i=0;while(i<total&&p<b.length){const hd=b[p++],cnt=(hd&127)+1;if(hd&128){const c=pix(b,p);p+=bp;for(let k=0;k<cnt&&i<total;k++)put(i++,c)}else{for(let k=0;k<cnt&&i<total;k++){put(i++,pix(b,p));p+=bp}}}}
+  return {w,h,d:out}}
+function dxt(b,o,w,h,kind){const out=new Uint8ClampedArray(w*h*4),bw=(w+3)>>2,bh=(h+3)>>2,bs=kind===1?8:16,c565=c=>[(c>>11&31)*255/31|0,(c>>5&63)*255/63|0,(c&31)*255/31|0];
+  for(let by=0;by<bh;by++)for(let bx=0;bx<bw;bx++){const p=o+(by*bw+bx)*bs,cp=kind===1?p:p+8,c0=b[cp]|(b[cp+1]<<8),c1=b[cp+2]|(b[cp+3]<<8),r0=c565(c0),r1=c565(c1),pal=[r0,r1],four=c0>c1||kind!==1;
+    if(four)pal.push(r0.map((x,i)=>(2*x+r1[i])/3|0),r0.map((x,i)=>(x+2*r1[i])/3|0));else pal.push(r0.map((x,i)=>(x+r1[i])/2|0),[0,0,0]);
+    const bits=(b[cp+4]|(b[cp+5]<<8)|(b[cp+6]<<16)|(b[cp+7]<<24))>>>0;let al=null;
+    if(kind===3){al=[];for(let i=0;i<16;i++)al.push(((b[p+(i>>1)]>>((i&1)*4))&15)*17)}
+    else if(kind===5){const a0=b[p],a1=b[p+1],tab=[a0,a1];if(a0>a1)for(let i=1;i<7;i++)tab.push(((7-i)*a0+i*a1)/7|0);else{for(let i=1;i<5;i++)tab.push(((5-i)*a0+i*a1)/5|0);tab.push(0,255)}
+      const lo=b[p+2]|(b[p+3]<<8)|(b[p+4]<<16),hi=b[p+5]|(b[p+6]<<8)|(b[p+7]<<16);al=[];for(let i=0;i<16;i++)al.push(tab[i<8?(lo>>(3*i))&7:(hi>>(3*(i-8)))&7])}
+    for(let i=0;i<16;i++){const x=bx*4+(i&3),y=by*4+(i>>2);if(x>=w||y>=h)continue;const ix=(bits>>>(2*i))&3,c=pal[ix],q=(y*w+x)*4;out[q]=c[0];out[q+1]=c[1];out[q+2]=c[2];out[q+3]=al?al[i]:(!four&&ix===3?0:255)}}
+  return out}
+function ddsDecode(b){const v=dv(b),h=v.getUint32(12,true),w=v.getUint32(16,true),pf=v.getUint32(80,true),fcc=ascii(b,84,4),bits=v.getUint32(88,true);let o=128,fmt=fcc,masks=[v.getUint32(92,true),v.getUint32(96,true),v.getUint32(100,true),v.getUint32(104,true)],bp=bits>>3;
+  if(fcc==='DX10'){const dx=v.getUint32(128,true);o=148;fmt={71:'DXT1',72:'DXT1',74:'DXT3',75:'DXT3',77:'DXT5',78:'DXT5',28:'RGBA',29:'RGBA',87:'BGRA',91:'BGRA'}[dx]||'DXGI '+dx}
+  if(fmt==='DXT1')return {w,h,d:dxt(b,o,w,h,1),fmt};if(fmt==='DXT3'||fmt==='DXT2')return {w,h,d:dxt(b,o,w,h,3),fmt};if(fmt==='DXT5'||fmt==='DXT4')return {w,h,d:dxt(b,o,w,h,5),fmt};
+  if(fmt==='RGBA'){masks=[0xff,0xff00,0xff0000,0xff000000];bp=4}else if(fmt==='BGRA'){masks=[0xff0000,0xff00,0xff,0xff000000];bp=4}else if(!(pf&0x40))return {w,h,d:null,fmt};
+  const sh=masks.map(m=>m?31-Math.clz32((m&-m)>>>0):0),mx=masks.map((m,i)=>m?(m>>>sh[i]):0),out=new Uint8ClampedArray(w*h*4);
+  for(let i=0;i<w*h;i++){let val=0;for(let k=0;k<bp;k++)val+=b[o+i*bp+k]*2**(8*k);val=val>>>0;for(let c=0;c<4;c++)out[i*4+c]=mx[c]?((val&masks[c])>>>sh[c])*255/mx[c]:(c===3?255:0)}
+  return {w,h,d:out,fmt:'RGB(A) '+bits+'-bit'}}
+function hdrDecode(b){let p=0;const line=()=>{const e=b.indexOf(10,p);const s=dec(b.subarray(p,e));p=e+1;return s};let l;while((l=line())!==''){if(p>=b.length)throw new Error('bad HDR')}
+  const res=/([-+])Y\s+(\d+)\s+([-+])X\s+(\d+)/.exec(line());if(!res)throw new Error('bad HDR resolution line');const h=+res[2],w=+res[4],out=new Uint8ClampedArray(w*h*4),sc=new Uint8Array(w*4);
+  for(let y=0;y<h;y++){
+    if(w>=8&&w<32768&&b[p]===2&&b[p+1]===2&&!(b[p+2]&128)){p+=4;for(let c=0;c<4;c++){let x=0;while(x<w){if(p>=b.length)throw new Error('truncated HDR');let n=b[p++];if(n>128){n-=128;const v=b[p++];while(n--)sc[(x++)*4+c]=v}else{while(n--)sc[(x++)*4+c]=b[p++]}}}}
+    else for(let x=0;x<w;x++){sc[x*4]=b[p++];sc[x*4+1]=b[p++];sc[x*4+2]=b[p++];sc[x*4+3]=b[p++]}
+    for(let x=0;x<w;x++){const e=sc[x*4+3],f=e?2**(e-136):0;for(let c=0;c<3;c++)out[(y*w+x)*4+c]=Math.pow(Math.min(1,sc[x*4+c]*f),1/2.2)*255;out[(y*w+x)*4+3]=255}}
+  return {w,h,d:out}}
+function psdLayers(b,s){const v=dv(b),n=Math.min(Math.abs(v.getInt16(s)),500);let p=s+2;const out=[];
+  for(let i=0;i<n;i++){const t=v.getInt32(p),l=v.getInt32(p+4),bo=v.getInt32(p+8),r=v.getInt32(p+12);p+=16;const nc=v.getUint16(p);p+=2+nc*6+4;const key=ascii(b,p,4),op=b[p+4],fl=b[p+6];p+=8;
+    const el=v.getUint32(p);p+=4;const es=p,ml=v.getUint32(p);let q=p+4+ml;const bl=v.getUint32(q);q+=4+bl;const name=dec(b.subarray(q+1,q+1+b[q]));p=es+el;
+    out.push([name,(r-l)+' x '+(bo-t),Math.round(op/2.55)+'%',fl&2?'hidden':'visible',key])}
+  return out}
+function psdDecode(b){const v=dv(b);if(v.getUint16(4)!==1)throw new Error('PSB (large document) is not supported');
+  const ch=v.getUint16(12),h=v.getUint32(14),w=v.getUint32(18),dep=v.getUint16(22),mode=v.getUint16(24);let p=26;p+=4+v.getUint32(p);p+=4+v.getUint32(p);
+  const lmLen=v.getUint32(p);let layers=[];try{layers=psdLayers(b,p+8)}catch(_){}p+=4+lmLen;
+  const comp=v.getUint16(p);p+=2;const bps=dep>>3,out=new Uint8ClampedArray(w*h*4);
+  if(![1,3].includes(mode)||(dep!==8&&dep!==16))return {w,h,d:null,layers,mode,dep,ch};
+  const plane=c=>{const pl=new Uint8Array(w*h);
+    if(comp===0){const base=p+c*w*h*bps;for(let i=0;i<w*h;i++)pl[i]=b[base+i*bps]}
+    else{let q=p+ch*h*2;const tbl=p;for(let cc=0;cc<ch;cc++)for(let r=0;r<h;r++){const len=v.getUint16(tbl+(cc*h+r)*2);
+      if(cc===c){const row=new Uint8Array(w*bps);let i=q,o=0;while(i<q+len&&o<w*bps){const n=b[i++];if(n<128){for(let k=0;k<=n;k++)row[o++]=b[i++]}else if(n>128){const val=b[i++];for(let k=0;k<257-n;k++)row[o++]=val}}for(let x=0;x<w;x++)pl[r*w+x]=row[x*bps]}
+      q+=len}}
+    return pl};
+  const R=plane(0),G=mode===3?plane(1):R,B=mode===3?plane(2):R,A=ch>(mode===3?3:1)?plane(mode===3?3:1):null;
+  for(let i=0;i<w*h;i++){out[i*4]=R[i];out[i*4+1]=G[i];out[i*4+2]=B[i];out[i*4+3]=A?A[i]:255}
+  return {w,h,d:out,layers,mode,dep,ch}}
+function icnsImgs(b){const v=dv(b),o=[];let p=8;while(p+8<=b.length){const ty=ascii(b,p,4),len=v.getUint32(p+4);if(len<8)break;const d=b.subarray(p+8,p+len);
+  if(d[0]===0x89&&d[1]===0x50)o.push([ty,'image/png',d]);else if(d[0]===0xff&&d[1]===0xd8)o.push([ty,'image/jpeg',d]);else o.push([ty,'',null]);p+=len}return o}
+const ktxMd=b=>{const v=dv(b);return KV({Format:'KTX 1.1','OpenGL internal format':h8(v.getUint32(28,true)),Width:v.getUint32(36,true),Height:v.getUint32(40,true),Depth:v.getUint32(44,true),'Array elements':v.getUint32(48,true),Faces:v.getUint32(52,true),'Mip levels':v.getUint32(56,true)})+'\n\nGPU-compressed texture; pixels are not decoded here.'};
+const ktx2Md=b=>{const v=dv(b);return KV({Format:'KTX 2.0','Vulkan format':v.getUint32(12,true),Width:v.getUint32(20,true),Height:v.getUint32(24,true),Layers:v.getUint32(32,true),Faces:v.getUint32(36,true),'Mip levels':v.getUint32(40,true),Supercompression:['none','BasisLZ','Zstandard','ZLIB'][v.getUint32(44,true)]||v.getUint32(44,true)})+'\n\nGPU-compressed texture; pixels are not decoded here.'};
+const pvrMd=b=>{const v=dv(b);return KV({Format:'PVR v3',Width:v.getUint32(28,true),Height:v.getUint32(24,true),'Mip levels':v.getUint32(44,true),Faces:v.getUint32(40,true),'Pixel format':h8(v.getUint32(8,true))})+'\n\nPowerVR texture; pixels are not decoded here.'};
+const astcMd=b=>KV({Format:'ASTC','Block size':b[4]+' x '+b[5]+' x '+b[6],Width:b[7]|(b[8]<<8)|(b[9]<<16),Height:b[10]|(b[11]<<8)|(b[12]<<16)})+'\n\nGPU-compressed texture; pixels are not decoded here.';
+function exrMd(b){const v=dv(b);let p=8;const rows=[];while(p<b.length&&b[p]){const nm=cstr(b,p);p+=nm.length+1;const ty=cstr(b,p);p+=ty.length+1;const sz=v.getUint32(p,true);p+=4;let val='';
+    if(ty==='box2i'&&sz===16)val=[0,4,8,12].map(o=>v.getInt32(p+o,true)).join(', ');else if(ty==='compression')val=['none','RLE','ZIPS','ZIP','PIZ','PXR24','B44','B44A','DWAA','DWAB'][b[p]]||b[p];else if(ty==='chlist'){const n=[];let q=p;while(b[q]){const c=cstr(b,q);n.push(c);q+=c.length+1+16}val=n.join(' ')}else if(ty==='string')val=dec(b.subarray(p,p+sz));
+    rows.push([nm,ty,val]);p+=sz}
+  return MT(['Attribute','Type','Value'],rows)+'\n\nOpenEXR pixels are not decoded here.'}
+function tiffMd(b){const le=b[0]===0x49,v=dv(b),u16=p=>v.getUint16(p,le),u32=p=>v.getUint32(p,le),ifd=u32(4),n=u16(ifd),T={};
+  for(let i=0;i<n;i++){const p=ifd+2+i*12,tag=u16(p),ty=u16(p+2);T[tag]=ty===3?u16(p+8):u32(p+8)}
+  const C={1:'none',5:'LZW',7:'JPEG',8:'Deflate',32773:'PackBits'},PH={0:'WhiteIsZero',1:'BlackIsZero',2:'RGB',3:'Palette',5:'CMYK'};
+  return KV({Format:'TIFF ('+(le?'little':'big')+'-endian)',Width:T[256],Height:T[257],'Bits per sample':T[258],Compression:C[T[259]]||T[259],'Photometric':PH[T[262]]||T[262],'Samples per pixel':T[277]})}
+/* 3D */
+function objMesh(t){const V=[],I=[];for(const l of t.split('\n')){if(l.startsWith('v ')){const p=l.trim().split(/\s+/);V.push(+p[1],+p[2],+p[3])}
+  else if(l.startsWith('f ')){const p=l.trim().split(/\s+/).slice(1).map(x=>{const i=parseInt(x);return i<0?V.length/3+i:i-1});for(let k=1;k<p.length-1;k++)I.push(p[0],p[k],p[k+1])}}
+  return {V:Float32Array.from(V),I:Uint32Array.from(I)}}
+function stlMesh(b){const v=dv(b),n=b.length>=84?v.getUint32(80,true):0,V=[],I=[];
+  if(n>0&&b.length===84+50*n){for(let i=0;i<n;i++){const o=84+i*50+12;for(let k=0;k<3;k++){V.push(v.getFloat32(o+k*12,true),v.getFloat32(o+k*12+4,true),v.getFloat32(o+k*12+8,true));I.push(V.length/3-1)}}}
+  else for(const m of dec(b).matchAll(/vertex\s+(\S+)\s+(\S+)\s+(\S+)/g)){V.push(+m[1],+m[2],+m[3]);I.push(V.length/3-1)}
+  return {V:Float32Array.from(V),I:Uint32Array.from(I)}}
+function gltfMesh(j,bin){const bufs=(j.buffers||[]).map((bf,i)=>bf.uri&&bf.uri.startsWith('data:')?b64(bf.uri.split(',')[1]):(!bf.uri&&i===0&&bin?bin:null)),SZ={5120:1,5121:1,5122:2,5123:2,5125:4,5126:4},NC={SCALAR:1,VEC2:2,VEC3:3,VEC4:4};
+  const acc=i=>{const a=j.accessors[i],bv=j.bufferViews[a.bufferView],bu=bufs[bv.buffer];if(!bu)throw new Error('external .bin buffer is not available');
+    const nc=NC[a.type],sz=SZ[a.componentType],stride=bv.byteStride||nc*sz,base=(bv.byteOffset||0)+(a.byteOffset||0),d=dv(bu),out=new Float64Array(a.count*nc);
+    for(let e=0;e<a.count;e++)for(let c=0;c<nc;c++){const p=base+e*stride+c*sz,ct=a.componentType;out[e*nc+c]=ct===5126?d.getFloat32(p,true):ct===5125?d.getUint32(p,true):ct===5123?d.getUint16(p,true):ct===5122?d.getInt16(p,true):ct===5120?d.getInt8(p):d.getUint8(p)}return out};
+  const V=[],I=[];for(const m of j.meshes||[])for(const pr of m.primitives||[]){if(pr.mode!==undefined&&pr.mode!==4)continue;if(pr.extensions&&pr.extensions.KHR_draco_mesh_compression)throw new Error('Draco-compressed meshes are not supported');
+    const pos=acc(pr.attributes.POSITION),base=V.length/3;for(const x of pos)V.push(x);const idx=pr.indices!==undefined?acc(pr.indices):Array.from({length:pos.length/3},(_,i)=>i);for(const x of idx)I.push(base+x)}
+  return {V:Float32Array.from(V),I:Uint32Array.from(I)}}
+function glbMesh(b){const v=dv(b);let p=12,json=null,bin=null;while(p+8<=b.length){const l=v.getUint32(p,true),t=v.getUint32(p+4,true);if(t===0x4E4F534A)json=JSON.parse(dec(b.subarray(p+8,p+8+l)));else if(t===0x004E4942)bin=b.subarray(p+8,p+8+l);p+=8+l}return gltfMesh(json,bin)}
+function meshView(V,I){return pane=>{const n=Math.floor(I.length/3);if(!n){pane.insertAdjacentHTML('beforeend','<p class="note err">No triangles found.</p>');return}
+  const mn=[1e30,1e30,1e30],mx=[-1e30,-1e30,-1e30];for(let i=0;i<V.length;i+=3)for(let k=0;k<3;k++){const x=V[i+k];if(x<mn[k])mn[k]=x;if(x>mx[k])mx[k]=x}
+  const c=[0,1,2].map(k=>(mn[k]+mx[k])/2),sz=Math.max(mx[0]-mn[0],mx[1]-mn[1],mx[2]-mn[2])||1,nv=V.length/3;
+  const cv=document.createElement('canvas');cv.width=800;cv.height=560;cv.style.cssText='width:100%;touch-action:none;background:var(--code);border-radius:6px;cursor:grab';
+  const info=document.createElement('p');info.className='note';info.textContent=`${nv.toLocaleString()} vertices, ${n.toLocaleString()} triangles (size ${sz.toPrecision(4)}). Drag to rotate. Node transforms and materials are ignored.`;
+  let yaw=0.6,pitch=0.5,zoom=1,wire=false,drag=false,lx=0,ly=0;const g=cv.getContext('2d');
+  const render=fast=>{const W=cv.width,H=cv.height,s=Math.min(W,H)/sz*0.8*zoom,cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch),st=Math.max(1,Math.ceil(n/(fast?12000:60000))),list=[],P=new Float32Array(V.length);
+    for(let i=0;i<V.length;i+=3){const x=V[i]-c[0],y=V[i+1]-c[1],z=V[i+2]-c[2],x1=x*cy+z*sy,z1=-x*sy+z*cy;P[i]=x1;P[i+1]=y*cp-z1*sp;P[i+2]=y*sp+z1*cp}
+    for(let t=0;t<n;t+=st){const a=I[t*3],b2=I[t*3+1],d=I[t*3+2];if(a>=nv||b2>=nv||d>=nv)continue;const A=a*3,B=b2*3,D=d*3,ux=P[B]-P[A],uy=P[B+1]-P[A+1],uz=P[B+2]-P[A+2],wx=P[D]-P[A],wy=P[D+1]-P[A+1],wz=P[D+2]-P[A+2],nx=uy*wz-uz*wy,ny=uz*wx-ux*wz,nz=ux*wy-uy*wx;
+      list.push([(P[A+2]+P[B+2]+P[D+2])/3,A,B,D,Math.abs(nz)/(Math.hypot(nx,ny,nz)||1)])}
+    list.sort((p,q)=>p[0]-q[0]);g.clearRect(0,0,W,H);
+    for(const [,A,B,D,sh] of list){g.beginPath();g.moveTo(W/2+P[A]*s,H/2-P[A+1]*s);g.lineTo(W/2+P[B]*s,H/2-P[B+1]*s);g.lineTo(W/2+P[D]*s,H/2-P[D+1]*s);g.closePath();
+      if(wire){g.strokeStyle='#7c9cff';g.lineWidth=.6;g.stroke()}else{const k=Math.round(60+170*sh);g.fillStyle=`rgb(${k*0.78|0},${k*0.88|0},${k})`;g.fill()}}};
+  cv.onpointerdown=e=>{drag=true;lx=e.clientX;ly=e.clientY;cv.setPointerCapture(e.pointerId);cv.style.cursor='grabbing'};
+  cv.onpointermove=e=>{if(!drag)return;yaw+=(e.clientX-lx)*0.01;pitch=Math.max(-1.5,Math.min(1.5,pitch+(e.clientY-ly)*0.01));lx=e.clientX;ly=e.clientY;render(true)};
+  cv.onpointerup=()=>{drag=false;cv.style.cursor='grab';render(false)};
+  cv.onwheel=e=>{e.preventDefault();zoom*=Math.exp(-e.deltaY*0.001);render(false)};
+  const bar=document.createElement('div');bar.className='bar';const mkb=(t,fn)=>{const x=document.createElement('button');x.textContent=t;x.onclick=fn;bar.appendChild(x)};
+  mkb('Zoom in',()=>{zoom*=1.25;render(false)});mkb('Zoom out',()=>{zoom/=1.25;render(false)});mkb('Wireframe',()=>{wire=!wire;render(false)});mkb('Reset',()=>{yaw=0.6;pitch=0.5;zoom=1;render(false)});
+  pane.appendChild(info);pane.appendChild(bar);pane.appendChild(cv);render(false)}}
+const meshMd=m=>KV({Vertices:m.V.length/3,Triangles:Math.floor(m.I.length/3)});
+/* registry: media, fonts, images, 3D */
+const IMGKN=(f,e,b)=>!f.isText;
+AN.push(
+ [(f,e,b)=>M(b,'MThd'),async(f,b)=>({l:'MIDI file',md:midiMd(b)})],
+ [(f,e,b)=>M(b,'Extended Module: ')||M(b,'IMPM')||M(b,'SCRM',44)||(isExt(e,'mod')&&b.length>1084&&/^(M\.K\.|M!K!|[2-9]CHN|\d\dCH|FLT[48]|CD81|OCTA|OKTA)$/.test(ascii(b,1080,4))),async(f,b,e)=>modMd(b,e)],
+ [(f,e,b)=>M(b,'RIFF')&&M(b,'sfbk',8),async(f,b)=>({l:'SoundFont 2 bank',md:sf2Md(b)})],
+ [(f,e,b)=>!f.isText&&(isExt(e,'ttf otf ttc woff woff2')||M(b,'OTTO')||M(b,'wOFF')||M(b,'wOF2')||M(b,'ttcf')),async(f,b)=>({l:M(b,'wOFF')?'WOFF font':M(b,'wOF2')?'WOFF2 font':M(b,'OTTO')?'OpenType font':'TrueType font',md:fontMd(b),draw:fontDraw(f)})],
+ [(f,e,b)=>isExt(e,'tga targa')&&!f.isText&&b.length>18,async(f,b)=>{const im=tgaDecode(b);return {l:'Truevision TGA image',md:KV({Width:im.w,Height:im.h,'Bits per pixel':b[16],Type:b[2]}),draw:imgDraw(im)}}],
+ [(f,e,b)=>M(b,'DDS ')&&b.length>128,async(f,b)=>{const im=ddsDecode(b);return {l:'DirectDraw Surface (DDS)',md:KV({Width:im.w,Height:im.h,Format:im.fmt,'Mip levels':dv(b).getUint32(28,true)})+(im.d?'':'\n\nThis pixel format is not decoded here (BC4-BC7 and float formats).'),draw:imgDraw(im)}}],
+ [(f,e,b)=>M(b,'#?RADIANCE')||M(b,'#?RGBE'),async(f,b)=>{const im=hdrDecode(b);return {l:'Radiance HDR image',md:KV({Width:im.w,Height:im.h})+'\n\nShown tone-mapped with gamma 2.2.',draw:imgDraw(im)}}],
+ [(f,e,b)=>M(b,'8BPS'),async(f,b)=>{const im=psdDecode(b);return {l:'Photoshop document (PSD)',md:KV({Width:im.w,Height:im.h,'Colour mode':{1:'Grayscale',3:'RGB',4:'CMYK'}[im.mode]||im.mode,'Bit depth':im.dep,Channels:im.ch})+(im.d?'':'\n\nThis colour mode or bit depth is not decoded here.')+(im.layers.length?'\n\n### Layers\n\n'+MT(['Name','Size','Opacity','Visibility','Blend'],im.layers):''),draw:imgDraw(im)}}],
+ [(f,e,b)=>M(b,'icns'),async(f,b)=>{const L=icnsImgs(b);return {l:'Apple icon (ICNS)',md:MT(['Type','Content'],L.map(x=>[x[0],x[1]||'legacy format (not decoded)'])),draw:pane=>{for(const [t,m,d] of L){if(!d)continue;const im=document.createElement('img');im.className='pv';im.style.cssText='max-height:200px;margin:6px';im.title=t;im.src=URL.createObjectURL(new Blob([d],{type:m}));pane.appendChild(im)}}}}],
+ [(f,e,b)=>M(b,'\xabKTX 11'),async(f,b)=>({l:'KTX texture',md:ktxMd(b)})],
+ [(f,e,b)=>M(b,'\xabKTX 20'),async(f,b)=>({l:'KTX2 texture',md:ktx2Md(b)})],
+ [(f,e,b)=>M(b,'PVR\x03')||(isExt(e,'pvr')&&b.length>52),async(f,b)=>({l:'PVR texture',md:pvrMd(b)})],
+ [(f,e,b)=>b[0]===0x13&&b[1]===0xab&&b[2]===0xa1&&b[3]===0x5c,async(f,b)=>({l:'ASTC texture',md:astcMd(b)})],
+ [(f,e,b)=>b[0]===0x76&&b[1]===0x2f&&b[2]===0x31&&b[3]===0x01,async(f,b)=>({l:'OpenEXR image',md:exrMd(b)})],
+ [(f,e,b)=>isExt(e,'tif tiff')&&(M(b,'II*\0')||M(b,'MM\0*')),async(f,b)=>({l:'TIFF image',md:tiffMd(b),draw:pane=>{const im=document.createElement('img');im.className='pv';im.onerror=()=>im.remove();im.src=URL.createObjectURL(new Blob([f.bytes],{type:'image/tiff'}));pane.appendChild(im)}})],
+ [(f,e)=>TX(f,e,'obj'),async f=>{const m=objMesh(f.text);return {l:'Wavefront OBJ model',md:meshMd(m),draw:meshView(m.V,m.I)}}],
+ [(f,e,b)=>isExt(e,'stl'),async(f,b)=>{const m=stlMesh(b);return {l:'STL model',md:meshMd(m),draw:meshView(m.V,m.I)}}],
+ [(f,e,b)=>M(b,'glTF')&&!f.isText,async(f,b)=>{const m=glbMesh(b);return {l:'glTF binary (GLB)',md:meshMd(m),draw:meshView(m.V,m.I)}}],
+ [(f,e)=>TX(f,e,'gltf'),async f=>{const m=gltfMesh(JSON.parse(f.text),null);return {l:'glTF model',md:meshMd(m),draw:meshView(m.V,m.I)}}]
+);
+
+/* ---------- Hex ---------- */
+const PAGE=4096;
+function vHex(pane){
+  const f=cur,b=f.bytes;f.hexOff=Math.min(f.hexOff,Math.max(0,b.length-1));f.hexOff-=f.hexOff%16;
+  const st=bar(pane,[['◀ Prev',()=>{f.hexOff=Math.max(0,f.hexOff-PAGE);draw()}],['Next ▶',()=>{if(f.hexOff+PAGE<b.length)f.hexOff+=PAGE;draw()}]],'');
+  const inp=document.createElement('input');inp.type='number';inp.min=0;inp.placeholder='Offset';inp.setAttribute('aria-label','Jump to offset (decimal)');
+  inp.onchange=()=>{f.hexOff=Math.max(0,Math.min(+inp.value||0,b.length-1));draw()};st.before(inp);
+  st.textContent=`Offset ${f.hexOff}–${Math.min(f.hexOff+PAGE,b.length)} of ${b.length}`;
+  let out='';
+  for(let o=f.hexOff;o<Math.min(f.hexOff+PAGE,b.length);o+=16){const r=b.subarray(o,Math.min(o+16,b.length));
+    let h='',a='';for(let i=0;i<16;i++){h+=(i<r.length?hex2(r[i]):'  ')+(i===7?'  ':' ');if(i<r.length)a+=r[i]>=32&&r[i]<127?String.fromCharCode(r[i]):'.'}
+    out+=o.toString(16).padStart(8,'0')+'  '+h+' |'+esc(a)+'|\n'}
+  const pre=document.createElement('pre');pre.innerHTML=out||'(empty file)';pane.appendChild(pre);
+}
+
+/* ---------- Strings ---------- */
+function stringsOf(b,max){const out=[];let s='',st=0;
+  for(let i=0;i<=b.length&&out.length<max;i++){const c=b[i];
+    if(c>=32&&c<127||c===9){if(!s)st=i;s+=String.fromCharCode(c)}
+    else{if(s.length>=4)out.push(st.toString(16).padStart(8,'0')+'  '+s);s=''}}return out}
+function strings16(b,max){const o=[];for(const start of [0,1]){let cur='',st=0;for(let i=start;i+1<b.length&&o.length<max*2;i+=2){const c=b[i]|(b[i+1]<<8);if((c>=32&&c<127)||c===9){if(!cur)st=i;cur+=String.fromCharCode(c)}else{if(cur.length>=4)o.push([st,cur]);cur=''}}}
+  return o.sort((a,c)=>a[0]-c[0]).slice(0,max).map(x=>x[0].toString(16).padStart(8,'0')+'  '+x[1])}
+function vStr(pane){const f=cur,u=!!f.s16,out=u?strings16(f.bytes,3000):stringsOf(f.bytes,3000);
+  const st=bar(pane,[[u?'Show ASCII':'Show UTF-16',()=>{f.s16=!u;draw()}]],'');st.textContent=u?'UTF-16 little-endian strings (Windows, Office files)':'ASCII strings of 4+ characters';
+  const pre=document.createElement('pre');pre.textContent=out.join('\n')||'(none found)';pane.appendChild(pre)}
+
+/* ---------- Info ---------- */
+function entropy(b){const n=Math.min(b.length,1<<20);if(!n)return 0;const c=new Array(256).fill(0);for(let i=0;i<n;i++)c[b[i]]++;let e=0;for(const x of c)if(x){const p=x/n;e-=p*Math.log2(p)}return e}
+async function vInfo(pane){
+  const f=cur;const e=entropy(f.bytes);
+  pane.innerHTML=`<dl><dt>Name</dt><dd>${esc(f.name)}</dd><dt>Detected</dt><dd>${esc(f.label)}</dd><dt>MIME</dt><dd>${esc(f.mime)}</dd>
+  <dt>Size</dt><dd>${f.size} bytes (${fmtSize(f.size)})</dd><dt>Modified</dt><dd>${new Date(f.mod).toLocaleString()}</dd>
+  <dt>Magic bytes</dt><dd class="mono">${[...f.bytes.subarray(0,16)].map(hex2).join(' ')||'—'}</dd>
+  <dt>Entropy</dt><dd>${e.toFixed(2)} / 8 bits per byte${e>7.5?' — looks compressed or encrypted':''}</dd>
+  <dt>SHA-256</dt><dd class="mono" id="h256">…</dd><dt>SHA-1</dt><dd class="mono" id="h1">…</dd></dl><div class="bar" style="margin-top:14px"><button class="pri" id="dlb">Save file</button></div>`;
+  $('#dlb').onclick=()=>dl(f);
+  for(const [id,alg] of [['#h256','SHA-256'],['#h1','SHA-1']]){
+    try{const h=await crypto.subtle.digest(alg,f.bytes);const hx=[...new Uint8Array(h)].map(hex2).join('');if(alg==='SHA-256')f.sha256=hx;const el=$(id);if(el)el.textContent=hx}
+    catch(_){const el=$(id);if(el)el.textContent='Unavailable (browser needs a secure context)'}}
+}
+window.addFromAndroid=async(url,name,mime)=>{try{const bl=await (await fetch(url)).blob();await addFiles([new File([bl],name,{type:mime||bl.type})])}catch(e){alert('Could not open '+name+': '+e.message)}};
+if(!window.AndroidBridge&&(matchMedia('(max-width:900px)').matches||/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent)))$('#dm').style.display='flex';
+$('#dmx').onclick=()=>{$('#dm').style.display='none'};
+document.addEventListener('click',e=>document.querySelectorAll('details.dd[open]').forEach(d=>{if(!d.contains(e.target))d.open=false}));
+</script>
+</body>
+</html>

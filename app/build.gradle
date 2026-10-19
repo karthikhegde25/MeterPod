@@ -1,0 +1,116 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.karthikhegde.meterpod'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.karthikhegde.meterpod"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        // The app only ships English strings itself, but AndroidX/Material
+        // libraries bundle translated strings for dozens of languages.
+        // Restricting resConfigs to the locales actually used drops all of
+        // that translated-string weight from the release APK.
+        resConfigs "en"
+    }
+
+    // Release signing comes from environment variables rather than a
+    // checked-in keystore.properties, so nothing secret ever touches the
+    // repo. The CI workflow decodes the ANDROID_KEYSTORE secret to a temp
+    // file and sets these four env vars before invoking Gradle; building
+    // release locally without them is still fine, it just produces an
+    // unsigned APK (ANDROID_KEYSTORE_PATH stays unset, so the signingConfig
+    // block below is skipped entirely rather than failing the build).
+    def releaseKeystorePath = System.getenv("ANDROID_KEYSTORE_PATH")
+    def hasReleaseSigning = releaseKeystorePath != null && new File(releaseKeystorePath).exists()
+
+    if (hasReleaseSigning) {
+        signingConfigs {
+            release {
+                storeFile file(releaseKeystorePath)
+                storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD")
+                keyAlias System.getenv("ANDROID_KEY_ALIAS")
+                keyPassword System.getenv("ANDROID_KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            // R8 code shrinking + obfuscation: strips unused classes/methods
+            // (a large chunk of AndroidX/Material/ZXing that this app never
+            // calls) and shortens the ones that remain.
+            minifyEnabled true
+            // Drops unused resources (drawables, layouts, strings) that
+            // minify's class-level shrinking can't see on its own - safe to
+            // combine with minifyEnabled, R8 shrinks resources using the
+            // same pass.
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (hasReleaseSigning) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    // Trims small but easy-to-drop duplicate/unused files that AndroidX and
+    // Kotlin dependencies each pack into META-INF (license text, Kotlin
+    // module metadata, version files) - these add up across ~7 libraries.
+    packagingOptions {
+        resources {
+            excludes += [
+                "META-INF/*.kotlin_module",
+                "META-INF/*.version",
+                "META-INF/LICENSE*",
+                "META-INF/NOTICE*",
+                "META-INF/DEPENDENCIES",
+                "kotlin/**",
+                "DebugProbesKt.bin"
+            ]
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    // The whole UI is Jetpack Compose now (no XML layouts / Fragments).
+    // Compose compiler 1.5.10 is the release built for Kotlin 1.9.22.
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.5.10'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.activity:activity-ktx:1.8.2'
+
+    // Jetpack Compose (BOM 2024.02.00 = Compose 1.6.x / Material3 1.2.x, the
+    // line that matches Kotlin 1.9.22 + Compose compiler 1.5.10).
+    implementation platform('androidx.compose:compose-bom:2024.02.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.foundation:foundation'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'androidx.activity:activity-compose:1.8.2'
+    // For the QR Generator tool
+    implementation 'com.google.zxing:core:3.5.3'
+    // For the File Viewer tool (serves the bundled viewer page over a secure https origin)
+    implementation 'androidx.webkit:webkit:1.8.0'
+}
