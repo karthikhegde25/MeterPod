@@ -6,23 +6,14 @@
 <p align="center"><em>Android, Kotlin</em></p>
 
 <p align="center">
-  <a href="https://github.com/karthikhegde25/MeterPod/releases/download/1.0/MeterPod.apk">
+  <a href="https://github.com/karthikhegde25/MeterPod/releases">
     <img src="docs/get_it_on_github.png" alt="Get it on GitHub" height="60" />
   </a>
 </p>
 
 # MeterPod (Android, Kotlin)
 
-A six-tab sensor toolbox: **Angle** (corner/edge protractor + slope),
-**Digital Level** (bubble level with X/Y tilt readouts), **Compass**
-(magnetic heading), **Metal Detector** (magnetometer field-strength
-anomaly detection + rough direction arrow), **Speed** (GPS-based
-speedometer), and **Sound Level** (mic-based dB meter, dominant frequency,
-and live waveform). The first three use only built-in motion/position
-sensors and need no runtime permissions; Metal Detector uses the
-vibration motor for feedback (normal permission, no prompt); Speed and
-Sound Level each need a runtime permission (location, microphone),
-requested the first time you open that tab.
+One App with 30 tools
 
 ## Tabs
 
@@ -66,22 +57,6 @@ dial. The dial rotates opposite to the device heading so the "N" label
 always points at magnetic north; a fixed blue triangle at the top of the
 dial always represents the direction the top of the phone is facing.
 
-Heading comes from `Sensor.TYPE_ROTATION_VECTOR` where available — a
-fused sensor (accelerometer + magnetometer + gyroscope where present)
-that's much less jittery than raw magnetometer readings. On devices
-without it, the screen falls back to combining raw accelerometer +
-magnetometer data via `SensorManager.getRotationMatrix` /
-`getOrientation`. Either way, heading is angle-wrapped low-pass filtered
-(handles the 359°→0° crossing without a visible snap) before being shown.
-
-This shows **magnetic** north, not true north — no magnetic declination
-correction is applied. Accuracy also degrades near large metal objects,
-electronics, or magnets, same as any phone compass.
-
-- `CompassScreen.kt` — sensor reading (with fallback), heading calc,
-  angle-wrapped smoothing, cardinal direction lookup.
-- `ui/CompassView.kt` — custom-drawn rotating compass rose.
-
 ### Metal Detector
 Reads the magnetometer's raw field **vector** (not just heading, which the
 Compass tab uses) and compares it against a calibrated baseline vector.
@@ -90,15 +65,6 @@ the phone near an object — the reading, delta, and intensity bar update
 live, with status text stepping through `NO METAL DETECTED` →
 `METAL NEARBY` → `STRONG SIGNAL`, plus a short vibration pulse on a
 strong signal.
-
-**Direction arrow:** a single 3-axis magnetometer can't triangulate a
-precise bearing to a metal object — that needs multiple sensor positions
-or a proper gradiometer. What it *can* do is show which way, within the
-phone's own flat plane, the field deviation is strongest, which is the
-same heuristic hobbyist detector apps use. Hold the phone flat/level while
-sweeping (like a real detector wand) for the arrow to mean anything; it
-greys out below a small deviation threshold so it doesn't spin randomly
-on noise.
 
 This is inherently approximate: phone magnetometers are small, noisy, and
 every phone/location has a different ambient baseline — that's why it's
@@ -140,51 +106,6 @@ Ambient sound level meter with three live readouts derived from the same
 audio capture: a dB figure, a dominant frequency estimate, and a raw
 waveform graph.
 
-- **dB level**: relative peak-amplitude measurement (`20*log10` of the raw
-  sample amplitude), smoothed, with a session peak-hold (reset button
-  included). This is an uncalibrated approximation, not a certified SPL
-  reading — consumer phone microphones and their gain staging vary
-  significantly between models with no standard reference, so treat it as
-  "louder vs quieter" and rough ballpark, not anything safety- or
-  regulation-critical.
-- **Frequency**: a real-input FFT (`AudioAnalyzer.kt` implements a
-  standard iterative radix-2 Cooley-Tukey FFT directly, no external DSP
-  library) over a Hann-windowed 1024-sample buffer, reporting the
-  strongest frequency bin only when it clearly stands out from the
-  average — otherwise it shows "—" rather than a meaningless number for
-  silence or broadband noise.
-- **Waveform**: the raw captured samples drawn as a simple oscilloscope-
-  style line graph, refreshed live.
-
-Audio capture runs on its own background thread
-(`AudioAnalyzer.captureLoop`) using `AudioRecord` directly rather than
-`MediaRecorder`, since we need raw PCM samples for the FFT and waveform,
-not just a rolling amplitude figure. Results are throttled to ~15 fps and
-delivered back to the fragment on the main thread.
-
-- `audio/AudioAnalyzer.kt` — `AudioRecord` capture thread, FFT, amplitude
-  calc, result throttling.
-- `SoundLevelScreen.kt` — permission handling, UI updates from analyzer
-  results.
-- `ui/SoundLevelView.kt` — custom-drawn horizontal level bar with peak
-  marker.
-- `ui/WaveformView.kt` — custom-drawn oscilloscope-style waveform.
-
-All six tabs share the same low-pass filtering approach (`filterAlpha`
-in each fragment controls smoothing) and each registers/unregisters its
-sensor/location/audio listener(s) in `onResume`/`onPause` so only the
-tab is actively reading sensors.
-
-## About screen
-The top bar (above the tabs) has the app logo, title, and a three-dot
-overflow button. Tapping it shows an **About** entry, which opens a full
-About screen (not a dialog) with the app version, tool count, developer,
-GPL 3 license link, repository / issue-tracker buttons and credits.
-
-- `MainActivity.kt` — overflow menu handling, navigation, "Open with" routing.
-- `AboutScreen.kt` — the About screen.
-- `res/menu/main_menu.xml` — the overflow menu.
-
 ## File Viewer
 Opens about 60 file formats fully offline (text/code, JSON/XML, images,
 archives, Office/PDF, SQLite, certificates, 3D, ...) using small JavaScript
@@ -213,13 +134,6 @@ Everything is parsed into one generic tree and written back out (`fileconverter/
 pure Kotlin, no libraries). **Image** converts between PNG, JPG, WebP, BMP, GIF and one-page PDF
 with optional quality and max-size (`ImageConverter.kt`, Android decoders/encoders only).
 
-## Graphs, Magnetic Field and QR colours
-- `compose/Charts.kt` holds a small live line chart (`LineChart` + `SeriesBuffer`, Canvas only). Sound Level
-  (dB history), Light Detector (lux history on a log axis) and the new **Magnetic Field** tool (separate
-  X / Y / Z graphs plus total strength, in µT) all use it. Magnetic Field sits before Magnifier on the home grid.
-- QR Generator: the always-visible colour rectangles are gone. A rainbow circle beside the preset colours opens
-  the picker for that colour, and a contrast indicator under the colours shows the ratio and a scan warning.
-
 ## Time and Recorder
 - **Time** (`TimeScreen.kt`, `timer/TimeEngine.kt`): analog + digital clock, countdown timer (rings via an
   AlarmManager alarm clock, so it works with the screen off) and a stopwatch with laps. State lives in
@@ -230,6 +144,16 @@ with optional quality and max-size (`ImageConverter.kt`, Android decoders/encode
 - Pressing Back in either tool while something is running or unsaved asks for confirmation first
   (`compose/BackGuard.kt`). New manifest entries: foreground-service, notification and wake-lock permissions,
   `RecorderService`, `TimerReceiver`.
+
+## Games
+
+A grid of eight games (Tools → Games). Back inside a game asks for confirmation only when a game is in progress; Back on the grid leaves the tool.
+
+## Morse Code and UUID Generator
+- **Morse Code**: text to Morse and Morse to text; play it as sound, vibration or flashlight (camera torch); three speeds.
+- **UUID Generator**: v1, v3, v4, v5, v6, v7, Nil and Max; up to 50,000 at once; uppercase/hyphen options; export all as TXT, PDF or Markdown.
+
+
 
 ## Branding
 - Package name / applicationId: `com.karthikhegde.meterpod`
@@ -282,34 +206,6 @@ versus a debug build. To build one:
 ```
 gradle assembleRelease   # or ./gradlew assembleRelease if you have a wrapper
 ```
-The output is signed automatically if four environment variables are set
-(`ANDROID_KEYSTORE_PATH`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`,
-`ANDROID_KEY_PASSWORD` — see `app/build.gradle`'s `signingConfigs` block).
-Without them it still builds, just unsigned
-(`app/build/outputs/apk/release/app-release-unsigned.apk`). CI sets these
-for you (below); locally, export them yourself before running
-`gradle assembleRelease` if you want a signed build on your own machine.
-
-## Continuous Integration
-`.github/workflows/build.yml` builds a **signed release APK** on every
-push to `main` (and on manual trigger), uploading it as a downloadable
-workflow artifact named `app-release`.
-
-Signing needs four repository secrets under **Settings → Secrets and
-variables → Actions**:
-- `ANDROID_KEYSTORE` — your `.jks`/`.keystore` file, base64-encoded
-  (`base64 -w0 your.keystore` on Linux/macOS, or
-  `[Convert]::ToBase64String([IO.File]::ReadAllBytes("your.keystore"))` in
-  PowerShell — paste the output as the secret's value)
-- `ANDROID_KEYSTORE_PASSWORD` — the keystore's store password
-- `ANDROID_KEY_ALIAS` — the alias of the signing key inside it
-- `ANDROID_KEY_PASSWORD` — that key's own password
-
-The workflow decodes `ANDROID_KEYSTORE` to a temp file for the build and
-deletes it again afterward — the keystore itself never gets written to
-the repo or the uploaded artifact. The workflow only runs on pushes to
-`main` and manual dispatch (not on pull requests), since GitHub doesn't
-expose secrets to workflows triggered by pull requests from forks.
 
 Note: this project doesn't include a Gradle wrapper (`gradlew` +
 `gradle-wrapper.jar`), so the workflow installs a pinned Gradle 8.5
@@ -333,47 +229,3 @@ The QR Generator tool's content types and code formats are adapted from
 [Image Toolbox](https://github.com/T8RIN/ImageToolbox)'s QR code feature.
 Thanks to the Image Toolbox project and its contributors.
 
-## Games
-
-A grid of six games (Tools → Games). Back inside a game asks for confirmation only when a game is in progress; Back on the grid leaves the tool.
-
-| Game | Notes |
-|---|---|
-| 2048 | Swipe to slide, animated tiles, best score saved on the device |
-| Tic-Tac-Toe | Two players or vs computer (Easy / Hard unbeatable), scoreboard |
-| Minesweeper | Easy / Medium / Hard, dig or flag mode, long-press flag, chording, best times |
-| Snake | Swipe or D-pad, speeds up as it grows, best score saved |
-| Number Puzzle | 3×3, 4×4, 5×5, moves and timer, best moves per size |
-| Maze Munch | Original Pac-Man-style game: 4 mazes, 2–4 monsters, power pellets, 3 lives, swipe or D-pad |
-
-Logic lives in `games/*Logic.kt` (plain Kotlin), screens in `games/*Screen.kt`, high scores in `GameStore` (SharedPreferences).
-
-## Look and feel
-
-Modern flat navy design: flat blue buttons and calculator keys, rounded cards, a home screen with search and category chips (All, Measure, Sensors, Utilities, Files, Games), a top bar with a back arrow and the tool name, flat text fields and a redesigned About screen.
-
-## QR Generator styling
-
-Dot shape, a pixel corner-rounding slider (0-100%), frame shape (the ring of each corner marker) and eye shape (the solid ball inside it), each with Square / Rounded / Circle.
-
-## Accelerometer
-
-Sits after Magnetic Field: live X, Y and Z acceleration (m/s²) with a graph for each axis plus the total magnitude.
-
-## Timer and stopwatch notifications
-While the timer or stopwatch is running (or paused) a live notification appears in the notification bar
-(ticking chronometer, with Pause/Resume, Lap and Reset buttons). It is driven by `timer/TimeService.kt`, a
-foreground service that also fires the timer on time and rings the synthesised bell (`timer/BellSound.kt`)
-on the alarm volume (raised if it was muted).
-
-## Morse Code and UUID Generator
-- **Morse Code**: text to Morse and Morse to text; play it as sound, vibration or flashlight (camera torch); three speeds.
-- **UUID Generator**: v1, v3, v4, v5, v6, v7, Nil and Max; up to 50,000 at once; uppercase/hyphen options; export all as TXT, PDF or Markdown.
-- **Sensor Tester**: matches sensors by type/name/wake-up flag, supports one-shot trigger sensors, asks for the body-sensors permission, and reports when Android refuses to start a sensor.
-- **Protractor and Ruler** are drawn as raised, transparent glass.
-
-## More games, 3D dials and document fonts
-- **Games**: Flappy Bird (tap to flap, parallax sky/hills/ground, tilt with speed, pipes with random gaps, best score saved) and Space Invaders (drag or arrow keys, hold Shoot, sweeping aliens that speed up, enemy fire, destructible shields, lives, waves, best score saved).
-- **3D**: the Angle dial, Bubble Level, Speed gauge and the big readouts (Angle, Level, Speed, Odometer) have a chrome/glass 3D look.
-- **File Creator**: PDF and Word files can use a font, a base size, bold/italic, and per-line sizes (`{28} text`, or `#`/`##`/`###` headings).
-- Buttons that used red text (Reset, Clear, Discard...) are now red buttons with white text.
